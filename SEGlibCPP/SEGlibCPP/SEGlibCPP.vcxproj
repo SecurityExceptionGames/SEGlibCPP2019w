@@ -122,7 +122,7 @@
     <ClInclude Include="Headers\org\segames\library\dllmain.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\debug\debug.cpp" />
+    <ClCompile Include="Sources\debug_shared\debug.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
