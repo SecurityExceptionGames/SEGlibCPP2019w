@@ -1,4 +1,5 @@
 # SEGlibCPP2019w
-C++ game library.
+SecurityExceptionGames; C++ game creation library 
+(2019 Winter)
 
 Edited using Visual studio, compiled using G++ via Code::Blocks.
