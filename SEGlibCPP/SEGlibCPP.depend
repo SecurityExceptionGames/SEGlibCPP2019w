@@ -2,6 +2,133 @@
 1514140574 source:e:\github\seglibcpp2019w\seglibcpp\main.cpp
 	<iostream>
 
-1548453966 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\debug_shared\debug.cpp
+1548462684 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\debug_shared\debug.cpp
 	<iostream>
+	<org/segames/library/math/vecmath.h>
+	<org/segames/library/exception.h>
+	<glad/glad.h>
+	<glfw/glfw3.h>
+
+1548457171 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\system.h
+
+1471521160 e:\github\seglibcpp2019w\seglibcpp\extlib\include\glfw\glfw3.h
+	<stddef.h>
+	<stdint.h>
+	<OpenGL/gl3.h>
+	<OpenGL/gl3ext.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/glcorearb.h>
+	<GLES/gl.h>
+	<GLES/glext.h>
+	<GLES2/gl2.h>
+	<GLES2/gl2ext.h>
+	<GLES3/gl3.h>
+	<GLES2/gl2ext.h>
+	<GLES3/gl31.h>
+	<GLES2/gl2ext.h>
+	<vulkan/vulkan.h>
+	<GL/gl.h>
+	<GL/glext.h>
+	<GL/glu.h>
+
+1548457758 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\core.cpp
+	<org/segames/library/core.h>
+
+1548457587 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\core.h
+	<org/segames/library/dllmain.h>
+	<iostream>
+
+1548451722 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\dllmain.h
+
+1548458062 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\dllmain.cpp
+	<org/segames/library/dllmain.h>
+	<windows.h>
+
+1548458364 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\object.cpp
+	<org/segames/library/object.h>
+
+1548458090 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\object.h
+	<org/segames/library/dllmain.h>
+	<org/segames/library/library.h>
+	<string>
+
+1548457408 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\library.h
+
+1548460527 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\exception.h
+	<org\segames\library\object.h>
+	<exception>
+
+1548460528 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\exception.cpp
+	<org/segames/library/exception.h>
+	<org/segames/library/core.h>
+	<iostream>
+
+1548460348 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\array_index_out_of_bounds_exception.cpp
+	<org/segames/library/array_index_out_of_bounds_exception.h>
+
+1548460331 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\array_index_out_of_bounds_exception.h
+	<org/segames/library/index_out_of_bounds_exception.h>
+
+1548460281 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\index_out_of_bounds_exception.h
+	<org/segames/library/exception.h>
+
+1548460274 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\index_out_of_bounds_exception.cpp
+	<org/segames/library/index_out_of_bounds_exception.h>
+
+1548460193 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\invalid_value_exception.cpp
+	<org/segames/library/invalid_value_exception.h>
+
+1548460150 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\invalid_value_exception.h
+	<org/segames/library/exception.h>
+
+1548460113 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\null_pointer_exception.cpp
+	<org/segames/library/null_pointer_exception.h>
+
+1548460086 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\null_pointer_exception.h
+	<org/segames/library/exception.h>
+
+1548461373 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\util\timer.cpp
+	<org/segames/library/util/timer.h>
+	<org/segames/library/invalid_value_exception.h>
+	<thread>
+
+1548460904 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\util\timer.h
+	<org/segames/library/object.h>
+
+1548461655 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\math\math.cpp
+	<org/segames/library/math/math.h>
+	<org/segames/library/util/random.h>
+
+1548461609 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\math\math.h
+	<org/segames/library/dllmain.h>
+	<cmath>
+
+1548461265 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\util\random.h
+	<org/segames/library/util/timer.h>
+	<random>
+
+1548461734 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\math\vecmath.h
+	<org/segames/library/math/math.h>
+	<org/segames/library/object.h>
+	<org/segames/library/index_out_of_bounds_exception.h>
+	<org/segames/library/invalid_value_exception.h>
+
+1548455100 e:\github\seglibcpp2019w\seglibcpp\extlib\include\glad\glad.h
+	<windows.h>
+	<khr/khrplatform.h>
+
+1548454192 e:\github\seglibcpp2019w\seglibcpp\extlib\include\khr\khrplatform.h
+	<stdint.h>
+	<inttypes.h>
+	<stdint.h>
+
+1548462770 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\glad.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<glad/glad.h>
+	<windows.h>
+	<winapifamily.h>
+	<dlfcn.h>
 

@@ -119,10 +119,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\org\segames\library\array_index_out_of_bounds_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\core.h" />
     <ClInclude Include="Headers\org\segames\library\dllmain.h" />
+    <ClInclude Include="Headers\org\segames\library\exception.h" />
+    <ClInclude Include="Headers\org\segames\library\index_out_of_bounds_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\invalid_value_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\library.h" />
+    <ClInclude Include="Headers\org\segames\library\math\math.h" />
+    <ClInclude Include="Headers\org\segames\library\math\vecmath.h" />
+    <ClInclude Include="Headers\org\segames\library\null_pointer_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\object.h" />
+    <ClInclude Include="Headers\org\segames\library\system.h" />
+    <ClInclude Include="Headers\org\segames\library\util\random.h" />
+    <ClInclude Include="Headers\org\segames\library\util\timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\debug_shared\debug.cpp" />
+    <ClCompile Include="Sources\glad.c" />
+    <ClCompile Include="Sources\org\segames\library\array_index_out_of_bounds_exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\core.cpp" />
+    <ClCompile Include="Sources\org\segames\library\dllmain.cpp" />
+    <ClCompile Include="Sources\org\segames\library\exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\index_out_of_bounds_exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\invalid_value_exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\math\math.cpp" />
+    <ClCompile Include="Sources\org\segames\library\null_pointer_exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\object.cpp" />
+    <ClCompile Include="Sources\org\segames\library\util\timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
