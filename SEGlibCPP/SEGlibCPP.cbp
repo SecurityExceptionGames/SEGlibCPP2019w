@@ -7,21 +7,37 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/SEGlibCPP" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/SEGlibCPP_Debug" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Og" />
 					<Add option="-g" />
+					<Add option="-DSEG_API_DEBUG" />
 				</Compiler>
 			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/SEGlibCPP" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
+			<Target title="DebugOptimized">
+				<Option output="bin/SEGlibCPP_DebugOptimized" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/DebugOptimized/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
+					<Add option="-O3" />
+					<Add option="-DSEG_API_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-O3" />
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="DynamicLibrary">
+				<Option output="bin/Release/SEGlibCPP" imp_lib="$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).a" def_file="$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).def" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -30,9 +46,31 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++1z" />
 			<Add option="-fexceptions" />
+			<Add directory="SEGlibCPP/Headers" />
+			<Add directory="extlib/include" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Linker>
+			<Add library="extlib/libraries/EFX-Util_MT/EFX-Util.lib" />
+			<Add library="extlib/libraries/EFX-Util_MTDLL/EFX-Util.lib" />
+			<Add library="extlib/libraries/libglfw3dll.a" />
+			<Add library="extlib/libraries/OpenAL32.lib" />
+		</Linker>
+		<Unit filename="SEGlibCPP/Sources/debug_shared/debug.cpp" />
+		<Unit filename="SEGlibCPP/Sources/glad.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/array_index_out_of_bounds_exception.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/core.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/dllmain.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/exception.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/index_out_of_bounds_exception.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/invalid_value_exception.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/math/math.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/null_pointer_exception.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/object.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/util/timer.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

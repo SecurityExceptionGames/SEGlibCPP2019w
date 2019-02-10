@@ -41,9 +41,10 @@ namespace org
 
 			std::string Exception::toString() const
 			{
+				//23 is a magical number, or something
 				if (hasMessage)
-					return std::string(typeid(*this).name() + 6) + ": " + what();
-				return std::string(typeid(*this).name() + 6);
+					return std::string(typeid(*this).name() + 23) + ": " + what();
+				return std::string(typeid(*this).name() + 23);
 			}
 
 			bool Exception::equals(const Object& obj) const

@@ -3,6 +3,10 @@
 
 #include <cmath>
 
+#ifndef PI
+#define PI 3.141592653589793238L	//PI
+#endif
+
 namespace org
 {
 
@@ -19,7 +23,8 @@ namespace org
 					Returns the absolute of the given value
 					* @param[in] value The value
 				*/
-				template<typename T> inline T abs(const T value)
+				template<typename T> 
+				inline T abs(const T value)
 				{
 					if (value < 0)
 						return -value;
@@ -32,7 +37,8 @@ namespace org
 					* @param[in] min The minimum limit
 					* @param[in] max The maximum limit
 				*/
-				template<typename T> inline T clamp(const T value, const T min, const T max)
+				template<typename T> 
+				inline T clamp(const T value, const T min, const T max)
 				{
 					if (value > max)
 						return max;
@@ -44,7 +50,8 @@ namespace org
 				/*
 					Returns a reference to the given referenced value
 				*/
-				template<typename T> inline T& max(T&& val)
+				template<typename T> 
+				inline T& max(T&& val)
 				{
 					return val;
 				}
@@ -54,7 +61,8 @@ namespace org
 					* @param[in] val The former value
 					* @param[in] vals The latter value[s]
 				*/
-				template<typename T, typename... T2> inline T& max(T&& val, T2&&... vals)
+				template<typename T, typename... T2> 
+				inline T& max(T&& val, T2&&... vals)
 				{
 					auto& maxVal = max(vals...);
 					if (maxVal > val)
@@ -66,7 +74,8 @@ namespace org
 				/*
 					Returns a reference to the given referenced value
 				*/
-				template<typename T> inline T& min(T&& val)
+				template<typename T> 
+				inline T& min(T&& val)
 				{
 					return val;
 				}
@@ -76,7 +85,8 @@ namespace org
 					* @param[in] val The former value
 					* @param[in] vals The latter value[s]
 				*/
-				template<typename T, typename... T2> inline T& min(T&& val, T2&&... vals)
+				template<typename T, typename... T2> 
+				inline T& min(T&& val, T2&&... vals)
 				{
 					auto& maxVal = min(vals...);
 					if (maxVal < val)
@@ -91,7 +101,8 @@ namespace org
 					* @param[in] y The secondary value
 					* @param[in] a The weighting value
 				*/
-				template<typename T> inline T mix(const T x, const T y, const T a)
+				template<typename T> 
+				inline T mix(const T x, const T y, const T a)
 				{
 					return x * (1 - a) + y * a;
 				}
@@ -102,10 +113,31 @@ namespace org
 					* @param[in] edge1 The upper edge of the Hermite function
 					* @param[in] x The source value for interpolation
 				*/
-				template<typename T> inline T smoothstep(const T edge0, const T edge1, const T x)
+				template<typename T> 
+				inline T smoothstep(const T edge0, const T edge1, const T x)
 				{
 					T t = clamp((x - edge0) / (edge1 - edge0), (T)0.0, (T)1.0);
 					return t * t * ((T)3.0 - (T)2.0 * t);
+				}
+
+				/*
+					Converts the given degrees to radians
+					* @param[in] degrees The degrees to convert to radians
+				*/
+				template<typename T> 
+				inline T radians(const T degrees)
+				{
+					return (T)(degrees * PI / 180.0l);
+				}
+
+				/*
+					Converts the given radians to degrees
+					* @param[in] radians The radians to convert to degrees
+				*/
+				template<typename T> 
+				inline T degrees(const T radians)
+				{
+					return (T)(radians * 180.0l / PI);
 				}
 
 				/*

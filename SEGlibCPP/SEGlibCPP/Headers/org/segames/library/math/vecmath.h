@@ -23,7 +23,8 @@ namespace org
 					* @since	2018-06-21
 					* @edited	2018-06-22
 				*/
-				template<typename T, int dim> class BasicVector :
+				template<typename T, int dim> 
+				class BasicVector :
 					public Object
 				{
 				protected:
@@ -45,7 +46,8 @@ namespace org
 						Vector value constructor. Constructs a vector from the given values
 						* @param[in] items The vector data to place in the vector
 					*/
-					template<typename... T2> BasicVector(const T2... items)
+					template<typename... T2> 
+					BasicVector(const T2... items)
 					{
 #ifdef SEG_API_DEBUG_THROW
 						if (sizeof...(items) != dim)
@@ -60,7 +62,8 @@ namespace org
 						Cast vector constructor. A constructor that casts one type of vector into another if the element types are castable
 						* @param[in] obj The vector to cast from
 					*/
-					template<typename T2> BasicVector(const BasicVector<T2, dim>& obj)
+					template<typename T2> 
+					BasicVector(const BasicVector<T2, dim>& obj)
 					{
 						for (int i = 0; i < dimensions(); i++)
 							data[i] = (T)obj.peek(i);
@@ -98,7 +101,7 @@ namespace org
 					inline T& operator[](const int n)
 					{
 #ifdef SEG_API_DEBUG_THROW
-						if (n < 0 || n >= dim)
+						if (n < 0 || (size_t)n >= dim)
 							throw IndexOutOfBoundsException("The given vector element is not in the dimension of the vector." + std::to_string(n));
 #endif
 						return data[n];
@@ -140,7 +143,8 @@ namespace org
 						Returns true if the the given vector is equal to this one, calls the equals() method
 						* @param[in] obj The vector to check
 					*/
-					template<typename T2> inline bool operator==(const BasicVector<T2, dim>& obj) const
+					template<typename T2> 
+					inline bool operator==(const BasicVector<T2, dim>& obj) const
 					{
 						return equals(obj);
 					}
@@ -158,7 +162,8 @@ namespace org
 						Returns true if the the given vector is equal to this one
 						* @param[in] obj The vector to check
 					*/
-					template<typename T2> inline bool equals(const BasicVector<T2, dim>& obj) const
+					template<typename T2> 
+					inline bool equals(const BasicVector<T2, dim>& obj) const
 					{
 						for (int i = 0; i < dimensions(); i++)
 							if (obj.peek(i) != peek(i))
@@ -170,7 +175,8 @@ namespace org
 						Multiplies the vector by the given scalar
 						* @param[in] scalar The scalar to multiply this vector by
 					*/
-					template<typename T2> inline BasicVector<T, dim>& operator*=(const T2 scalar)
+					template<typename T2> 
+					inline BasicVector<T, dim>& operator*=(const T2 scalar)
 					{
 						for (int i = 0; i < dimensions(); i++)
 							data[i] = (T)(peek(i) * scalar);
@@ -181,7 +187,8 @@ namespace org
 						Adds the given vector to this one
 						* @param[in] obj The vector to add to this one
 					*/
-					template<typename T2> inline BasicVector<T, dim>& operator+=(const BasicVector<T2, dim>& obj)
+					template<typename T2> 
+					inline BasicVector<T, dim>& operator+=(const BasicVector<T2, dim>& obj)
 					{
 						for (int i = 0; i < dimensions(); i++)
 							data[i] = (T)(peek(i) + obj.peek(i));
@@ -192,11 +199,34 @@ namespace org
 						Subtracts the given vector from this one
 						* @param[in] obj The vector to subtract from this one
 					*/
-					template<typename T2> inline BasicVector<T, dim>& operator-=(const BasicVector<T2, dim>& obj)
+					template<typename T2> 
+					inline BasicVector<T, dim>& operator-=(const BasicVector<T2, dim>& obj)
 					{
 						for (int i = 0; i < dimensions(); i++)
 							data[i] = (T)(peek(i) - obj.peek(i));
 						return *this;
+					}
+
+					/*
+						Creates a vector filled with random values in the range [0, 1)
+					*/
+					inline static BasicVector<T, dim> rand()
+					{
+						BasicVector<T, dim> out;
+						for (int i = 0; i < dim; i++)
+							out[i] = (T)random();
+						return out;
+					}
+
+					/*
+						Creates a vector filled with zeros
+					*/
+					inline static BasicVector<T, dim> zeros()
+					{
+						BasicVector<T, dim> out;
+						for (int i = 0; i < dim; i++)
+							out[i] = (T)ZERO;
+						return out;
 					}
 
 				};
@@ -208,7 +238,8 @@ namespace org
 					* @since	2018-06-21
 					* @edited	2018-06-22
 				*/
-				template<typename T, int rows, int cols> class BasicMatrix :
+				template<typename T, int rows, int cols> 
+				class BasicMatrix :
 					public Object
 				{
 				protected:
@@ -233,9 +264,9 @@ namespace org
 					BasicMatrix(const std::initializer_list<std::initializer_list<T>>& list)
 					{
 #ifdef SEG_API_DEBUG_THROW
-						if (list.size() != m())
+						if (list.size() != (size_t)m())
 							throw InvalidValueException("Initializer list size is not correct.");
-						if (list.begin()->size() != n())
+						if (list.begin()->size() != (size_t)n())
 							throw InvalidValueException("Initializer list size is not correct.");
 #endif
 						for (int i = 0; i < m(); i++)
@@ -246,7 +277,8 @@ namespace org
 						Cast matrix constructor. A constructor that casts one type of matrix into another if the element types are castable
 						* @param[in] obj The matrix to cast from
 					*/
-					template<typename T2> BasicMatrix(const BasicMatrix<T2, rows, cols>& obj)
+					template<typename T2> 
+					BasicMatrix(const BasicMatrix<T2, rows, cols>& obj)
 					{
 						for (int i = 0; i < m(); i++)
 							for (int j = 0; j < n(); j++)
@@ -294,6 +326,41 @@ namespace org
 					}
 
 					/*
+						Returns a copy of the row of the given index of the given matrix
+						* @param[in] i The row index
+						* @param[in] a The matrix
+					*/
+					inline virtual BasicVector<T, cols> row(const int i) const
+					{
+#ifdef SEG_API_DEBUG_THROW
+						if (i < 0 || i >= m())
+							throw IndexOutOfBoundsException("The index of the requested row is outside of the matrix: " + std::to_string(i));
+#endif
+						BasicVector<T, cols> out;
+						for (int j = 0; j < cols; j++)
+							out[j] = peek(i, j);
+						return out;
+					}
+
+					/*
+						Returns a copy of the column of the given index of the given matrix
+						* @param[in] j The column index
+						* @param[in] a The matrix
+					*/
+					inline virtual BasicVector<T, rows> column(const int j) const
+					{
+#ifdef SEG_API_DEBUG_THROW
+						if (j < 0 || j > n())
+							throw IndexOutOfBoundsException("The index of the requested column is outside of the matrix: " + std::to_string(j));
+#endif
+						BasicVector<T, rows> out;
+						for (int i = 0; i < rows; i++)
+							out[i] = peek(i, j);
+						return out;
+					}
+
+
+					/*
 						Returns a pointer to the given row of the matrix
 						* @param[in] i The index of the row to returns the pointer to
 					*/
@@ -320,10 +387,10 @@ namespace org
 							{
 								out += std::to_string(peek(i, j));
 								if (j < n() - 1)
-									out += "/t";
+									out += "\t";
 							}
 
-							out += " |/n";
+							out += " |\n";
 						}
 
 						return out;
@@ -351,7 +418,8 @@ namespace org
 						Returns true if the the given matrix is equal to this one, calls the equals() method
 						* @param[in] obj The matrix to check
 					*/
-					template<typename T2> inline bool operator==(const BasicMatrix<T2, rows, cols>& obj) const
+					template<typename T2> 
+					inline bool operator==(const BasicMatrix<T2, rows, cols>& obj) const
 					{
 						return equals(obj);
 					}
@@ -360,7 +428,8 @@ namespace org
 						Returns true if the the given matrix is not equal to this one, inverse of operator==
 						* @param[in] obj The matrix to check
 					*/
-					template<typename T2> inline bool operator!=(const BasicMatrix<T2, rows, cols>& obj) const
+					template<typename T2> 
+					inline bool operator!=(const BasicMatrix<T2, rows, cols>& obj) const
 					{
 						return !(*this == obj);
 					}
@@ -369,7 +438,8 @@ namespace org
 						Returns true if the the given matrix is equal to this one
 						* @param[in] obj The matrix to check
 					*/
-					template<typename T2> inline bool equals(const BasicMatrix<T2, rows, cols>& obj) const
+					template<typename T2> 
+					inline bool equals(const BasicMatrix<T2, rows, cols>& obj) const
 					{
 						for (int i = 0; i < m(); i++)
 							for (int j = 0; j < n(); j++)
@@ -382,7 +452,8 @@ namespace org
 						Multiplies the matrix by the given scalar
 						* @param[in] scalar The scalar of to multiply the matrix with
 					*/
-					template<typename T2> inline BasicMatrix<T, rows, cols>& operator*=(const T2 scalar)
+					template<typename T2> 
+					inline BasicMatrix<T, rows, cols>& operator*=(const T2 scalar)
 					{
 						for (int i = 0; i < m(); i++)
 							for (int j = 0; j < n(); j++)
@@ -394,7 +465,8 @@ namespace org
 						Adds the given matrix to this one
 						* @param[in] obj The matrix to add to this one
 					*/
-					template<typename T2> inline BasicMatrix<T, rows, cols>& operator+=(const BasicMatrix<T2, rows, cols>& obj)
+					template<typename T2> 
+					inline BasicMatrix<T, rows, cols>& operator+=(const BasicMatrix<T2, rows, cols>& obj)
 					{
 						for (int i = 0; i < m(); i++)
 							for (int j = 0; j < n(); j++)
@@ -406,12 +478,172 @@ namespace org
 						Subtracts the given matrix from this one
 						* @param[in] obj The matrix to subtract from this one
 					*/
-					template<typename T2> inline BasicMatrix<T, rows, cols>& operator-=(const BasicMatrix<T2, rows, cols>& obj)
+					template<typename T2> 
+					inline BasicMatrix<T, rows, cols>& operator-=(const BasicMatrix<T2, rows, cols>& obj)
 					{
 						for (int i = 0; i < m(); i++)
 							for (int j = 0; j < n(); j++)
 								data[i][j] = (T)(peek(i, j) - obj.peek(i, j));
 						return *this;
+					}
+
+					/*
+						Creates a matrix filled with random numbers in the range [0, 1)
+					*/
+					inline static BasicMatrix<T, rows, cols> rand()
+					{
+						BasicMatrix<T, rows, cols> out;
+						for (int i = 0; i < rows; i++)
+							for (int j = 0; j < cols; j++)
+								out[i][j] = (T)random();
+						return out;
+					}
+
+					/*
+						Creates a matrix filled with zeros
+					*/
+					inline static BasicMatrix<T, rows, cols> zeros()
+					{
+						BasicMatrix<T, rows, cols> out;
+						for (int i = 0; i < rows; i++)
+							for (int j = 0; j < cols; j++)
+								out[i][j] = (T)ZERO;
+						return out;
+					}
+
+					/*
+						Creates an identity matrix
+					*/
+					inline static BasicMatrix<T, rows, cols> identity()
+					{
+						BasicMatrix<T, rows, cols> out;
+						for (int i = 0; i < rows; i++)
+							for (int j = 0; j < cols; j++)
+								out[i][j] = (T)((i == j) ? 1 : 0);
+						return out;
+					}
+
+					/*
+						Creates a rotation matrix for a rotation of the given angle around the given axis
+						* @param[in] angle The angle of the rotation in radians
+						* @param[in] axis The axis to rotate around
+					*/
+					template<typename T2>
+					inline static BasicMatrix<T, 3, 3> rotation(const T angle, const BasicVector<T2, 3>& axis)
+					{
+						const BasicVector<T, 3> zAxis = normalize(axis);
+
+						if (abs(dot(zAxis, BasicVector<T, 3>(1, 0, 0))) == 1)
+							return BasicMatrix<T, 3, 3>({
+								{ 1, 0, 0 },
+								{ 0, (T)cos((double)angle), (T)sin((double)angle) },
+								{ 0, (T)-sin((double)angle), (T)cos((double)angle) }
+							});
+						else if (abs(dot(zAxis, BasicVector<T, 3>(0, 1, 0))) == 1)
+							return BasicMatrix<T, 3, 3>({
+								{ (T)cos((double)angle), 0, (T)-sin((double)angle) },
+								{ 0, 1, 0 },
+								{ (T)sin((double)angle), 0, (T)cos((double)angle) }
+							});
+						else if (abs(dot(zAxis, BasicVector<T, 3>(0, 0, 1))) == 1)
+							return BasicMatrix<T, 3, 3>({
+								{ (T)cos((double)angle), (T)sin((double)angle), 0 },
+								{ (T)-sin((double)angle), (T)cos((double)angle), 0 },
+								{ 0, 0, 1 }
+							});
+						else
+						{
+							const BasicVector<T, 3> yAxis = { 0, 1, 0 };
+							const BasicVector<T, 3> xAxis = cross(yAxis, zAxis);
+
+							const BasicMatrix<T, 3, 3> transform = {
+								{ xAxis.peek(0), yAxis.peek(0), zAxis.peek(0) },
+								{ xAxis.peek(1), yAxis.peek(1), zAxis.peek(1) },
+								{ xAxis.peek(2), yAxis.peek(2), zAxis.peek(2) }
+							};
+
+							const BasicMatrix<T, 3, 3> zRotation = {
+								{ (T)cos((double)angle), (T)sin((double)angle), 0 },
+								{ (T)-sin((double)angle), (T)cos((double)angle), 0 },
+								{ 0, 0, 1 }
+							};
+
+							return inv(transform) * zRotation * transform;
+						}
+
+					}
+
+					/*
+						Creates an orthogonal projection matrix
+						* @param[in] left The left clipping pane
+						* @param[in] right The right clipping pane
+						* @param[in] bottom The bottom clipping pane
+						* @param[in] top The top clipping pane
+						* @param[in] zNear The near clipping pane
+						* @param[in] zFar The far clipping pane
+					*/
+					inline static BasicMatrix<T, 4, 4> ortho(const T left, const T right, const T bottom, const T top, const T zNear, const T zFar)
+					{
+						return BasicMatrix<T, 4, 4>({
+							{ (T)(2.0 / (right - left)), 0, 0, 0 },
+							{ 0, (T)(2.0 / (top - bottom)), 0, 0 },
+							{ 0, 0, (T)(-2.0 / (zFar - zNear)), 0 },
+							{ (T)(-(right + left) / (right - left)), (T)(-(top + bottom) / (top - bottom)), (T)(-(zFar + zNear) / (zFar - zNear)), 1 }
+						});
+
+					}
+					
+					/*
+						Creates a standard camera projection matrix
+						* @param[in] fov The field of view in degrees
+						* @param[in] aspect The aspect ratio
+					*/
+					inline static BasicMatrix<T, 4, 4> projection(const T fov, const T aspect, const T zNear, const T zFar)
+					{
+						const T top = zNear * tan(radians(fov * 0.5));
+						const T bottom = -top;
+						const T right = top * aspect;
+						const T left = -right;
+
+						return BasicMatrix<T, 4, 4>({
+							{ (T)(2.0 * zNear / (right - left)), 0, 0, 0 },
+							{ 0, (T)(2.0 * zNear / (top - bottom)), 0, 0 },
+							{ (T)((right + left) / (right - left)), (T)((top + bottom) / (top - bottom)), (T)(-((zFar + zNear) / (zFar - zNear))), -1 },
+							{ 0, 0, (T)(-(2.0 * zFar * zNear / (zFar - zNear))), 0 }
+						});
+
+					}
+
+					/**
+						Creates a look-at matrix
+						* @param[in] eye the eye position in world space
+						* @param[in] target the look at target in world space
+						* @param[in] up the upwards vector, standard (0, 1, 0), changes rarely
+					*/
+					template<typename T2, typename T3, typename T4>
+					inline static BasicMatrix<T, 4, 4> lookAt(const BasicVector<T2, 3>& eye, const BasicVector<T3, 3>& target, const BasicVector<T4, 3>& up)
+					{
+						const BasicVector<T2, 3> zAxis = normalize(eye - target);
+						const BasicVector<T4, 3> nUp = normalize(up);
+						const T4 upZDiff = dot(nUp, zAxis);
+
+						BasicVector<T4, 3> xAxis;
+						if (upZDiff == 1)
+							xAxis = { 0, 0, -1 };
+						else if (upZDiff == -1)
+							xAxis = { 0, 0, 1 };
+						else
+							xAxis = cross(nUp, zAxis);
+
+						const BasicVector<T2, 3> yAxis = cross(zAxis, xAxis);
+
+						return BasicMatrix<T, 4, 4>({
+							{ (T)xAxis.peek(0), (T)yAxis.peek(0), (T)zAxis.peek(0), 0 },
+							{ (T)xAxis.peek(1), (T)yAxis.peek(1), (T)zAxis.peek(1), 0 },
+							{ (T)xAxis.peek(2), (T)yAxis.peek(2), (T)zAxis.peek(2), 0 },
+							{ (T)(-dot(xAxis, eye)), (T)(-dot(yAxis, eye)), (T)(-dot(zAxis, eye)), 1 }
+						});
+
 					}
 
 				};
@@ -421,7 +653,8 @@ namespace org
 					* @param[in] a The first vector
 					* @param[in] b The second vector
 				*/
-				template<typename T, typename T2, int dim> inline T dot(const BasicVector<T, dim>& a, const BasicVector<T2, dim>& b)
+				template<typename T, typename T2, int dim> 
+				inline T dot(const BasicVector<T, dim>& a, const BasicVector<T2, dim>& b)
 				{
 					T dotVal = 0;
 					for (int i = 0; i < dim; i++)
@@ -433,7 +666,8 @@ namespace org
 					Calculates the length of the vector
 					* @param[in] a The vector to calculate the length of
 				*/
-				template<typename T, int dim> inline T length(const BasicVector<T, dim>& a)
+				template<typename T, int dim> 
+				inline T length(const BasicVector<T, dim>& a)
 				{
 					return (T)sqrt(dot(a, a));
 				}
@@ -442,7 +676,8 @@ namespace org
 					Calculates the length of the vector
 					* @param[in] a The vector to calculate the length of
 				*/
-				template<int dim> inline float length(const BasicVector<float, dim>& a)
+				template<int dim> 
+				inline float length(const BasicVector<float, dim>& a)
 				{
 					return sqrtf(dot(a, a));
 				}
@@ -451,7 +686,8 @@ namespace org
 					Calculates the length of the vector
 					* @param[in] a The vector to calculate the length of
 				*/
-				template<int dim> inline long double length(const BasicVector<long double, dim>& a)
+				template<int dim> 
+				inline long double length(const BasicVector<long double, dim>& a)
 				{
 					return sqrtl(dot(a, a));
 				}
@@ -460,7 +696,8 @@ namespace org
 					Copies the given vector and normalizes it (the copy)
 					* @param[in] a The vector to normalize
 				*/
-				template<typename T, int dim> inline BasicVector<T, dim> normalize(const BasicVector<T, dim>& a)
+				template<typename T, int dim> 
+				inline BasicVector<T, dim> normalize(const BasicVector<T, dim>& a)
 				{
 					return a * (1.0 / length(a));
 				}
@@ -470,7 +707,8 @@ namespace org
 					* @param[in] scalar The scalar
 					* @param[in] a The vector
 				*/
-				template<typename T, typename T2, int dim> inline BasicVector<T, dim> operator*(const T2 scalar, const BasicVector<T, dim>& a)
+				template<typename T, typename T2, int dim> 
+				inline BasicVector<T, dim> operator*(const T2 scalar, const BasicVector<T, dim>& a)
 				{
 					return BasicVector<T, dim>(a) *= scalar;
 				}
@@ -480,7 +718,8 @@ namespace org
 					* @param[in] a The vector
 					* @param[in] scalar The scalar
 				*/
-				template<typename T, typename T2, int dim> inline BasicVector<T, dim> operator*(const BasicVector<T, dim>& a, const T2 scalar)
+				template<typename T, typename T2, int dim> 
+				inline BasicVector<T, dim> operator*(const BasicVector<T, dim>& a, const T2 scalar)
 				{
 					return scalar * a;
 				}
@@ -490,7 +729,8 @@ namespace org
 					* @param[in] a The first vector
 					* @param[in] b The second vector
 				*/
-				template<typename T, typename T2, int dim> inline BasicVector<T, dim> operator+(const BasicVector<T, dim>& a, const BasicVector<T2, dim>& b)
+				template<typename T, typename T2, int dim> 
+				inline BasicVector<T, dim> operator+(const BasicVector<T, dim>& a, const BasicVector<T2, dim>& b)
 				{
 					return BasicVector<T, dim>(a) += b;
 				}
@@ -500,37 +740,19 @@ namespace org
 					* @param[in] a The first vector
 					* @param[in] b The second vector
 				*/
-				template<typename T, typename T2, int dim> inline BasicVector<T, dim> operator-(const BasicVector<T, dim>& a, const BasicVector<T2, dim>& b)
+				template<typename T, typename T2, int dim> 
+				inline BasicVector<T, dim> operator-(const BasicVector<T, dim>& a, const BasicVector<T2, dim>& b)
 				{
 					return BasicVector<T, dim>(a) -= b;
 				}
-
-				/*
-					Fills the given vector with random numbers in the range [0, 1)
-					* @param[out] a The vector to fill
-				*/
-				template<typename T, int dim> inline void rand(BasicVector<T, dim>& a)
-				{
-					for (int i = 0; i < dim; i++)
-						a[i] = (T)random();
-				}
-
-				/*
-					Fills the given vector with random numbers in the range [0, 1)
-					* @param[out] a The vector to fill
-				*/
-				template<int dim> inline void rand(BasicVector<float, dim>& a)
-				{
-					for (int i = 0; i < dim; i++)
-						a[i] = randomf();
-				}
-
+				
 				/*
 					Fills the given vector with the given value
 					* @param[out] a The vector to fill
 					* @param[in] value The value to fill the vector with
 				*/
-				template<typename T, typename T2, int dim> inline void fill(BasicVector<T, dim>& a, const T2 value)
+				template<typename T, typename T2, int dim> 
+				inline void fill(BasicVector<T, dim>& a, const T2 value)
 				{
 					for (int i = 0; i < dim; i++)
 						a[i] = (T)value;
@@ -541,7 +763,8 @@ namespace org
 					* @param[in] a The first vector
 					* @param[in] b The second vector
 				*/
-				template<typename T, typename T2> inline BasicVector<T, 3> cross(const BasicVector<T, 3>& a, const BasicVector<T2, 3>& b)
+				template<typename T, typename T2> 
+				inline BasicVector<T, 3> cross(const BasicVector<T, 3>& a, const BasicVector<T2, 3>& b)
 				{
 					BasicVector<T, 3> out;
 					out[0] = a.peek(1) * b.peek(2) - a.peek(2) * b.peek(1);
@@ -554,7 +777,8 @@ namespace org
 					Calculates the determinant of the given matrix
 					* @param[in] a The matrix
 				*/
-				template<typename T, int dim> inline T det(const BasicMatrix<T, dim, dim>& a)
+				template<typename T, int dim> 
+				inline T det(const BasicMatrix<T, dim, dim>& a)
 				{
 					if (dim == 1)
 						return a.peek(0, 0);
@@ -579,28 +803,74 @@ namespace org
 				}
 
 				/*
-					Returns a copy of the row of the given index of the given matrix
-					* @param[in] i The row index
+					Horizontally concatenates the given matrix and the given vector, in the given order
 					* @param[in] a The matrix
+					* @param[in] b The vector
 				*/
-				template<typename T, int rows, int cols> inline BasicVector<T, cols> row(const int i, const BasicMatrix<T, rows, cols>& a)
+				template<typename T, typename T2, int rows, int cols> 
+				inline BasicMatrix<T, rows, cols + 1> horzCat(const BasicMatrix<T, rows, cols>& a, const BasicVector<T2, rows>& b)
 				{
-					BasicVector<T, cols> out;
-					for (int j = 0; j < cols; j++)
-						out[j] = a.peek(i, j);
+					BasicMatrix<T, rows, cols + 1> out;
+					for (int i = 0; i < rows; i++)
+						for (int j = 0; j < cols; j++)
+							out[i][j] = a.peek(i, j);
+
+					for (int i = 0; i < rows; i++)
+						out[i][cols] = b.peek(i);
 					return out;
 				}
 
 				/*
-					Returns a copy of the column of the given index of the given matrix
-					* @param[in] j The column index
-					* @param[in] a The matrix
+					Horizontally concatenates the given vector and the given matrix, in the given order
+					* @param[in] a The vector
+					* @param[in] b The matrix
 				*/
-				template<typename T, int rows, int cols> inline BasicVector<T, rows> column(const int j, const BasicMatrix<T, rows, cols>& a)
+				template<typename T, typename T2, int rows, int cols> 
+				inline BasicMatrix<T, rows, cols + 1> horzCat(const BasicVector<T2, rows>& a, const BasicMatrix<T, rows, cols>& b)
 				{
-					BasicVector<T, rows> out;
+					BasicMatrix<T, rows, cols + 1> out;
 					for (int i = 0; i < rows; i++)
-						out[i] = a.peek(i, j);
+						out[i][0] = a.peek(i);
+
+					for (int i = 0; i < rows; i++)
+						for (int j = 0; j < cols; j++)
+							out[i][j + 1] = b.peek(i, j);
+					return out;
+				}
+
+				/*
+					Vertically concatenates the given matrix and the given vector, in the given order
+					* @param[in] a The matrix
+					* @param[in] b The vector
+				*/
+				template<typename T, typename T2, int rows, int cols>
+				inline BasicMatrix<T, rows + 1, cols> vertCat(const BasicMatrix<T, rows, cols>& a, const BasicVector<T2, cols>& b)
+				{
+					BasicMatrix<T, rows + 1, cols> out;
+					for (int i = 0; i < rows; i++)
+						for (int j = 0; j < cols; j++)
+							out[i][j] = a.peek(i, j);
+
+					for (int j = 0; j < cols; j++)
+						out[rows][j] = b.peek(j);
+					return out;
+				}
+
+				/*
+					Vertically concatenates the given vector and the given matrix, in the given order
+					* @param[in] a The vector
+					* @param[in] b The matrix
+				*/
+				template<typename T, typename T2, int rows, int cols>
+				inline BasicMatrix<T, rows + 1, cols> vertCat(const BasicVector<T2, cols>& a, const BasicMatrix<T, rows, cols>& b)
+				{
+					BasicMatrix<T, rows + 1, cols> out;
+					for (int j = 0; j < cols; j++)
+						out[0][j] = a.peek(j);
+
+					for (int i = 0; i < rows; i++)
+						for (int j = 0; j < cols; j++)
+							out[i + 1][j] = b.peek(i, j);
 					return out;
 				}
 
@@ -608,7 +878,8 @@ namespace org
 					Runs a partial gauss elimination
 					* @param[in/out] a The matrix to partially reduce
 				*/
-				template<typename T, int dim> void partialGauss(BasicMatrix<T, dim, dim>& a)
+				template<typename T, int dim> 
+				inline void partialGauss(BasicMatrix<T, dim, dim>& a)
 				{
 					int indices[dim];
 					partialGauss(a, indices);
@@ -619,7 +890,8 @@ namespace org
 					* @param[in/out] a The matrix to partially reduce
 					* @param[out] index The array of pivot element indices for each row
 				*/
-				template<typename T, int dim> void partialGauss(BasicMatrix<T, dim, dim>& a, int* index)
+				template<typename T, int dim> 
+				void partialGauss(BasicMatrix<T, dim, dim>& a, int* index)
 				{
 					for (int i = 0; i < dim; i++)
 						index[i] = i;
@@ -672,7 +944,8 @@ namespace org
 					Calculates and retruns the inverse of the given matrix
 					* @param[in] a The matrix to invert
 				*/
-				template<typename T, int dim> BasicMatrix<T, dim, dim> inv(const BasicMatrix<T, dim, dim>& a)
+				template<typename T, int dim> 
+				BasicMatrix<T, dim, dim> inv(const BasicMatrix<T, dim, dim>& a)
 				{
 					int index[dim];
 					BasicMatrix<T, dim, dim> out;
@@ -712,7 +985,8 @@ namespace org
 					Creates and returns the transpose of the given matrix
 					* @param[in] a The matrix to transpose
 				*/
-				template<typename T, int rows, int cols> inline BasicMatrix<T, cols, rows> transpose(const BasicMatrix<T, rows, cols>& a)
+				template<typename T, int rows, int cols> 
+				inline BasicMatrix<T, cols, rows> transpose(const BasicMatrix<T, rows, cols>& a)
 				{
 					BasicMatrix<T, cols, rows> out;
 					for (int i = 0; i < rows; i++)
@@ -726,10 +1000,8 @@ namespace org
 					* @param[in] a The first matrix
 					* @param[in] b The second matrix
 				*/
-				template<typename T, typename T2, int rows, int cols> inline BasicMatrix<T, rows, cols> operator+(
-					const BasicMatrix<T, rows, cols>& a,
-					const BasicMatrix<T2, rows, cols>& b
-					)
+				template<typename T, typename T2, int rows, int cols> 
+				inline BasicMatrix<T, rows, cols> operator+(const BasicMatrix<T, rows, cols>& a, const BasicMatrix<T2, rows, cols>& b)
 				{
 					return BasicMatrix<T, rows, cols>(a) += b;
 				}
@@ -739,10 +1011,8 @@ namespace org
 					* @param[in] a The first matrix
 					* @param[in] b The second matrix
 				*/
-				template<typename T, typename T2, int rows, int cols> inline BasicMatrix<T, rows, cols> operator-(
-					const BasicMatrix<T, rows, cols>& a,
-					const BasicMatrix<T2, rows, cols>& b
-					)
+				template<typename T, typename T2, int rows, int cols> 
+				inline BasicMatrix<T, rows, cols> operator-(const BasicMatrix<T, rows, cols>& a, const BasicMatrix<T2, rows, cols>& b)
 				{
 					return BasicMatrix<T, rows, cols>(a) -= b;
 				}
@@ -752,10 +1022,8 @@ namespace org
 					* @param[in] scalar The scalar
 					* @param[in] a The matrix
 				*/
-				template<typename T, typename T2, int rows, int cols> inline BasicMatrix<T, rows, cols> operator*(
-					const T2 scalar,
-					const BasicMatrix<T, rows, cols>& a
-					)
+				template<typename T, typename T2, int rows, int cols> 
+				inline BasicMatrix<T, rows, cols> operator*(const T2 scalar, const BasicMatrix<T, rows, cols>& a)
 				{
 					return BasicMatrix<T, rows, cols>(a) *= scalar;
 				}
@@ -765,10 +1033,8 @@ namespace org
 					* @param[in] a The matrix
 					* @param[in] scalar The scalar
 				*/
-				template<typename T, typename T2, int rows, int cols> inline BasicMatrix<T, rows, cols> operator*(
-					const BasicMatrix<T, rows, cols>& a,
-					const T2 scalar
-					)
+				template<typename T, typename T2, int rows, int cols> 
+				inline BasicMatrix<T, rows, cols> operator*(const BasicMatrix<T, rows, cols>& a, const T2 scalar)
 				{
 					return scalar * a;
 				}
@@ -778,36 +1044,14 @@ namespace org
 					* @param[in] a The first matrix
 					* @param[in] b The second matrix
 				*/
-				template<typename T, typename T2, int rows, int colsA, int colsB> inline BasicMatrix<T, rows, colsB> operator*(
-					const BasicMatrix<T, rows, colsA>& a,
-					const BasicMatrix<T2, colsA, colsB>& b
-					)
+				template<typename T, typename T2, int rows, int colsA, int colsB> 
+				inline BasicMatrix<T, rows, colsB> operator*(const BasicMatrix<T, rows, colsA>& a, const BasicMatrix<T2, colsA, colsB>& b)
 				{
 					BasicMatrix<T, rows, colsB> out;
 					for (int i = 0; i < rows; i++)
 						for (int j = 0; j < colsB; j++)
-							out[i][j] = dot(row(i, a), column(j, b));
+							out[i][j] = dot(a.row(i), b.column(j));
 					return out;
-				}
-
-				/*
-					Fills the matrix in with identity matrix data, ie. zeros with ones along the diagonal
-					* @param[in] a The matrix
-				*/
-				template<typename T, int rows, int cols> inline void identity(BasicMatrix<T, rows, cols>& a)
-				{
-					for (int i = 0; i < rows; i++)
-						for (int j = 0; j < cols; j++)
-							a[i][j] = (T)(i == j);
-				}
-
-				/*
-					Fills the matrix with zeros
-					* @param[in] a The matrix
-				*/
-				template<typename T, int rows, int cols> inline void zeros(BasicMatrix<T, rows, cols>& a)
-				{
-					fill(a, ZERO);
 				}
 
 				/*
@@ -815,33 +1059,12 @@ namespace org
 					* @param[in] a The matrix
 					* @param[in] value The value
 				*/
-				template<typename T, typename T2, int rows, int cols> inline void fill(BasicMatrix<T, rows, cols>& a, const T2 value)
+				template<typename T, typename T2, int rows, int cols> 
+				inline void fill(BasicMatrix<T, rows, cols>& a, const T2 value)
 				{
 					for (int i = 0; i < rows; i++)
 						for (int j = 0; j < cols; j++)
 							a[i][j] = (T)value;
-				}
-
-				/*
-					Fills the matrix with random data in range [0, 1)
-					* @param[in] a The matrix
-				*/
-				template<typename T, int rows, int cols> inline void rand(BasicMatrix<T, rows, cols>& a)
-				{
-					for (int i = 0; i < rows; i++)
-						for (int j = 0; j < cols; j++)
-							a[i][j] = (T)random();
-				}
-
-				/*
-					Fills the matrix with random data in range [0, 1)
-					* @param[in] a The matrix
-				*/
-				template<int rows, int cols> inline void rand(BasicMatrix<float, rows, cols>& a)
-				{
-					for (int i = 0; i < rows; i++)
-						for (int j = 0; j < cols; j++)
-							a[i][j] = randomf();
 				}
 
 #ifndef SEG_API_VECMATH_NO_TYPEDEFS
