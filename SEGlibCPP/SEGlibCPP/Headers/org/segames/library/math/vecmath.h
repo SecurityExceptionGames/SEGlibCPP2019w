@@ -524,33 +524,48 @@ namespace org
 					}
 
 					/*
-						Creates a rotation matrix for a rotation of the given angle around the given axis
+						Creates a rotation martirx for a 2d rotation around the z-axis
+						* @param[in] angle The angle of the rotation in radians
+					*/
+					template<typename T2>
+					inline static BasicMatrix<T, 2, 2> rotation(const T2 angle)
+					{
+						return BasicMatrix<T, 2, 2>({
+							{ (T)cos((double)angle), (T)sin((double)angle) },
+							{ (T)-sin((double)angle), (T)cos((double)angle) }
+						});
+
+					}
+
+					/*
+						Creates a rotation matrix for a 3d rotation of the given angle around the given axis
 						* @param[in] angle The angle of the rotation in radians
 						* @param[in] axis The axis to rotate around
 					*/
-					template<typename T2>
-					inline static BasicMatrix<T, 3, 3> rotation(const T angle, const BasicVector<T2, 3>& axis)
+					template<typename T2, typename T3>
+					inline static BasicMatrix<T, 3, 3> rotation(const T2 angle, const BasicVector<T3, 3>& axis)
 					{
 						const BasicVector<T, 3> zAxis = normalize(axis);
-
-						if (abs(dot(zAxis, BasicVector<T, 3>(1, 0, 0))) == 1)
+						
+						T dotVal;
+						if (abs(dotVal = dot(zAxis, BasicVector<T, 3>(1, 0, 0))) == 1)
 							return BasicMatrix<T, 3, 3>({
 								{ 1, 0, 0 },
 								{ 0, (T)cos((double)angle), (T)sin((double)angle) },
 								{ 0, (T)-sin((double)angle), (T)cos((double)angle) }
-							});
-						else if (abs(dot(zAxis, BasicVector<T, 3>(0, 1, 0))) == 1)
+							}) *= dotVal;
+						else if (abs(dotVal = dot(zAxis, BasicVector<T, 3>(0, 1, 0))) == 1)
 							return BasicMatrix<T, 3, 3>({
 								{ (T)cos((double)angle), 0, (T)-sin((double)angle) },
 								{ 0, 1, 0 },
 								{ (T)sin((double)angle), 0, (T)cos((double)angle) }
-							});
-						else if (abs(dot(zAxis, BasicVector<T, 3>(0, 0, 1))) == 1)
+							}) *= dotVal;
+						else if (abs(dotVal = dot(zAxis, BasicVector<T, 3>(0, 0, 1))) == 1)
 							return BasicMatrix<T, 3, 3>({
 								{ (T)cos((double)angle), (T)sin((double)angle), 0 },
 								{ (T)-sin((double)angle), (T)cos((double)angle), 0 },
 								{ 0, 0, 1 }
-							});
+							}) *= dotVal;
 						else
 						{
 							const BasicVector<T, 3> yAxis = { 0, 1, 0 };

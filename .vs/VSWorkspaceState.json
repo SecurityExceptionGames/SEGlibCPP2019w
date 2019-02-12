@@ -2,7 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\SEGlibCPP",
-    "\\SEGlibCPP\\Code"
+    "\\SEGlibCPP\\SEGlibCPP\\Headers",
+    "\\SEGlibCPP\\SEGlibCPP\\Headers\\org",
+    "\\SEGlibCPP\\SEGlibCPP\\Headers\\org\\segames",
+    "\\SEGlibCPP\\SEGlibCPP\\Headers\\org\\segames\\library",
+    "\\SEGlibCPP\\SEGlibCPP\\Sources"
   ],
+  "SelectedNode": "\\SEGlibCPP\\SEGlibCPP",
   "PreviewInSolutionExplorer": false
 }

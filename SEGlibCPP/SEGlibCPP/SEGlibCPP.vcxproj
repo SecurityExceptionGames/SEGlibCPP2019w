@@ -131,6 +131,7 @@
     <ClInclude Include="Headers\org\segames\library\null_pointer_exception.h" />
     <ClInclude Include="Headers\org\segames\library\object.h" />
     <ClInclude Include="Headers\org\segames\library\system.h" />
+    <ClInclude Include="Headers\org\segames\library\util\heap_block.h" />
     <ClInclude Include="Headers\org\segames\library\util\random.h" />
     <ClInclude Include="Headers\org\segames\library\util\timer.h" />
   </ItemGroup>

@@ -57,6 +57,9 @@
     <ClInclude Include="Headers\org\segames\library\util\timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\util\heap_block.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\debug_shared\debug.cpp">

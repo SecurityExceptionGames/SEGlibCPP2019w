@@ -1,6 +1,7 @@
 #include <iostream>
 #include <org/segames/library/math/vecmath.h>
 #include <org/segames/library/exception.h>
+#include <org/segames/library/util/heap_block.h>
 
 #define GLFW_DLL
 #include <glad/glad.h>
@@ -16,19 +17,8 @@ int main()
 		if (!glfwInit())
 			return -1;
 
-		mat3f myMat = mat3f::rotation(radians(45000.0), vec3f(1, 0, 0));
-
-		std::cout << std::endl << myMat << std::endl;
-		
-		vec3f a = { 2, 3, 0 };
-		vec3f b = vec3f::rand();
-
-		std::cout << cross(a, b) << std::endl;
-
 		mat4f projMat;
 		projMat = mat4f::ortho(0, 800, 600, 0, 0.1f, 10);
-
-		std::cout << projMat << std::endl;
 
 		GLFWwindow* window = glfwCreateWindow(1280, 800, "Library link test window", NULL, NULL);
 		glfwShowWindow(window);
@@ -67,7 +57,7 @@ int main()
 			if (count > 360)
 				count = 0;
 			else
-				count += 0.5f;
+				count += 0.05f;
 		}
 
 		std::cout << "Hello world!" << std::endl;
