@@ -34,14 +34,14 @@ namespace org
 				}
 
 				Timer::Timer() :
-					updateRate(ZERO),
-					updateTime(ZERO),
+					updateRate(0),
+					updateTime(0),
 					lastTime(-1)
 				{}
 
 				Timer::Timer(const double updateRate_) :
 					updateRate(updateRate_),
-					updateTime(updateRate_ != 0 ? 1.0 / updateRate_ : ZERO),
+					updateTime(updateRate_ != 0 ? 1.0 / updateRate_ : 0),
 					lastTime(-1)
 				{}
 
@@ -94,7 +94,7 @@ namespace org
 				void Timer::setUpdateRate(const double updateRate_)
 				{
 					this->updateRate = updateRate_;
-					this->updateTime = (updateRate_ != 0 ? 1.0 / updateRate_ : ZERO);
+					this->updateTime = (updateRate_ != 0 ? 1.0 / updateRate_ : 0);
 				}
 
 				void Timer::sync()

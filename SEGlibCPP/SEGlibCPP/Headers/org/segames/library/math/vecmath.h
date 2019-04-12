@@ -4,6 +4,12 @@
 #include <org/segames/library/index_out_of_bounds_exception.h>
 #include <org/segames/library/invalid_value_exception.h>
 
+#include <cstring>
+
+#ifndef SEG_API_VECMATH_ZERO_OFFSET
+#define SEG_API_VECMATH_ZERO_OFFSET 0.000000000001l
+#endif
+
 namespace org
 {
 
@@ -41,6 +47,17 @@ namespace org
 					*/
 					BasicVector()
 					{}
+
+					/*
+						Vector mem. pointer constructor. Constructs a vector from the values located at the given pointer
+						* @param[in] ptr The pointer to the values
+					*/
+					template<typename T2>
+					BasicVector(const T2* ptr)
+					{
+						for (int i = 0; i < dimensions(); i++)
+							data[i] = (T)ptr[i];
+					}
 
 					/*
 						Vector value constructor. Constructs a vector from the given values
@@ -225,7 +242,7 @@ namespace org
 					{
 						BasicVector<T, dim> out;
 						for (int i = 0; i < dim; i++)
-							out[i] = (T)ZERO;
+							out[i] = (T)0;
 						return out;
 					}
 
@@ -507,7 +524,7 @@ namespace org
 						BasicMatrix<T, rows, cols> out;
 						for (int i = 0; i < rows; i++)
 							for (int j = 0; j < cols; j++)
-								out[i][j] = (T)ZERO;
+								out[i][j] = (T)0;
 						return out;
 					}
 
@@ -993,6 +1010,55 @@ namespace org
 
 					}
 
+					return out;
+				}
+
+				/*
+					Produces a reduced row-echelon version of the given matrix
+					* @param[in] a The matrix to produce a reduced form of
+				*/
+				template<typename T, int rows, int cols>
+				inline BasicMatrix<T, rows, cols> rref(const BasicMatrix<T, rows, cols>& a)
+				{
+					const int pivots = min(rows, cols);
+					int rIndex[rows];
+					for (int i = 0; i < rows; i++)
+						rIndex[i] = i;
+
+					BasicMatrix<T, rows, cols> cloned = a;
+					
+					int cMrk = 0;
+					for (int p = 0; p < pivots && cMrk < cols; p++, cMrk++)
+					{
+						for (int j = cMrk; j < cols; j++)
+							for (int i = p; i < rows; i++)
+								if (abs(cloned[rIndex[i]][j]) > SEG_API_VECMATH_ZERO_OFFSET)
+								{
+									std::swap(rIndex[i], rIndex[p]);
+									cMrk = j;
+									j = cols;
+									break;
+								}
+
+						const T pivotValInv = (T)(1.0l / cloned[rIndex[p]][cMrk]);
+
+						for (int j = cMrk; j < cols; j++)
+							cloned[rIndex[p]][j] *= pivotValInv;
+
+						for (int i = 0; i < rows; i++)
+							if (i != p)
+							{
+								const T rowVal = (T)cloned[rIndex[i]][cMrk];
+								for (int j = cMrk; j < cols; j++)
+									cloned[rIndex[i]][j] -= cloned[rIndex[p]][j] * rowVal;
+							}
+
+					}
+
+					BasicMatrix<T, rows, cols> out;
+					for (int i = 0; i < rows; i++)
+						for (int j = 0; j < cols; j++)
+								out[i][j] = cloned[rIndex[i]][j];
 					return out;
 				}
 

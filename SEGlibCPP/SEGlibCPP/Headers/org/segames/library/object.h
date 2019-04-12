@@ -1,6 +1,7 @@
 #pragma once
 #include <org/segames/library/dllmain.h>
 #include <org/segames/library/library.h>
+#include <org/segames/library/hashable.h>
 
 #include <string>
 
@@ -20,7 +21,8 @@ namespace org
 				* @since	2018-05-08
 				* @edited	2018-05-09
 			*/
-			class SEG_API Object
+			class SEG_API Object :
+				public Hashable
 			{
 			public:
 
@@ -42,13 +44,13 @@ namespace org
 				virtual bool equals(const Object& obj) const;
 
 				/*
-					Returns true if the the given object is equal to this one, calls the equals() method
+					Equals operator override. Calls equals().
 					* @param[in] obj The object to check
 				*/
 				virtual bool operator==(const Object& obj) const;
 
 				/*
-					Returns true if the the given object is not equal to this one, inverse of operator==
+					Equals operator override. Calls the equals operator and inverts the value.
 					* @param[in] obj The object to check
 				*/
 				virtual bool operator!=(const Object& obj) const;
@@ -70,6 +72,29 @@ namespace org
 
 		}
 
+	}
+
+}
+
+namespace std
+{
+
+	/*
+		Extension overload to the std::to_string to include all SEG_API objects.
+		Functions the same as calling toString() on the object.
+		* @param[in] obj The object to convert to a string
+	*/
+	SEG_API std::string to_string(const org::segames::library::Object& obj);
+
+	/*
+		Extension overload to the std::to_string to include all things ever.
+		Returns "?" if there is no other method to call for the type.
+		* @param[in] obj The type
+	*/
+	template<typename T>
+	std::string to_string(const T& obj)
+	{
+		return "?";
 	}
 
 }

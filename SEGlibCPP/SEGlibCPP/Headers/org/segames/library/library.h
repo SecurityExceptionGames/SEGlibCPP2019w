@@ -7,15 +7,12 @@
 //	SEG_API_DEBUG_THROW				Enables throwing of debug exception, eg. index out of bounds
 //
 //	SEG_API_VECMATH_NO_TYPEDEFS		Disables the typedefs in vecmath.h
+//  SEG_API_VECMATH_ZERO_OFFSET		Long double offset for floating point precision near zero
 
 #ifdef SEG_API_DEBUG //Enables all debug macros
 #ifndef SEG_API_DEBUG_THROW
 #define SEG_API_DEBUG_THROW
 #endif
-#endif
-
-#ifndef ZERO
-#define ZERO 0						//The number zero
 #endif
 
 #ifndef PI

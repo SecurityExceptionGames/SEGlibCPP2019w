@@ -20,7 +20,7 @@ namespace org
 
 					* @author	Philip Rosberg
 					* @since	2018-06-08
-					* @edited	2018-06-08
+					* @edited	2019-03-17
 				*/
 				class SEG_API Timer :
 					public Object
@@ -28,8 +28,8 @@ namespace org
 				public:
 
 					/*
-						Returns the time since epoch in nanoseconds, imitated System.nanoSeconds()
-						in Java
+						Returns the time since epoch in nanoseconds, immitating System.nanoSeconds()
+						from Java
 					*/
 					static size_t nanoTime();
 

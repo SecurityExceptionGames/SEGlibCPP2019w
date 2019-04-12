@@ -15,7 +15,7 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2018-05-11
-				* @edited	2018-05-11
+				* @edited	2019-03-17
 			*/
 			class SEG_API ArrayIndexOutOfBoundsException :
 				public IndexOutOfBoundsException
@@ -32,6 +32,14 @@ namespace org
 					* @param[in] index The index to display as out of bounds
 				*/
 				ArrayIndexOutOfBoundsException(const size_t index);
+
+				/*
+					Creates a null pointer exception with the given message
+					* @param[in] index The index to display as out of bounds
+					* @param[in] file The file in which the exception was thrown
+					* @param[in] line The line at which the exception was thrown
+				*/
+				ArrayIndexOutOfBoundsException(const size_t index, const char* file, const int line);
 
 			};
 

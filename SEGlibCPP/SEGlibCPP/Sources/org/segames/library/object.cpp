@@ -13,10 +13,10 @@ namespace org
 			{
 				size_t code = 0;
 				char* ptr = (char*)this;
-				for (int i = 0; i < (int)sizeof(*this); i++)
+				for (size_t i = 0; i < (size_t)sizeof(*this); i++)
 				{
 					size_t addend = *ptr;
-					for (int e = 0; e < i; e++)
+					for (size_t e = 0; e < i; e++)
 						addend *= *ptr;
 					code += addend;
 
@@ -27,14 +27,14 @@ namespace org
 
 			std::string Object::toString() const
 			{
-				return std::string(typeid(*this).name()) + "@" + std::to_string(hashCode());
+				return std::string(typeid(*this).name()) + "#" + std::to_string(hashCode());
 			}
 
 			bool Object::equals(const Object& obj) const
 			{
 				return typeid(obj) == typeid(*this);
 			}
-
+			
 			bool Object::operator==(const Object& obj) const
 			{
 				return equals(obj);
@@ -58,6 +58,16 @@ namespace org
 
 		}
 
+	}
+
+}
+
+namespace std
+{
+
+	std::string to_string(const org::segames::library::Object& obj)
+	{
+		return obj.toString();
 	}
 
 }

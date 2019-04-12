@@ -123,6 +123,7 @@
     <ClInclude Include="Headers\org\segames\library\core.h" />
     <ClInclude Include="Headers\org\segames\library\dllmain.h" />
     <ClInclude Include="Headers\org\segames\library\exception.h" />
+    <ClInclude Include="Headers\org\segames\library\hashable.h" />
     <ClInclude Include="Headers\org\segames\library\index_out_of_bounds_exception.h" />
     <ClInclude Include="Headers\org\segames\library\invalid_value_exception.h" />
     <ClInclude Include="Headers\org\segames\library\library.h" />
@@ -131,8 +132,21 @@
     <ClInclude Include="Headers\org\segames\library\null_pointer_exception.h" />
     <ClInclude Include="Headers\org\segames\library\object.h" />
     <ClInclude Include="Headers\org\segames\library\system.h" />
-    <ClInclude Include="Headers\org\segames\library\util\heap_block.h" />
+    <ClInclude Include="Headers\org\segames\library\util\abstract_list.h" />
+    <ClInclude Include="Headers\org\segames\library\util\array.h" />
+    <ClInclude Include="Headers\org\segames\library\util\array_backed.h" />
+    <ClInclude Include="Headers\org\segames\library\util\array_list.h" />
+    <ClInclude Include="Headers\org\segames\library\util\array_queue.h" />
+    <ClInclude Include="Headers\org\segames\library\util\array_stack.h" />
+    <ClInclude Include="Headers\org\segames\library\util\iterable.h" />
+    <ClInclude Include="Headers\org\segames\library\util\iterator.h" />
+    <ClInclude Include="Headers\org\segames\library\util\linked_list.h" />
+    <ClInclude Include="Headers\org\segames\library\util\list.h" />
+    <ClInclude Include="Headers\org\segames\library\util\list_iterator.h" />
+    <ClInclude Include="Headers\org\segames\library\util\queue.h" />
     <ClInclude Include="Headers\org\segames\library\util\random.h" />
+    <ClInclude Include="Headers\org\segames\library\util\set.h" />
+    <ClInclude Include="Headers\org\segames\library\util\stack.h" />
     <ClInclude Include="Headers\org\segames\library\util\timer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +156,7 @@
     <ClCompile Include="Sources\org\segames\library\core.cpp" />
     <ClCompile Include="Sources\org\segames\library\dllmain.cpp" />
     <ClCompile Include="Sources\org\segames\library\exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\hashable.cpp" />
     <ClCompile Include="Sources\org\segames\library\index_out_of_bounds_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\invalid_value_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\math\math.cpp" />

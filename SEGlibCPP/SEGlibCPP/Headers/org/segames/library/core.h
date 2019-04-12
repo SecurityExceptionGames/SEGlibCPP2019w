@@ -148,6 +148,13 @@ namespace org
 					* @param[in] message The message to print
 				*/
 				static void println(const PrintLabel label, const std::string& message);
+				
+				/*
+					Prints the stack trace to the given output stream
+					* @param[in] out The stream to write the stack trace to
+					* @param[in] offset The offset level of the start of the stack trace, defaults to 1
+				*/
+				static void getStackTrace(std::ostream& out, const int offset);
 
 			};
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <org/segames/library/util/timer.h>
+
 #include <random>
 
 namespace org
@@ -21,7 +22,8 @@ namespace org
 					* @since	2018-09-21
 					* @edited	2018-09-21
 				*/
-				template<typename T> class Random :
+				template<typename T> 
+				class Random :
 					public Object
 				{
 				private:

@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-Og" />
 					<Add option="-g" />
+					<Add option="-export-dynamic -fpic" />
 					<Add option="-DSEG_API_DEBUG" />
 				</Compiler>
 			</Target>
@@ -56,6 +57,9 @@
 			<Add library="extlib/libraries/EFX-Util_MTDLL/EFX-Util.lib" />
 			<Add library="extlib/libraries/libglfw3dll.a" />
 			<Add library="extlib/libraries/OpenAL32.lib" />
+			<Add library="../../../Windows Kits/10/Lib/10.0.17763.0/um/x64/DbgHelp.Lib" />
+			<Add library="../../../Windows Kits/10/Lib/10.0.17763.0/um/x64/kernel32.Lib" />
+			<Add library="../../../Windows Kits/10/Lib/10.0.17763.0/um/x64/Psapi.Lib" />
 		</Linker>
 		<Unit filename="SEGlibCPP/Sources/debug_shared/debug.cpp" />
 		<Unit filename="SEGlibCPP/Sources/glad.c">
@@ -65,6 +69,7 @@
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/core.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/dllmain.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/exception.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/hashable.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/index_out_of_bounds_exception.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/invalid_value_exception.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/math/math.cpp" />
