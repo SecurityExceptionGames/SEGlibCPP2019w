@@ -30,7 +30,7 @@ namespace org
 					Returns a hash-code for the object
 					If not overridden, default is determined from the object memory
 				*/
-				virtual size_t hashCode() const;
+				virtual size_t hashCode() const override;
 
 				/*
 					Returns a string representation of the object

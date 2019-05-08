@@ -51,7 +51,7 @@ namespace org
 						Creates a random number generator using the given seed
 						* @param[in] seed The seed to use
 					*/
-					Random(const unsigned int seed) :
+					explicit Random(const unsigned int seed) :
 						distribution(0, 1)
 					{
 						generator.seed(seed);

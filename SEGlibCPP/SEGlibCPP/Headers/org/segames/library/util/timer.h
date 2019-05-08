@@ -71,7 +71,7 @@ namespace org
 						Creates a timer using the given update rate
 						* @param[in] updateRate The rate at which the timer will consider it time to update, negative numbers will make time() allways return false
 					*/
-					Timer(const double updateRate);
+					explicit Timer(const double updateRate);
 
 					/*
 						Returns true if the time of one update has passed

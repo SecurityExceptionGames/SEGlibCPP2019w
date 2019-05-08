@@ -6,6 +6,9 @@
 #include <org/segames/library/util/array_queue.h>
 #include <org/segames/library/util/array_stack.h>
 #include <org/segames/library/util/array.h>
+#include <org/segames/library/glfw/glfw_window_size_listener.h>
+
+#include <unordered_map>
 
 #include <iostream>
 
@@ -16,6 +19,7 @@
 using namespace org::segames::library;
 using namespace org::segames::library::util;
 using namespace org::segames::library::math;
+using namespace org::segames::library::glfw;
 
 class Stuff :
 	public Object
@@ -28,8 +32,17 @@ template<typename Itr>
 void voidvoid(const Iterable<int, Itr>& itr)
 {
 	auto i = itr.begin();
-	std::cout << (size_t)&i << std::endl;
+	std::cout << *i << std::endl;
+	i.next();
+	std::cout << *i << std::endl;
 }
+
+template<typename T>
+class temp
+{
+public:
+	ArrayList<T*> stuff;
+};
 
 int main()
 {
@@ -39,15 +52,13 @@ int main()
 			return -1;
 
 		{
-			LinkedList<int> list;
-			
-			for (int i = 0; i < 10; i++)
-				list.add(10 * (i + 1));
-		
-			for (auto i : list)
-				std::cout << i << std::endl;
+			ArrayList<int> list;
 
-			voidvoid(list);
+			size_t time = Timer::microTime();
+			for (int i = 0; i < 10000000; i++)
+				list.add(i);
+			time = Timer::microTime() - time;
+			std::cerr << 10000000 << " inserts " << ((time)) << " micros" << std::endl;
 		}
 
 		GLFWwindow* window = glfwCreateWindow(1280, 800, "Library link test window", NULL, NULL);
@@ -55,7 +66,7 @@ int main()
 		glfwMakeContextCurrent(window);
 
 		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		
+
 		float count = 1;
 		while (!glfwWindowShouldClose(window))
 		{
@@ -89,6 +100,7 @@ int main()
 			else
 				count += 0.05f;
 		}
+		glfwDestroyWindow(window);
 
 		std::cout << "Hello world!" << std::endl;
 	}

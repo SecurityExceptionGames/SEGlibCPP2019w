@@ -26,20 +26,17 @@ namespace org
 				class ListIterator :
 					public Iterator<T>
 				{
-				public:
-					using typename List<T, PosType_>::PosType;
-
 				protected:
 
 					/*
 						Reference to the list.
 					*/
-					const List<T, PosType>& m_list;
+					const List<T, PosType_>& m_list;
 
 					/*
 						The iterator position.
 					*/
-					PosType m_pos;
+					PosType_ m_pos;
 
 				public:
 
@@ -48,7 +45,7 @@ namespace org
 						* @param[in] list The list to iterate through
 						* @param[in] pos The iterator position to start at
 					*/
-					ListIterator(const List<T, PosType>& list, PosType pos) :
+					explicit ListIterator(const List<T, PosType_>& list, PosType_ pos) :
 						m_list(list),
 						m_pos(pos)
 					{}
@@ -56,15 +53,15 @@ namespace org
 					/*
 						Returns true if the iterator has more steps.
 					*/
-					virtual bool hasNext() const
+					virtual bool hasNext() const override
 					{
-						return !m_list.isEnd(pos);
+						return !m_list.isEnd(m_pos);
 					}
 
 					/*
 						Moves the iterator "forward" one step.
 					*/
-					virtual void next()
+					virtual void next() override
 					{
 						m_pos = m_list.next(m_pos);
 					}
@@ -72,7 +69,7 @@ namespace org
 					/*
 						Returns a reference to the value at the iterator's position.
 					*/
-					virtual const T& get() const
+					virtual const T& get() const override
 					{
 						return m_list.get(m_pos);
 					}

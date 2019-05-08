@@ -1,5 +1,7 @@
 #pragma once
+#include <org/segames/library/util/list_iterator.h>
 #include <org/segames/library/util/list.h>
+#include <org/segames/library/util/iterable.h>
 #include <org/segames/library/object.h>
 
 namespace org
@@ -24,7 +26,8 @@ namespace org
 				template<typename T, typename PosType_ = size_t>
 				class AbstractList :
 					public Object,
-					public List<T, PosType_>
+					public List<T, PosType_>,
+					public Iterable<T, ListIterator<T, PosType_>>
 				{
 				public:
 					using typename List<T, PosType_>::PosType;
@@ -32,7 +35,7 @@ namespace org
 					/*
 						Returns true if the list is empty.
 					*/
-					virtual bool isEmpty() const = 0;
+					virtual bool isEmpty() const override = 0;
 
 					/*
 						Returns true if the given position is at the end of the list.
@@ -79,14 +82,22 @@ namespace org
 					/*
 						Removes all content from the list.
 					*/
-					virtual void clear() = 0;
+					virtual void clear() override = 0;
+
+					/*
+						Returns the beining/start iterator
+					*/
+					virtual ListIterator<T, PosType> begin() const
+					{
+						return ListIterator<T, PosType>(*this, first());
+					}
 
 					/*
 						Returns true if the the given object is equal to this list.
 						Time complexity is at worst O(n).
 						* @param[in] obj The object to check
 					*/
-					virtual bool equals(const Object& obj) const
+					virtual bool equals(const Object& obj) const override
 					{
 						if (typeid(obj) == typeid(*this))
 						{
@@ -118,7 +129,7 @@ namespace org
 					/*
 						Returns a string representation of the list.
 					*/
-					virtual std::string toString() const
+					virtual std::string toString() const override
 					{
 						std::string out = "[ ";
 						PosType pos = first();

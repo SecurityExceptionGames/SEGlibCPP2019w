@@ -75,13 +75,13 @@ namespace org
 				/*
 					Returns a string representation of the exception object
 				*/
-				virtual std::string toString() const;
+				virtual std::string toString() const override;
 
 				/*
 					Returns true if the the given object is equal to this one
 					* @param[in] obj The object to check
 				*/
-				virtual bool equals(const Object& obj) const;
+				virtual bool equals(const Object& obj) const override;
 
 			};
 

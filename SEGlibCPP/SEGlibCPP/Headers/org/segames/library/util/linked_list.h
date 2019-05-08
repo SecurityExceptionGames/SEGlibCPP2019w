@@ -37,38 +37,6 @@ namespace org
 					LinkedListNode* next = nullptr;
 				};
 
-				template<typename T>
-				class LLItr :
-					public Iterator<T>
-				{
-				private:
-					const LinkedList<T>& m_list;
-					LinkedListNode<T>* m_pos;
-
-				public:
-
-					LLItr(const LinkedList<T>& list, LinkedListNode<T>* pos) :
-						m_list(list),
-						m_pos(pos)
-					{}
-
-					virtual bool hasNext() const
-					{
-						return !m_list.isEnd(m_pos);
-					}
-
-					virtual void next()
-					{
-						m_pos = m_pos->next;
-					}
-
-					virtual const T& get() const
-					{
-						return m_pos->value;
-					}
-
-				};
-				
 				/*
 					Implementation of a dual-linked list.
 					It is generally advised to use the list interface to interact with the list and to not edit the returned position nodes.
@@ -83,8 +51,7 @@ namespace org
 				*/
 				template<typename T>
 				class LinkedList :
-					public AbstractList<T, LinkedListNode<T>*>,
-					public Iterable<T, LLItr<T>>
+					public AbstractList<T, LinkedListNode<T>*>
 				{
 				public:
 					using typename AbstractList<T, LinkedListNode<T>*>::PosType;
@@ -100,22 +67,6 @@ namespace org
 						The last node in the list.
 					*/
 					PosType m_last;
-
-				public:
-
-					//================================
-					//            Test code
-					//================================
-
-					LLItr<T> begin() const
-					{
-						return LLItr<T>(*this, m_first);
-					}
-
-					//================================
-					//          EOTestCode
-					//================================
-
 
 				public:
 
@@ -137,19 +88,19 @@ namespace org
 						PosType pos = list.first();
 						while (!list.isEnd(pos))
 						{
-							add(list.get(pos));
+							this->add(list.get(pos));
 							pos = list.next(pos);
 						}
 
 					}
-					
+
 					/*
 						Destructor.
 					*/
 					virtual ~LinkedList()
 					{
-						clear();
-						delete first();
+						this->clear();
+						delete this->first();
 					}
 
 					/*
@@ -164,7 +115,7 @@ namespace org
 						Returns true if the given position is at the begining of the list.
 						* @param[in] pos The position in the list
 					*/
-					virtual bool isBegin(const PosType pos) const
+					virtual bool isFirst(const PosType pos) const
 					{
 #ifdef SEG_API_DEBUG_THROW
 						if (pos == nullptr)
@@ -208,7 +159,7 @@ namespace org
 					}
 
 					/*
-						Returns the last position for iteration in the list. 
+						Returns the last position for iteration in the list.
 						In this implementation the position is actually after the last element.
 					*/
 					virtual PosType last() const
@@ -266,7 +217,7 @@ namespace org
 							throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
 #endif
 
-						if (!isBegin(pos))
+						if (!isFirst(pos))
 						{
 							pos->previous->next = newPos;
 							newPos->previous = pos->previous;
@@ -309,7 +260,7 @@ namespace org
 						T value;
 						std::swap(value, pos->value);
 
-						if (!isBegin(pos))
+						if (!isFirst(pos))
 							pos->previous->next = pos->next;
 						else
 							m_first = pos->next;

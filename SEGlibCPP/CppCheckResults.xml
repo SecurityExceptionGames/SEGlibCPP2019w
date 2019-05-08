@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<results version="2">
+    <cppcheck version="1.87" />
+    <errors>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\exception.h" line="49" />
+            <symbol>Exception</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;IndexOutOfBoundsException&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;IndexOutOfBoundsException&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\index_out_of_bounds_exception.h" line="34" />
+            <symbol>IndexOutOfBoundsException</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;InvalidValueException&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;InvalidValueException&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\invalid_value_exception.h" line="34" />
+            <symbol>InvalidValueException</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;BasicVector&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;BasicVector&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\math\vecmath.h" line="56" />
+            <symbol>BasicVector</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;BasicVector&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;BasicVector&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\math\vecmath.h" line="67" />
+            <symbol>BasicVector</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;BasicMatrix&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;BasicMatrix&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\math\vecmath.h" line="281" />
+            <symbol>BasicMatrix</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Timer&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Timer&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\timer.h" line="74" />
+            <symbol>Timer</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayIndexOutOfBoundsException&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayIndexOutOfBoundsException&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\array_index_out_of_bounds_exception.h" line="34" />
+            <symbol>ArrayIndexOutOfBoundsException</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;NullPointerException&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;NullPointerException&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\null_pointer_exception.h" line="34" />
+            <symbol>NullPointerException</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayQueue&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayQueue&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_queue.h" line="54" />
+            <symbol>ArrayQueue</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayQueue&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayQueue&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_queue.h" line="62" />
+            <symbol>ArrayQueue</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayStack&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayStack&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_stack.h" line="54" />
+            <symbol>ArrayStack</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayStack&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayStack&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_stack.h" line="62" />
+            <symbol>ArrayStack</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;HashSet &lt; int &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;HashSet &lt; int &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\hash_set.h" line="95" />
+            <symbol>HashSet &lt; int &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayList &lt; int &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayList &lt; int &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_list.h" line="85" />
+            <symbol>ArrayList &lt; int &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayList &lt; int &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayList &lt; int &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_list.h" line="111" />
+            <symbol>ArrayList &lt; int &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Array &lt; ArrayList &lt; int &gt; , int &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Array &lt; ArrayList &lt; int &gt; , int &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array.h" line="63" />
+            <symbol>Array &lt; ArrayList &lt; int &gt; , int &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Array &lt; ArrayList &lt; int &gt; , int &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Array &lt; ArrayList &lt; int &gt; , int &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array.h" line="80" />
+            <symbol>Array &lt; ArrayList &lt; int &gt; , int &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\array_index_out_of_bounds_exception.cpp" file="SEGlibCPP\Headers\org\segames\library\exception.h" line="49" />
+            <symbol>Exception</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;IndexOutOfBoundsException&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;IndexOutOfBoundsException&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\array_index_out_of_bounds_exception.cpp" file="SEGlibCPP\Headers\org\segames\library\index_out_of_bounds_exception.h" line="34" />
+            <symbol>IndexOutOfBoundsException</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayIndexOutOfBoundsException&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayIndexOutOfBoundsException&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\array_index_out_of_bounds_exception.cpp" file="SEGlibCPP\Headers\org\segames\library\array_index_out_of_bounds_exception.h" line="34" />
+            <symbol>ArrayIndexOutOfBoundsException</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\exception.cpp" file="SEGlibCPP\Headers\org\segames\library\exception.h" line="49" />
+            <symbol>Exception</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\index_out_of_bounds_exception.cpp" file="SEGlibCPP\Headers\org\segames\library\exception.h" line="49" />
+            <symbol>Exception</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;IndexOutOfBoundsException&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;IndexOutOfBoundsException&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\index_out_of_bounds_exception.cpp" file="SEGlibCPP\Headers\org\segames\library\index_out_of_bounds_exception.h" line="34" />
+            <symbol>IndexOutOfBoundsException</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\invalid_value_exception.cpp" file="SEGlibCPP\Headers\org\segames\library\exception.h" line="49" />
+            <symbol>Exception</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;InvalidValueException&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;InvalidValueException&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\invalid_value_exception.cpp" file="SEGlibCPP\Headers\org\segames\library\invalid_value_exception.h" line="34" />
+            <symbol>InvalidValueException</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Timer&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Timer&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\math\math.cpp" file="SEGlibCPP\Headers\org\segames\library\util\timer.h" line="74" />
+            <symbol>Timer</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Random &lt; float &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Random &lt; float &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\math\math.cpp" file="SEGlibCPP\Headers\org\segames\library\util\random.h" line="54" />
+            <symbol>Random &lt; float &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Random &lt; double &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Random &lt; double &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\math\math.cpp" file="SEGlibCPP\Headers\org\segames\library\util\random.h" line="54" />
+            <symbol>Random &lt; double &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\null_pointer_exception.cpp" file="SEGlibCPP\Headers\org\segames\library\exception.h" line="49" />
+            <symbol>Exception</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;NullPointerException&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;NullPointerException&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\null_pointer_exception.cpp" file="SEGlibCPP\Headers\org\segames\library\null_pointer_exception.h" line="34" />
+            <symbol>NullPointerException</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Timer&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Timer&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" file="SEGlibCPP\Headers\org\segames\library\util\timer.h" line="74" />
+            <symbol>Timer</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Exception&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" file="SEGlibCPP\Headers\org\segames\library\exception.h" line="49" />
+            <symbol>Exception</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;InvalidValueException&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;InvalidValueException&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" file="SEGlibCPP\Headers\org\segames\library\invalid_value_exception.h" line="34" />
+            <symbol>InvalidValueException</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;deltaTime&apos; is never used." verbose="The function &apos;deltaTime&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="69" />
+            <symbol>deltaTime</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getIn&apos; is never used." verbose="The function &apos;getIn&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\core.cpp" line="40" />
+            <symbol>getIn</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getUpdateRate&apos; is never used." verbose="The function &apos;getUpdateRate&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="84" />
+            <symbol>getUpdateRate</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getUpdateTime&apos; is never used." verbose="The function &apos;getUpdateTime&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="89" />
+            <symbol>getUpdateTime</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;gladLoadGL&apos; is never used." verbose="The function &apos;gladLoadGL&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\glad.c" line="743" />
+            <symbol>gladLoadGL</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;randomf&apos; is never used." verbose="The function &apos;randomf&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\math\math.cpp" line="23" />
+            <symbol>randomf</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setAllOut&apos; is never used." verbose="The function &apos;setAllOut&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\core.cpp" line="80" />
+            <symbol>setAllOut</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setIn&apos; is never used." verbose="The function &apos;setIn&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\core.cpp" line="60" />
+            <symbol>setIn</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPrintTime&apos; is never used." verbose="The function &apos;setPrintTime&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\core.cpp" line="87" />
+            <symbol>setPrintTime</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setUpdateRate&apos; is never used." verbose="The function &apos;setUpdateRate&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="94" />
+            <symbol>setUpdateRate</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;sync&apos; is never used." verbose="The function &apos;sync&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="100" />
+            <symbol>sync</symbol>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Cppcheck cannot find all the include files (use --check-config for details)" verbose="Cppcheck cannot find all the include files. Cppcheck can check the code without the include files found. But the results will probably be more accurate if all the include files are found. Please check your project&apos;s include directories and add all of them as include directories for Cppcheck. To see what files Cppcheck cannot find use --check-config." />
+    </errors>
+</results>

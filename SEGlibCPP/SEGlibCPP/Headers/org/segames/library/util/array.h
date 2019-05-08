@@ -1,4 +1,5 @@
 #pragma once
+#include <org/segames/library/array_index_out_of_bounds_exception.h>
 #include <org/segames/library/util/array_backed.h>
 #include <org/segames/library/object.h>
 
@@ -59,16 +60,16 @@ namespace org
 						Creates an array of the given size.
 						* @param[in] size The size of the array
 					*/
-					Array(const PosType size) :
+					explicit Array(const PosType size) :
 						m_size(size),
 						m_array(new T[size])
 					{}
-				
+
 					/*
 						Copies the given array's data into this one.
 						* @param[in] obj The array backed object whose data to copy into this array.
 					*/
-					Array(const Array<T, PosType>& obj) :
+					explicit Array(const Array<T, PosType>& obj) :
 						Array((ArrayBacked<T, PosType>&)obj)
 					{}
 
@@ -76,7 +77,7 @@ namespace org
 						Copies the given array backed object's data into this one.
 						* @param[in] obj The array backed object whose data to copy into this array.
 					*/
-					Array(const ArrayBacked<T, PosType>& obj) :
+					explicit Array(const ArrayBacked<T, PosType>& obj) :
 						Array(obj.size())
 					{
 						std::copy(obj.pointer(), obj.pointer() + obj.size(), pointer());
@@ -85,7 +86,7 @@ namespace org
 					/*
 						Returns the size of the array
 					*/
-					virtual PosType size() const
+					virtual PosType size() const override
 					{
 						return m_size;
 					}
@@ -93,7 +94,7 @@ namespace org
 					/*
 						Returns the pointer to the array memory.
 					*/
-					virtual T* pointer() const
+					virtual T* pointer() const override
 					{
 						return m_array.get();
 					}
@@ -109,15 +110,6 @@ namespace org
 							throw ArrayIndexOutOfBoundsException(pos, __FILE__, __LINE__);
 #endif
 						return m_array.get()[pos];
-					}
-
-					/*
-						Sets the memory of the array to zero.
-					*/
-					virtual Array<T, PosType>& zero()
-					{
-						memset(pointer(), 0, sizeof(T) * size());
-						return *this;
 					}
 
 					/*
@@ -140,7 +132,7 @@ namespace org
 						Time complexity is at worst O(n).
 						* @param[in] obj The object to check
 					*/
-					virtual bool equals(const Object& obj) const
+					virtual bool equals(const Object& obj) const override
 					{
 						if (typeid(obj) == typeid(*this))
 						{
@@ -161,7 +153,7 @@ namespace org
 					/*
 						Returns a string representation of the array.
 					*/
-					virtual std::string toString() const
+					virtual std::string toString() const override
 					{
 						std::string out = "[ ";
 						if (size() > 0)

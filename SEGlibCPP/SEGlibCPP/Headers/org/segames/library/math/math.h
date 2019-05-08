@@ -20,7 +20,7 @@ namespace org
 			{
 
 				/*
-					Returns the absolute of the given value
+					Returns the absolute of the given value.
 					* @param[in] value The value
 				*/
 				template<typename T> 
@@ -32,7 +32,7 @@ namespace org
 				}
 
 				/*
-					A function that clamps the given value between the given minimum and maximum limit
+					A function that clamps the given value between the given minimum and maximum limit.
 					* @param[in] value The value to clamp
 					* @param[in] min The minimum limit
 					* @param[in] max The maximum limit
@@ -48,7 +48,7 @@ namespace org
 				}
 
 				/*
-					Returns a reference to the given referenced value
+					Returns a reference to the given referenced value.
 				*/
 				template<typename T> 
 				inline T& max(T&& val)
@@ -57,7 +57,7 @@ namespace org
 				}
 
 				/*
-					A function that returns a reference to the latter value[s] if it is larger than the former, otherwise it returns a reference to the former
+					A function that returns a reference to the latter value[s] if it is larger than the former, otherwise it returns a reference to the former.
 					* @param[in] val The former value
 					* @param[in] vals The latter value[s]
 				*/
@@ -72,7 +72,7 @@ namespace org
 				}
 
 				/*
-					Returns a reference to the given referenced value
+					Returns a reference to the given referenced value.
 				*/
 				template<typename T> 
 				inline T& min(T&& val)
@@ -81,7 +81,7 @@ namespace org
 				}
 
 				/*
-					A function that returns a reference to the latter value[s] if it is smaller than the former, otherwise it returns a reference to the former
+					A function that returns a reference to the latter value[s] if it is smaller than the former, otherwise it returns a reference to the former.
 					* @param[in] val The former value
 					* @param[in] vals The latter value[s]
 				*/
@@ -96,7 +96,7 @@ namespace org
 				}
 
 				/*
-					Performs a linear interpolation between x and y using a to weight between them
+					Performs a linear interpolation between x and y using a to weight between them.
 					* @param[in] x The primary value
 					* @param[in] y The secondary value
 					* @param[in] a The weighting value
@@ -108,7 +108,7 @@ namespace org
 				}
 
 				/*
-					Performes a smooth Hermite interpolation between 0 and 1 when edge0 < x < edge1. Undefined for edge0 >= edge1
+					Performes a smooth Hermite interpolation between 0 and 1 when edge0 < x < edge1. Undefined for edge0 >= edge1.
 					* @param[in] edge0 The lower edge of the Hermite function
 					* @param[in] edge1 The upper edge of the Hermite function
 					* @param[in] x The source value for interpolation
@@ -121,7 +121,7 @@ namespace org
 				}
 
 				/*
-					Converts the given degrees to radians
+					Converts the given degrees to radians.
 					* @param[in] degrees The degrees to convert to radians
 				*/
 				template<typename T> 
@@ -131,7 +131,7 @@ namespace org
 				}
 
 				/*
-					Converts the given radians to degrees
+					Converts the given radians to degrees.
 					* @param[in] radians The radians to convert to degrees
 				*/
 				template<typename T> 
@@ -141,12 +141,25 @@ namespace org
 				}
 
 				/*
-					Returns a random value between 0 and 1 with standard floating point precision
+					Computes a Mersenne prime-number from the given exponent.
+					* @param[in] exp The exponent of the Mersenne prime number, preferably a positive integer
+				*/
+				template<typename T>
+				inline T mersenne(const T exp)
+				{
+					T val = 1;
+					for (T i = 0; i < exp; i++)
+						val *= 2;
+					return val - 1;
+				}
+
+				/*
+					Returns a random value between 0 and 1 with standard floating point precision.
 				*/
 				float SEG_API randomf();
 
 				/*
-					Returns a random value between 0 and 1 with double precision
+					Returns a random value between 0 and 1 with double precision.
 				*/
 				double SEG_API random();
 

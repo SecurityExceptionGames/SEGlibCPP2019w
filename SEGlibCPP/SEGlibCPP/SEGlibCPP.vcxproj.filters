@@ -90,9 +90,6 @@
     <ClInclude Include="Headers\org\segames\library\hashable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\org\segames\library\util\set.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\org\segames\library\util\iterator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -100,6 +97,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\org\segames\library\util\list_iterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_listener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_window_size_listener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -141,6 +144,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sources\org\segames\library\hashable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_window_size_listener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -82,7 +82,7 @@ namespace org
 						Creates an array list of the given starting capacity.
 						* @param[in] capacity The starting capacity of the list
 					*/
-					ArrayList(const PosType capacity) :
+					explicit ArrayList(const PosType capacity) :
 						m_lower(0),
 						m_upper(m_lower),
 						m_capacity(capacity),
@@ -100,7 +100,7 @@ namespace org
 						Copies the given list into this one.
 						* @param[in] list The list whose content to copy into this one
 					*/
-					ArrayList(const ArrayList<T>& list) :
+					explicit ArrayList(const ArrayList<T>& list) :
 						ArrayList((ArrayBacked<T, PosType>&)list)
 					{}
 
@@ -108,7 +108,7 @@ namespace org
 						Copies the given array backed object's data into this one.
 						* @param[in] obj The array backed object whose data to copy into this list.
 					*/
-					ArrayList(const ArrayBacked<T, PosType>& obj) :
+					explicit ArrayList(const ArrayBacked<T, PosType>& obj) :
 						ArrayList(obj.size())
 					{
 						std::copy(obj.pointer(), obj.pointer() + obj.size(), pointer());
@@ -118,7 +118,7 @@ namespace org
 					/*
 						Returns true if the list is empty.
 					*/
-					virtual bool isEmpty() const
+					virtual bool isEmpty() const override
 					{
 						return m_lower == m_upper;
 					}
@@ -127,7 +127,7 @@ namespace org
 						Returns true if the given position is at the end of the list.
 						* @param[in] pos The position in the list
 					*/
-					virtual bool isEnd(const PosType pos) const
+					virtual bool isEnd(const PosType pos) const override
 					{
 						return pos == size();
 					}
@@ -136,7 +136,7 @@ namespace org
 						Returns a reference to the value at the given position.
 						* @param[in] pos The position in the list
 					*/
-					virtual T& get(const PosType pos) const
+					virtual T& get(const PosType pos) const override
 					{
 #ifdef SEG_API_DEBUG_THROW
 						if (pos < 0 || pos >= size())
@@ -156,7 +156,7 @@ namespace org
 					/*
 						Returns the first position for iteration in the list.
 					*/
-					virtual PosType first() const
+					virtual PosType first() const override
 					{
 						return 0;
 					}
@@ -164,7 +164,7 @@ namespace org
 					/*
 						Returns the pointer to the first element of the relevant part of the backing array.
 					*/
-					virtual T* pointer() const
+					virtual T* pointer() const override
 					{
 						return m_array.get() + m_lower;
 					}
@@ -173,7 +173,7 @@ namespace org
 						Returns the next position in the list.
 						* @param[in] pos The position in the list
 					*/
-					virtual PosType next(const PosType pos) const
+					virtual PosType next(const PosType pos) const override
 					{
 						return pos + 1;
 					}
@@ -183,7 +183,7 @@ namespace org
 						The time complexity of this method is constant, ie. O(1).
 						* @param[in] value The value to add
 					*/
-					virtual PosType add(const T& value)
+					virtual PosType add(const T& value) override
 					{
 						if (m_upper == m_capacity)
 						{
@@ -198,12 +198,12 @@ namespace org
 
 					/*
 						Inserts the given value at the given position moving all current items one step forwards.
-						The time complexity of this method is on average O(n - p) where n is the amount of values in the array and p is the 
+						The time complexity of this method is on average O(n - p) where n is the amount of values in the array and p is the
 						position.
 						* @param[in] pos The position to insert at
 						* @param[in] value The value to insert
 					*/
-					virtual PosType insert(const PosType pos, const T& value)
+					virtual PosType insert(const PosType pos, const T& value) override
 					{
 #ifdef SEG_API_DEBUG_THROW
 						if (pos < 0 || pos >= size() + 1)
@@ -251,17 +251,17 @@ namespace org
 
 					/*
 						Removes the element at the given position.
-						The time complexity of this method is on average O(n - p) where n is the amount of values in the array and p is the 
+						The time complexity of this method is on average O(n - p) where n is the amount of values in the array and p is the
 						position. Removing the first or the last item is O(1).
 						* @param[in] pos The position in the list
 					*/
-					virtual T remove(const PosType pos)
+					virtual T remove(const PosType pos) override
 					{
 #ifdef SEG_API_DEBUG_THROW
 						if (pos < 0 || pos >= size())
 							throw ArrayIndexOutOfBoundsException(pos, __FILE__, __LINE__);
 #endif
-						T value;
+						T value = T();
 						PosType posInArray = pos + m_lower;
 						std::swap(value, m_array[posInArray]);
 
@@ -289,7 +289,7 @@ namespace org
 						Seemingly removes all content from the list.
 						The time complexity is constant, ie. O(1).
 					*/
-					virtual void clear()
+					virtual void clear() override
 					{
 						m_upper = m_lower;
 					}
@@ -297,7 +297,7 @@ namespace org
 					/*
 						Ensures that the list has atleast the given size amount of slots in the backing array.
 						If size is smaller than the current capacity nothing is done. If the given size is equal
-						to the current capacity the call to this method compacts the existing data towards the end. 
+						to the current capacity the call to this method compacts the existing data towards the end.
 						On resize the time complexity is O(n), where n is the amount of values in the array.
 						* @param[in] size The size to ensure that the backing array has
 					*/
@@ -315,7 +315,7 @@ namespace org
 					{
 						resizeArray(m_upper - m_lower);
 					}
-					
+
 					/*
 						Set operator override.
 						* @param[in] list The list to copy from.

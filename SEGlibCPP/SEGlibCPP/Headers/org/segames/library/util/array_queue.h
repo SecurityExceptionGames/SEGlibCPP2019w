@@ -51,7 +51,7 @@ namespace org
 						Creates an array queue of the given starting capacity.
 						* @param[in] capacity The starting capacity of the queue
 					*/
-					ArrayQueue(const typename ArrayList<T>::PosType capacity) :
+					explicit ArrayQueue(const typename ArrayList<T>::PosType capacity) :
 						m_list(capacity)
 					{}
 
@@ -59,14 +59,14 @@ namespace org
 						Copies the given array backed object's data into this one.
 						* @param[in] obj The array backed object whose data to copy into this queue.
 					*/
-					ArrayQueue(const ArrayBacked<T, typename ArrayList<T>::PosType>& obj) :
+					explicit ArrayQueue(const ArrayBacked<T, typename ArrayList<T>::PosType>& obj) :
 						m_list(obj)
 					{}
 
 					/*
 						Returns true if the queue is empty.
 					*/
-					virtual bool isEmpty() const
+					virtual bool isEmpty() const override
 					{
 						return m_list.isEmpty();
 					}
@@ -82,7 +82,7 @@ namespace org
 					/*
 						Returns the first value in the queue.
 					*/
-					virtual T& peek() const
+					virtual T& peek() const override
 					{
 						return m_list.get(0);
 					}
@@ -98,7 +98,7 @@ namespace org
 					/*
 						Removes the first element in the queue and returns the value.
 					*/
-					virtual T dequeue()
+					virtual T dequeue() override
 					{
 						return m_list.remove(0);
 					}
@@ -106,7 +106,7 @@ namespace org
 					/*
 						Adds the given value to the queue
 					*/
-					virtual void enqueue(const T& value)
+					virtual void enqueue(const T& value) override
 					{
 						m_list.add(value);
 					}
@@ -114,7 +114,7 @@ namespace org
 					/*
 						Removes all content from the queue.
 					*/
-					virtual void clear()
+					virtual void clear() override
 					{
 						m_list.clear();
 					}
@@ -144,7 +144,7 @@ namespace org
 						Time complexity is at worst O(n).
 						* @param[in] obj The object to check
 					*/
-					virtual bool equals(const Object& obj) const
+					virtual bool equals(const Object& obj) const override
 					{
 						if (typeid(obj) == typeid(*this))
 						{
@@ -165,7 +165,7 @@ namespace org
 					/*
 						Returns a string representation of the queue.
 					*/
-					virtual std::string toString() const
+					virtual std::string toString() const override
 					{
 						std::string out = "[ ";
 						if (size() > 0)

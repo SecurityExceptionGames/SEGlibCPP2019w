@@ -28,7 +28,7 @@ namespace org
 						Returns true if the stack is empty.
 					*/
 					virtual bool isEmpty() const = 0;
-				
+					
 					/*
 						Returns the top value in the stack.
 					*/

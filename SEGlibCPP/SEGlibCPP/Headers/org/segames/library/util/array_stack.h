@@ -51,7 +51,7 @@ namespace org
 						Creates an array queue of the given starting capacity.
 						* @param[in] capacity The starting capacity of the stack
 					*/
-					ArrayStack(const typename ArrayList<T>::PosType capacity) :
+					explicit ArrayStack(const typename ArrayList<T>::PosType capacity) :
 						m_list(capacity)
 					{}
 
@@ -59,14 +59,14 @@ namespace org
 						Copies the given array backed object's data into this one.
 						* @param[in] obj The array backed object whose data to copy into this stack.
 					*/
-					ArrayStack(const ArrayBacked<T, typename ArrayList<T>::PosType>& obj) :
+					explicit ArrayStack(const ArrayBacked<T, typename ArrayList<T>::PosType>& obj) :
 						m_list(obj)
 					{}
 
 					/*
 						Returns true if the stack is empty.
 					*/
-					virtual bool isEmpty() const
+					virtual bool isEmpty() const override
 					{
 						return m_list.isEmpty();
 					}
@@ -82,7 +82,7 @@ namespace org
 					/*
 						Returns the top value in the stack.
 					*/
-					virtual T& peek() const
+					virtual T& peek() const override
 					{
 						return m_list.get(m_list.size() - 1);
 					}
@@ -98,7 +98,7 @@ namespace org
 					/*
 						Removes and returns the top value in the stack.
 					*/
-					virtual T pop()
+					virtual T pop() override
 					{
 						return m_list.remove(m_list.size() - 1);
 					}
@@ -107,7 +107,7 @@ namespace org
 						Adds the given value to the top of the stack.
 						* @param[in] value The value to add
 					*/
-					virtual void push(const T& value)
+					virtual void push(const T& value) override
 					{
 						m_list.add(value);
 					}
@@ -115,7 +115,7 @@ namespace org
 					/*
 						Removes all content from the stack.
 					*/
-					virtual void clear()
+					virtual void clear() override
 					{
 						m_list.clear();
 					}
@@ -145,7 +145,7 @@ namespace org
 						Time complexity is at worst O(n).
 						* @param[in] obj The object to check
 					*/
-					virtual bool equals(const Object& obj) const
+					virtual bool equals(const Object& obj) const override
 					{
 						if (typeid(obj) == typeid(*this))
 						{
@@ -162,11 +162,11 @@ namespace org
 						}
 						return false;
 					}
-					
+
 					/*
 						Returns a string representation of the stack.
 					*/
-					virtual std::string toString() const
+					virtual std::string toString() const override
 					{
 						return m_list.toString();
 					}
