@@ -15,22 +15,22 @@ namespace org
 			{
 
 				/*
-					A window size listener for GLFW.
+					A listener for detecting when the cursor buttons are pressed.
 
 					* @author	Philip Rosberg
-					* @since	2019-05-08
-					* @edited	2019-05-08
+					* @since	2019-05-11
+					* @edited	2019-05-11
 				*/
-				class SEG_API GLFWWindowSizeListener :
+				class SEG_API GLFWMouseButtonListener :
 					public Object,
-					public GLFWListener<GLFWWindowSizeListener>
+					public GLFWListener<GLFWMouseButtonListener>
 				{
 				private:
 
 					/*
 						Callback for GLFW.
 					*/
-					static void callback(GLFWwindow* window, int w, int h);
+					static void callback(GLFWwindow* window, int button, int action, int mods);
 
 				public:
 
@@ -43,14 +43,9 @@ namespace org
 				protected:
 
 					/*
-						Window width.
+						The mouse buttons toggles.
 					*/
-					int m_w;
-
-					/*
-						Window height.
-					*/
-					int m_h;
+					bool m_buttons[8];
 
 					/*
 						Links this listener to GLFW.
@@ -61,21 +56,18 @@ namespace org
 				public:
 
 					/*
-						Returns the window width.
+						Returns true ifthe given mouse button is pressed.
+						* @param[in] 
 					*/
-					virtual int getWidth() const;
-
-					/*
-						Returns the window height.
-					*/
-					virtual int getHeight() const;
+					virtual bool isPressed(int button) const;
 
 					/*
 						The method that is called when the listener is activated.
-						* @param[in] w The window width
-						* @param[in] h The window height
+						* @param[in] button The mouse button that was pressed or released
+						* @param[in] action One of GLFW_PRESS of GLFW_RELEASE
+						* @param[in] mods Bitfield describing which modifiers keys were held down
 					*/
-					virtual void invoke(int w, int h);
+					virtual void invoke(int button, int action, int mods);
 
 				};
 

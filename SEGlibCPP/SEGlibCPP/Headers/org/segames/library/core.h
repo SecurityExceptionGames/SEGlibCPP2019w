@@ -13,7 +13,7 @@ namespace org
 		{
 
 			/*
-				Field storing library core variables and functions
+				Field storing library core variables and functions.
 
 				* @author	Philip Rosberg
 				* @since	2018-10-26
@@ -24,7 +24,7 @@ namespace org
 			public:
 
 				/*
-					The enum of labels to write at the start of the print
+					The enum of labels to write at the start of the print.
 
 					* @author	Philip Rosberg
 					* @since	2018-10-27
@@ -41,37 +41,37 @@ namespace org
 
 			private:
 				/*
-					True if the time should be printed
+					True if the time should be printed.
 				*/
 				static bool printTime;
 
 				/*
-					The standard input stream
+					The standard input stream.
 				*/
 				static std::istream* in;
 
 				/*
-					The standard output stream for errors
+					The standard output stream for errors.
 				*/
 				static std::ostream* err;
 
 				/*
-					The standard output stream for warnings
+					The standard output stream for warnings.
 				*/
 				static std::ostream* warn;
 
 				/*
-					The standard output stream
+					The standard output stream.
 				*/
 				static std::ostream* out;
 
 				/*
-					The message labels
+					The message labels.
 				*/
 				static const std::string* const labels;
 
 				/*
-					Prints the given message with the given label to the given stream
+					Prints the given message with the given label to the given stream.
 					* @param[in] label The label to print
 					* @param[in] message The message to print
 					* @param[in] stream The stream to print to
@@ -81,76 +81,76 @@ namespace org
 			public:
 
 				/*
-					Returns a reference to the standard input stream
+					Returns a reference to the standard input stream.
 				*/
 				static std::istream& getIn();
 
 				/*
-					Returns a reference to the standard output stream for errors
+					Returns a reference to the standard output stream for errors.
 				*/
 				static std::ostream& getErr();
 
 				/*
-					Returns a reference to the standard output stream for warnings
+					Returns a reference to the standard output stream for warnings.
 				*/
 				static std::ostream& getWarn();
 
 				/*
-					Returns a reference to the standard output stream
+					Returns a reference to the standard output stream.
 				*/
 				static std::ostream& getOut();
 
 				/*
-					Sets the standard input stream
+					Sets the standard input stream.
 					* @param[in] in The standard input stream
 				*/
 				static void setIn(std::istream& in);
 
 				/*
-					Sets the standard error output stream
+					Sets the standard error output stream.
 					* @param[in] err The standard error output stream
 				*/
 				static void setErr(std::ostream& err);
 
 				/*
-					Sets the standard warning output stream
+					Sets the standard warning output stream.
 					* @param[in] warn The standard warning output stream
 				*/
 				static void setWarn(std::ostream& warn);
 
 				/*
-					Sets the standard output stream
+					Sets the standard output stream.
 					* @param[in] out The standard output stream
 				*/
 				static void setOut(std::ostream& out);
 
 				/*
-					Sets the output stream for errors, warnings and standard output
+					Sets the output stream for errors, warnings and standard output.
 					* @param[in] out The output stream for errors, warnings and standard output
 				*/
 				static void setAllOut(std::ostream& out);
 
 				/*
-					Sets if the time should be printed
+					Sets if the time should be printed.
 					* @param[in] flag True if the time should be printed
 				*/
 				static void setPrintTime(const bool flag);
 
 				/*
-					Prints the given message with the INFO label
+					Prints the given message with the INFO label.
 					* @param[in] message The message to print
 				*/
 				static void println(const std::string& message);
 
 				/*
-					Prints the given message with the given label
+					Prints the given message with the given label.
 					* @param[in] label The label to print
 					* @param[in] message The message to print
 				*/
 				static void println(const PrintLabel label, const std::string& message);
 				
 				/*
-					Prints the stack trace to the given output stream
+					Prints the stack trace to the given output stream.
 					* @param[in] out The stream to write the stack trace to
 					* @param[in] offset The offset level of the start of the stack trace, defaults to 1
 				*/

@@ -1,7 +1,5 @@
 #include <org/segames/library/glfw/glfw_window_size_listener.h>
 
-#include <iostream>
-
 namespace org
 {
 
@@ -14,31 +12,38 @@ namespace org
 			namespace glfw
 			{
 
-				void GLFWWindowSizeListener::linkGLFW(GLFWwindow* win)
+				void GLFWWindowSizeListener::callback(GLFWwindow* window, int w, int h)
 				{
-					glfwSetWindowSizeCallback(win, callback);
-					glfwGetWindowSize(win, &m_w, &m_h);
+					auto pair = m_listeners.find(window);
+					if (pair != m_listeners.end())
+						pair->second->invoke(w, h);
 				}
 
-				void GLFWWindowSizeListener::callback(GLFWwindow* win, int w, int h)
+				void GLFWWindowSizeListener::detach(GLFWwindow* window)
 				{
-					auto listener = m_listeners.find(win);
-					if (listener != m_listeners.end())
-					{
-						listener->second->m_w = w;
-						listener->second->m_h = h;
-					}
-
+					glfwSetWindowSizeCallback(window, NULL);
 				}
 
-				int GLFWWindowSizeListener::width() const
+				void GLFWWindowSizeListener::linkGLFW(GLFWwindow* window)
+				{
+					glfwSetWindowSizeCallback(window, callback);
+					glfwGetWindowSize(window, &m_w, &m_h);
+				}
+
+				int GLFWWindowSizeListener::getWidth() const
 				{
 					return m_w;
 				}
 
-				int GLFWWindowSizeListener::height() const
+				int GLFWWindowSizeListener::getHeight() const
 				{
 					return m_h;
+				}
+				
+				void GLFWWindowSizeListener::invoke(int w, int h)
+				{
+					m_w = w;
+					m_h = h;
 				}
 
 			}

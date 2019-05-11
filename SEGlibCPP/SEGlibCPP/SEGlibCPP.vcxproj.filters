@@ -105,6 +105,21 @@
     <ClInclude Include="Headers\org\segames\library\glfw\glfw_window_size_listener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_iconification_listener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_mouse_position_listener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_mouse_button_listener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_key_listener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\debug_shared\debug.cpp">
@@ -147,6 +162,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sources\org\segames\library\glfw\glfw_window_size_listener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_iconification_listener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_mouse_position_listener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_mouse_button_listener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_key_listener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

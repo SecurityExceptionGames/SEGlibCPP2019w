@@ -31,7 +31,7 @@ namespace org
 					Creates an array index out of bounds exception displaying the given index as the one out of bounds
 					* @param[in] index The index to display as out of bounds
 				*/
-				ArrayIndexOutOfBoundsException(const size_t index);
+				explicit ArrayIndexOutOfBoundsException(const size_t index);
 
 				/*
 					Creates a null pointer exception with the given message
@@ -39,7 +39,7 @@ namespace org
 					* @param[in] file The file in which the exception was thrown
 					* @param[in] line The line at which the exception was thrown
 				*/
-				ArrayIndexOutOfBoundsException(const size_t index, const char* file, const int line);
+				explicit ArrayIndexOutOfBoundsException(const size_t index, const char* file, const int line);
 
 			};
 

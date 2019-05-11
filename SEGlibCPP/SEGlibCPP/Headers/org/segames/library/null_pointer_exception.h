@@ -31,7 +31,7 @@ namespace org
 					Creates a null pointer exception with no message
 					* @param[in] message The message to use for the exception
 				*/
-				NullPointerException(const std::string& message);
+				explicit NullPointerException(const std::string& message);
 
 				/*
 					Creates a null pointer exception with the given message
@@ -39,7 +39,7 @@ namespace org
 					* @param[in] file The file in which the exception was thrown
 					* @param[in] line The line at which the exception was thrown
 				*/
-				NullPointerException(const std::string& message, const char* file, const int line);
+				explicit NullPointerException(const std::string& message, const char* file, const int line);
 
 			};
 

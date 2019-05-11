@@ -15,7 +15,7 @@ namespace org
 		{
 
 			/*
-				Root object for the segames class hierarchy
+				Root object for the segames class hierarchy.
 
 				* @author	Philip Rosberg
 				* @since	2018-05-08
@@ -27,18 +27,18 @@ namespace org
 			public:
 
 				/*
-					Returns a hash-code for the object
+					Returns a hash-code for the object.
 					If not overridden, default is determined from the object memory
 				*/
 				virtual size_t hashCode() const override;
 
 				/*
-					Returns a string representation of the object
+					Returns a string representation of the object.
 				*/
 				virtual std::string toString() const;
 
 				/*
-					Returns true if the the given object is equal to this one
+					Returns true if the the given object is equal to this one.
 					* @param[in] obj The object to check
 				*/
 				virtual bool equals(const Object& obj) const;
@@ -56,7 +56,7 @@ namespace org
 				virtual bool operator!=(const Object& obj) const;
 
 				/*
-					Writes the string representation of this object to the given output stream
+					Writes the string representation of this object to the given output stream.
 					* @param[in] out The output stream to write to
 				*/
 				virtual std::ostream& operator<<(std::ostream& out) const;
@@ -64,7 +64,7 @@ namespace org
 			};
 
 			/*
-				Writes the string representation of the given object to the given output stream
+				Writes the string representation of the given object to the given output stream.
 				* @param[in] out The output stream to write to
 				* @param[in] object The object to print
 			*/

@@ -15,22 +15,22 @@ namespace org
 			{
 
 				/*
-					A window size listener for GLFW.
+					A listener for detecting the cursor position relative to a window.
 
 					* @author	Philip Rosberg
-					* @since	2019-05-08
-					* @edited	2019-05-08
+					* @since	2019-05-11
+					* @edited	2019-05-11
 				*/
-				class SEG_API GLFWWindowSizeListener :
+				class SEG_API GLFWMousePositionListener :
 					public Object,
-					public GLFWListener<GLFWWindowSizeListener>
+					public GLFWListener<GLFWMousePositionListener>
 				{
 				private:
 
 					/*
 						Callback for GLFW.
 					*/
-					static void callback(GLFWwindow* window, int w, int h);
+					static void callback(GLFWwindow* window, double mx, double my);
 
 				public:
 
@@ -43,14 +43,14 @@ namespace org
 				protected:
 
 					/*
-						Window width.
+						Mouse x position.
 					*/
-					int m_w;
+					int m_mx;
 
 					/*
-						Window height.
+						Mouse y position.
 					*/
-					int m_h;
+					int m_my;
 
 					/*
 						Links this listener to GLFW.
@@ -61,21 +61,21 @@ namespace org
 				public:
 
 					/*
-						Returns the window width.
+						Returns the x position of the cursor relative to the window.
 					*/
-					virtual int getWidth() const;
+					virtual int getMX() const;
 
 					/*
-						Returns the window height.
+						Returns the y position of the cursor relative to the window.
 					*/
-					virtual int getHeight() const;
+					virtual int getMY() const;
 
 					/*
 						The method that is called when the listener is activated.
-						* @param[in] w The window width
-						* @param[in] h The window height
+						* @param[in] mx The mouse x position
+						* @param[in] my The mouse y position
 					*/
-					virtual void invoke(int w, int h);
+					virtual void invoke(double mx, double my);
 
 				};
 

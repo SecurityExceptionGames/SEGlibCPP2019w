@@ -123,7 +123,12 @@
     <ClInclude Include="Headers\org\segames\library\core.h" />
     <ClInclude Include="Headers\org\segames\library\dllmain.h" />
     <ClInclude Include="Headers\org\segames\library\exception.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_iconification_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_key_listener.h" />
     <ClInclude Include="Headers\org\segames\library\glfw\glfw_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_mouse_button_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_mouse_position_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_window.h" />
     <ClInclude Include="Headers\org\segames\library\glfw\glfw_window_size_listener.h" />
     <ClInclude Include="Headers\org\segames\library\hashable.h" />
     <ClInclude Include="Headers\org\segames\library\index_out_of_bounds_exception.h" />
@@ -157,6 +162,11 @@
     <ClCompile Include="Sources\org\segames\library\core.cpp" />
     <ClCompile Include="Sources\org\segames\library\dllmain.cpp" />
     <ClCompile Include="Sources\org\segames\library\exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_iconification_listener.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_key_listener.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_mouse_button_listener.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_mouse_position_listener.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_window.cpp" />
     <ClCompile Include="Sources\org\segames\library\glfw\glfw_window_size_listener.cpp" />
     <ClCompile Include="Sources\org\segames\library\hashable.cpp" />
     <ClCompile Include="Sources\org\segames\library\index_out_of_bounds_exception.cpp" />

@@ -15,22 +15,22 @@ namespace org
 			{
 
 				/*
-					A window size listener for GLFW.
+					A listener for detecting when a window is iconified (minimized).
 
 					* @author	Philip Rosberg
-					* @since	2019-05-08
-					* @edited	2019-05-08
+					* @since	2019-05-11
+					* @edited	2019-05-11
 				*/
-				class SEG_API GLFWWindowSizeListener :
+				class SEG_API GLFWIconificationListener :
 					public Object,
-					public GLFWListener<GLFWWindowSizeListener>
+					public GLFWListener<GLFWIconificationListener>
 				{
 				private:
 
 					/*
 						Callback for GLFW.
 					*/
-					static void callback(GLFWwindow* window, int w, int h);
+					static void callback(GLFWwindow* window, int flag);
 
 				public:
 
@@ -43,14 +43,9 @@ namespace org
 				protected:
 
 					/*
-						Window width.
+						True if the window is iconified.
 					*/
-					int m_w;
-
-					/*
-						Window height.
-					*/
-					int m_h;
+					bool m_iconified;
 
 					/*
 						Links this listener to GLFW.
@@ -61,21 +56,15 @@ namespace org
 				public:
 
 					/*
-						Returns the window width.
+						Returns true if the window is iconified.
 					*/
-					virtual int getWidth() const;
-
-					/*
-						Returns the window height.
-					*/
-					virtual int getHeight() const;
+					virtual bool isIconified() const;
 
 					/*
 						The method that is called when the listener is activated.
-						* @param[in] w The window width
-						* @param[in] h The window height
+						* @param[in] flag True if the window is iconified
 					*/
-					virtual void invoke(int w, int h);
+					virtual void invoke(bool flag);
 
 				};
 

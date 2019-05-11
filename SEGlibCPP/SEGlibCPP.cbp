@@ -69,6 +69,8 @@
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/core.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/dllmain.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/exception.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/glfw/glfw_window.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/glfw/glfw_window_size_listener.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/hashable.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/index_out_of_bounds_exception.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/invalid_value_exception.cpp" />

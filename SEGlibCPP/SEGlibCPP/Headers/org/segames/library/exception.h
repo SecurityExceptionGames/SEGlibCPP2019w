@@ -46,7 +46,7 @@ namespace org
 					Creates an exception with the given message
 					* @param[in] message The message to use for the exception
 				*/
-				Exception(const std::string& message);
+				explicit Exception(const std::string& message);
 
 				/*
 					Creates an exception with the given message
@@ -54,7 +54,7 @@ namespace org
 					* @param[in] file The file in which the exception was thrown
 					* @param[in] line The line at which the exception was thrown
 				*/
-				Exception(const std::string& message, const char* file, const int line);
+				explicit Exception(const std::string& message, const char* file, const int line);
 
 				/*
 					Returns the exception message
