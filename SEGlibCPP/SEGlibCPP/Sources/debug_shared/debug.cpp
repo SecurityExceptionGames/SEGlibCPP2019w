@@ -2,39 +2,64 @@
 #include <org/segames/library/math/vecmath.h>
 #include <org/segames/library/exception.h>
 #include <org/segames/library/util/timer.h>
-#include <org/segames/library/util/linked_list.h>
-#include <org/segames/library/util/array_queue.h>
-#include <org/segames/library/util/array_stack.h>
-#include <org/segames/library/util/array.h>
+#include <org/segames/library/gl/gl_pointer_inf.h>
 #include <org/segames/library/glfw/glfw_window.h>
+#include <org/segames/library/gl/gl_shader.h>
+#include <org/segames/library/gl/gl_backed_buffer.h>
+#include <org/segames/library/gl/gl_pointer_binding.h>
+#include <org/segames/library/gl/gl_core.h>
 
 #include <unordered_map>
-
+#include <thread>
 #include <iostream>
-
-#define GLFW_DLL
-#include <glad/glad.h>
-#include <glfw/glfw3.h>
 
 using namespace org::segames::library;
 using namespace org::segames::library::util;
 using namespace org::segames::library::math;
 using namespace org::segames::library::glfw;
+using namespace org::segames::library::gl;
 
 int main()
 {
 	try
 	{
-		if (!glfwInit())
-			return -1;
-
 		GLFWWindow win;
 		win.setSize(1280, 800);
 		win.setTitle("Library link test window");
 		win.setVisible(true);
 		win.makeContextCurrent();
+
+		GLShader shader;
+		shader.loadVertexData("test/test.vert");
+		shader.loadFragmentData("test/test.frag");
+		shader.upload();
+
+		GLFloatBuffer vert(GLDataType::VERTEX, GLPointerInf::TWO_FLOAT_POINTER);
+		vert.push(0).push(0);
+		vert.push(1).push(0);
+		vert.push(1).push(1);
+		vert.upload();
+
+		GLFloatBuffer col(GLDataType::COLOR, GLPointerInf::THREE_FLOAT_POINTER);
+		col.push(1).push(0).push(0);
+		col.push(0).push(1).push(0);
+		col.push(0).push(0).push(1);
+		col.upload();
+
+		GLFloatBuffer dou;
+		dou.setPointerBinding(GLDataType::VERTEX, GLPointerInf(GL_FLOAT, 2, sizeof(GLfloat) * 5, 0));
+		dou.setPointerBinding(GLDataType::COLOR, GLPointerInf(GL_FLOAT, 3, sizeof(GLfloat) * 5, sizeof(GLfloat) * 2));
+		dou.push(0).push(0);
+		dou.push(1).push(0).push(0);
+		dou.push(1).push(0);
+		dou.push(0).push(1).push(0);
+		dou.push(1).push(1);
+		dou.push(0).push(0).push(1);
+		dou.upload();
 		
-		bool entered = false, borderless = false;
+		std::cout << GLCore::glVersion() << std::endl;
+
+		bool lock = false;
 		float count = 1;
 		while (!win.isCloseRequested())
 		{
@@ -47,17 +72,20 @@ int main()
 
 			glMatrixMode(GL_MODELVIEW_MATRIX);
 			glLoadIdentity();
-			glTranslatef(0, 0, 1);
-			glRotatef(count, 0, 0, 1);
+			/*glTranslatef(0, 0, 1);
+			glRotatef(count, 0, 0, 1);*/
 
-			glBegin(GL_TRIANGLES);
-			glColor3f(1, 0, 0);
-			glVertex3f(-5.0f, -5.0f, 0);
-			glColor3f(0, 1, 0);
-			glVertex3f(10, -10, 0);
-			glColor3f(0, 0, 1);
-			glVertex3f(10, 10, 0);
-			glEnd();
+			dou.bind().setPointerInf();
+
+			glEnableClientState(GL_VERTEX_ARRAY);
+			glEnableClientState(GL_COLOR_ARRAY);
+
+			glDrawArrays(GL_TRIANGLES, 0, 3);
+
+			glDisableClientState(GL_VERTEX_ARRAY);
+			glDisableClientState(GL_COLOR_ARRAY);
+
+			dou.release();
 
 			win.pollEvents();
 			win.swapBuffers();

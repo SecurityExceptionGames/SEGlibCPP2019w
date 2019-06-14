@@ -28,7 +28,7 @@ namespace org
 				NullPointerException();
 
 				/*
-					Creates a null pointer exception with no message
+					Creates a null pointer exception with message
 					* @param[in] message The message to use for the exception
 				*/
 				explicit NullPointerException(const std::string& message);

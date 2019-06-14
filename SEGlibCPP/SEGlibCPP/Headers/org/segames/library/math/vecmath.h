@@ -170,7 +170,8 @@ namespace org
 						Returns true if the the given vector is not equal to this one, inverse of operator==
 						* @param[in] obj The vector to check
 					*/
-					template<typename T2> inline bool operator!=(const BasicVector<T2, dim>& obj) const
+					template<typename T2> 
+					inline bool operator!=(const BasicVector<T2, dim>& obj) const
 					{
 						return !(*this == obj);
 					}

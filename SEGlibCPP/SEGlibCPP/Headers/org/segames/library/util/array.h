@@ -49,14 +49,6 @@ namespace org
 				public:
 
 					/*
-						Creates an empty array.
-					*/
-					Array() :
-						m_size(0),
-						m_array(nullptr)
-					{}
-
-					/*
 						Creates an array of the given size.
 						* @param[in] size The size of the array
 					*/
@@ -66,10 +58,18 @@ namespace org
 					{}
 
 					/*
+						Creates an empty array.
+					*/
+					Array() :
+						m_size(0),
+						m_array(nullptr)
+					{}
+
+					/*
 						Copies the given array's data into this one.
 						* @param[in] obj The array backed object whose data to copy into this array.
 					*/
-					explicit Array(const Array<T, PosType>& obj) :
+					Array(const Array<T, PosType>& obj) :
 						Array((ArrayBacked<T, PosType>&)obj)
 					{}
 

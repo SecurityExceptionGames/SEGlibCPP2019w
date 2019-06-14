@@ -113,7 +113,7 @@ namespace org
 					if (m_sizeListener) delete m_sizeListener;
 
 					for (auto itr = m_listeners.begin(); itr != m_listeners.end(); itr++)
-						delete (GLFWListener<void>*)itr->second;
+						delete static_cast<GLFWListener<void>*>(itr->second);
 
 					if(m_window != NULL) glfwDestroyWindow(m_window);
 				}
@@ -209,7 +209,7 @@ namespace org
 					int w, h;
 					const GLFWvidmode* vidMode = glfwGetVideoMode(getCurrentMonitorFor(m_window));
 					glfwGetWindowSize(m_window, &w, &h);
-					glfwSetWindowPos(m_window, (vidMode->width + w) / 2, (vidMode->height + h) / 2);
+					glfwSetWindowPos(m_window, (vidMode->width - w) / 2, (vidMode->height - h) / 2);
 				}
 
 				void GLFWWindow::setTitle(const std::string& title)
@@ -220,7 +220,7 @@ namespace org
 				std::unique_ptr<GLFWListener<GLFWIconificationListener>> GLFWWindow::setListener(GLFWListener<GLFWIconificationListener>* list)
 				{
 					std::unique_ptr<GLFWListener<GLFWIconificationListener>> old(m_iconifyListener);
-					m_iconifyListener = (GLFWIconificationListener*)list;
+					m_iconifyListener = dynamic_cast<GLFWIconificationListener*>(list);
 					if(list != nullptr)
 						m_iconifyListener->link(m_window);
 					else
@@ -231,7 +231,7 @@ namespace org
 				std::unique_ptr<GLFWListener<GLFWKeyListener>> GLFWWindow::setListener(GLFWListener<GLFWKeyListener>* list)
 				{
 					std::unique_ptr<GLFWListener<GLFWKeyListener>> old(m_keyListener);
-					m_keyListener = (GLFWKeyListener*)list;
+					m_keyListener = dynamic_cast<GLFWKeyListener*>(list);
 					if (list != nullptr)
 						m_keyListener->link(m_window);
 					else
@@ -242,7 +242,7 @@ namespace org
 				std::unique_ptr<GLFWListener<GLFWMouseButtonListener>> GLFWWindow::setListener(GLFWListener<GLFWMouseButtonListener>* list)
 				{
 					std::unique_ptr<GLFWListener<GLFWMouseButtonListener>> old(m_mbListener);
-					m_mbListener = (GLFWMouseButtonListener*)list;
+					m_mbListener = dynamic_cast<GLFWMouseButtonListener*>(list);
 					if (list != nullptr)
 						m_mbListener->link(m_window);
 					else
@@ -253,7 +253,7 @@ namespace org
 				std::unique_ptr<GLFWListener<GLFWMousePositionListener>> GLFWWindow::setListener(GLFWListener<GLFWMousePositionListener>* list)
 				{
 					std::unique_ptr<GLFWListener<GLFWMousePositionListener>> old(m_mpListener);
-					m_mpListener = (GLFWMousePositionListener*)list;
+					m_mpListener = dynamic_cast<GLFWMousePositionListener*>(list);
 					if (list != nullptr)
 						m_mpListener->link(m_window);
 					else
@@ -264,7 +264,7 @@ namespace org
 				std::unique_ptr<GLFWListener<GLFWWindowSizeListener>> GLFWWindow::setListener(GLFWListener<GLFWWindowSizeListener>* list)
 				{
 					std::unique_ptr<GLFWListener<GLFWWindowSizeListener>> old(m_sizeListener);
-					m_sizeListener = (GLFWWindowSizeListener*)list;
+					m_sizeListener = dynamic_cast<GLFWWindowSizeListener*>(list);
 					if (list != nullptr)
 						m_sizeListener->link(m_window);
 					else

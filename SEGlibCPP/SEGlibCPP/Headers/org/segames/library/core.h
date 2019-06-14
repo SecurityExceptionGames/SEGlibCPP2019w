@@ -3,6 +3,13 @@
 
 #include <iostream>
 
+#ifdef ERROR
+#undef ERROR
+#ifndef WIN_ERROR
+#define WIN_ERROR 0
+#endif
+#endif
+
 namespace org
 {
 
@@ -19,7 +26,7 @@ namespace org
 				* @since	2018-10-26
 				* @edited	2018-10-26
 			*/
-			class SEG_API Core
+			class SEG_API Core final
 			{
 			public:
 

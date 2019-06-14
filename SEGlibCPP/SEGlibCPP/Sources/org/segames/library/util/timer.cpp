@@ -105,9 +105,12 @@ namespace org
 						return;
 					}
 
+					if (updateTime == 0.0)
+						return;
+
 #ifdef SEG_API_DEBUG_THROW
-					if (updateTime <= 0.0)
-						throw InvalidValueException("Cannot sync time for update rates less than or equal to zero.");
+					if (updateTime < 0.0)
+						throw InvalidValueException("Cannot sync time for update rates less than zero.");
 #endif
 
 					size_t sleep = (size_t)(updateTime * 1000000000.0) - (nanoTime() - lastTime);

@@ -51,7 +51,7 @@ namespace org
 						Creates an array queue of the given starting capacity.
 						* @param[in] capacity The starting capacity of the stack
 					*/
-					explicit ArrayStack(const typename ArrayList<T>::PosType capacity) :
+					ArrayStack(const typename ArrayList<T>::PosType capacity) :
 						m_list(capacity)
 					{}
 

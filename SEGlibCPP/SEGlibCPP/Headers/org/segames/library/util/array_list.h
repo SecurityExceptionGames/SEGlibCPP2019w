@@ -100,7 +100,7 @@ namespace org
 						Copies the given list into this one.
 						* @param[in] list The list whose content to copy into this one
 					*/
-					explicit ArrayList(const ArrayList<T>& list) :
+					ArrayList(const ArrayList<T>& list) :
 						ArrayList((ArrayBacked<T, PosType>&)list)
 					{}
 
@@ -111,7 +111,7 @@ namespace org
 					explicit ArrayList(const ArrayBacked<T, PosType>& obj) :
 						ArrayList(obj.size())
 					{
-						std::copy(obj.pointer(), obj.pointer() + obj.size(), pointer());
+						std::copy(obj.pointer(), obj.pointer() + obj.size(), this->pointer());
 						m_upper = (PosType)obj.size();
 					}
 
