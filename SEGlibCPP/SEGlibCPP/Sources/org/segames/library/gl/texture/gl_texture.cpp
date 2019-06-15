@@ -1,4 +1,5 @@
 #include <org/segames/library/gl/texture/gl_texture.h>
+#include <org/segames/library/gl/gl_exception.h>
 #include <org/segames/library/gl/gl_core.h>
 
 using org::segames::library::math::Dimension3i;
@@ -15,6 +16,8 @@ namespace org
 			namespace gl
 			{
 
+				int GLTexture::m_glMaxTextureSize = 0;
+
 				GLenum GLTexture::formatFromInternalFormat(const GLenum internalFormat)
 				{
 					switch (internalFormat)
@@ -30,7 +33,7 @@ namespace org
 						return GL_RG;
 					case GL_R8:
 					case GL_R16:
-						return GL_LUMINANCE;
+						return GL_RED;
 					default:
 						return internalFormat;
 					}
@@ -114,6 +117,10 @@ namespace org
 					glTexParameteri(m_type, GL_TEXTURE_WRAP_R, wrapping);
 					glTexParameteri(m_type, GL_TEXTURE_MIN_FILTER, minFilter);
 					glTexParameteri(m_type, GL_TEXTURE_MAG_FILTER, magFilter);
+
+					GLenum err = glGetError();
+					if (err != GL_NO_ERROR)
+						throw GLException(err, __FILE__, __LINE__);
 					return *this;
 				}
 
@@ -122,19 +129,40 @@ namespace org
 					if (!m_id)
 					{
 						glGenTextures(1, &m_id);
+						if (!glIsEnabled(m_type))
+							glEnable(m_type);
+
 						bind();
 						setParameters(GL_REPEAT, GL_NEAREST, GL_NEAREST);
 					}
 					else
 						bind();
-					
-					if (m_type == GL_TEXTURE_1D)
+
+					switch (m_type)
+					{
+					case GL_TEXTURE_1D:
 						glTexImage1D(m_type, 0, m_internalFormat, m_size.getWidth(), 0, m_format, storage, data);
-					else if(m_type == GL_TEXTURE_2D || m_type == GL_TEXTURE_1D_ARRAY)
+						break;
+					case GL_TEXTURE_2D:
+					case GL_TEXTURE_1D_ARRAY:
 						glTexImage2D(m_type, 0, m_internalFormat, m_size.getWidth(), m_size.getHeight(), 0, m_format, storage, data);
-					else if (m_type == GL_TEXTURE_3D || m_type == GL_TEXTURE_2D_ARRAY)
+						break;
+					case GL_TEXTURE_3D:
+					case GL_TEXTURE_2D_ARRAY:
 						glTexImage3D(m_type, 0, m_internalFormat, m_size.getWidth(), m_size.getHeight(), m_size.getDepth(), 0, m_format, storage, data);
+						break;
+					default:
+						break;
+					}
+
 					release();
+				}
+
+				int GLTexture::glMaxTextureSize()
+				{
+					if (!m_glMaxTextureSize)
+						glGetIntegerv(GL_MAX_TEXTURE_SIZE, &m_glMaxTextureSize);
+					return m_glMaxTextureSize;
 				}
 
 			}

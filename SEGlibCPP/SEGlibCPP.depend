@@ -2,8 +2,9 @@
 1514140574 source:e:\github\seglibcpp2019w\seglibcpp\main.cpp
 	<iostream>
 
-1560462846 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\debug_shared\debug.cpp
+1560644686 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\debug_shared\debug.cpp
 	<org/segames/library/core.h>
+	<org/segames/library/system.h>
 	<org/segames/library/math/vecmath.h>
 	<org/segames/library/exception.h>
 	<org/segames/library/util/timer.h>
@@ -13,11 +14,14 @@
 	<org/segames/library/gl/gl_backed_buffer.h>
 	<org/segames/library/gl/gl_pointer_binding.h>
 	<org/segames/library/gl/gl_core.h>
+	<org/segames/library/gl/gl_exception.h>
+	<org/segames/library/gl/texture/gl_disc_texture.h>
+	<org/segames/library/gl/texture/gl_s3tc_texture.h>
 	<unordered_map>
 	<thread>
 	<iostream>
 
-1548457171 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\system.h
+1560632999 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\system.h
 
 1471524760 e:\github\seglibcpp2019w\seglibcpp\extlib\include\glfw\glfw3.h
 	<stddef.h>
@@ -532,18 +536,21 @@
 	<org/segames/library/gl/gl_pointer_binding.h>
 	<org/segames/library/gl/gl_exception.h>
 
-1560372023 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\gl_core.cpp
+1560615580 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\gl_core.cpp
 	<org/segames/library/gl/gl_core.h>
+	<org/segames/library/util/string_util.h>
 
-1560366644 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\gl_core.h
+1560614493 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\gl_core.h
 	<org/segames/library/dllmain.h>
 	<glad/glad.h>
+	<unordered_set>
+	<memory>
 
 1560462785 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\gl_texture.cpp
 	<org/segames/library/gl/texture/gl_texture.h>
 	<org/segames/library/gl/gl_core.h>
 
-1560462787 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_texture.h
+1560622737 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_texture.h
 	<org/segames/library/gl/gl_bindable.h>
 	<org/segames/library/math/dimension_3.h>
 	<org/segames/library/object.h>
@@ -606,4 +613,41 @@
 	<alloca.h>
 	<limits.h>
 	<crtdbg.h>
+
+1560643458 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_texture.cpp
+	<org/segames/library/gl/texture/gl_texture.h>
+	<org/segames/library/gl/gl_exception.h>
+	<org/segames/library/gl/gl_core.h>
+
+1560638383 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_disc_texture.cpp
+	<org/segames/library/gl/texture/gl_disc_texture.h>
+	<org/segames/library/io/file_not_found_exception.h>
+	<org/segames/library/io/file.h>
+	<stb/stb_image.h>
+
+1560643374 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_disc_texture.h
+	<org/segames/library/gl/texture/gl_physical_texture.h>
+
+1560645244 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_physical_texture.h
+	<org/segames/library/gl/texture/gl_texture.h>
+
+1560630129 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_physical_texture.cpp
+	<org/segames/library/gl/texture/gl_physical_texture.h>
+
+1560645177 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_s3tc_texture.h
+	<org/segames/library/gl/texture/gl_physical_texture.h>
+	<org/segames/library/math/dimension_2.h>
+	<memory>
+	<istream>
+
+1560453885 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\math\dimension_2.h
+	<org/segames/library/math/dimension.h>
+
+1560645089 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_s3tc_texture.cpp
+	<org/segames/library/gl/texture/gl_s3tc_texture.h>
+	<org/segames/library/io/file_not_found_exception.h>
+	<org/segames/library/io/file.h>
+	<org/segames/library/math/math.h>
+	<org/segames/library/system.h>
+	<fstream>
 

@@ -53,7 +53,7 @@ namespace org
 						for (size_t c = 0; c < sizeof(T) / 2; c++)
 						{
 							char* const a = pos + (i + c);
-							char* const b = pos + (i + sizeof(T) - c);
+							char* const b = pos + (i + sizeof(T) - c - 1);
 							const char temp = *a;
 							*a = *b;
 							*b = temp;

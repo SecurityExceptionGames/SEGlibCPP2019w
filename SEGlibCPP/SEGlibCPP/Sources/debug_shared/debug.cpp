@@ -1,4 +1,5 @@
 #include <org/segames/library/core.h>
+#include <org/segames/library/system.h>
 #include <org/segames/library/math/vecmath.h>
 #include <org/segames/library/exception.h>
 #include <org/segames/library/util/timer.h>
@@ -8,6 +9,9 @@
 #include <org/segames/library/gl/gl_backed_buffer.h>
 #include <org/segames/library/gl/gl_pointer_binding.h>
 #include <org/segames/library/gl/gl_core.h>
+#include <org/segames/library/gl/gl_exception.h>
+#include <org/segames/library/gl/texture/gl_disc_texture.h>
+#include <org/segames/library/gl/texture/gl_s3tc_texture.h>
 
 #include <unordered_map>
 #include <thread>
@@ -29,22 +33,16 @@ int main()
 		win.setVisible(true);
 		win.makeContextCurrent();
 
+		GLException::enableDebugCallback();
+
 		GLShader shader;
 		shader.loadVertexData("test/test.vert");
 		shader.loadFragmentData("test/test.frag");
 		shader.upload();
 
-		GLFloatBuffer vert(GLDataType::VERTEX, GLPointerInf::TWO_FLOAT_POINTER);
-		vert.push(0).push(0);
-		vert.push(1).push(0);
-		vert.push(1).push(1);
-		vert.upload();
-
-		GLFloatBuffer col(GLDataType::COLOR, GLPointerInf::THREE_FLOAT_POINTER);
-		col.push(1).push(0).push(0);
-		col.push(0).push(1).push(0);
-		col.push(0).push(0).push(1);
-		col.upload();
+		GLS3TCTexture tex("C:/Users/Philip R/Desktop/plan_flat.dds");
+		tex.importTexture();
+		tex.upload();
 
 		GLFloatBuffer dou;
 		dou.setPointerBinding(GLDataType::VERTEX, GLPointerInf(GL_FLOAT, 2, sizeof(GLfloat) * 5, 0));
@@ -56,36 +54,43 @@ int main()
 		dou.push(1).push(1);
 		dou.push(0).push(0).push(1);
 		dou.upload();
-		
-		std::cout << GLCore::glVersion() << std::endl;
+
+		GLFloatBuffer dou2;
+		dou2.setPointerBinding(GLDataType::VERTEX, GLPointerInf(GL_FLOAT, 2, sizeof(GLfloat) * 2, 0));
+		dou2.setPointerBinding(GLDataType::TEX_COORD, GLPointerInf(GL_FLOAT, 2, sizeof(GLfloat) * 2, 0));
+		dou2.push(0).push(0);
+		dou2.push(1).push(0);
+		dou2.push(1).push(1);
+		dou2.push(0).push(1);
+		dou2.upload();
 
 		bool lock = false;
 		float count = 1;
 		while (!win.isCloseRequested())
 		{
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			glViewport(0, 0, 1280, 800);
+			glViewport(0, 0, win.getWidth(), win.getHeight());
 			
-			glMatrixMode(GL_PROJECTION_MATRIX);
+			glMatrixMode(GL_PROJECTION);
 			glLoadIdentity();
-			glOrtho(0, win.getWidth(), win.getHeight(), 0, -1, 1);
+			glOrtho(0, 1, 1, 0, -1, 1);
 
-			glMatrixMode(GL_MODELVIEW_MATRIX);
-			glLoadIdentity();
-			/*glTranslatef(0, 0, 1);
-			glRotatef(count, 0, 0, 1);*/
+			/*glMatrixMode(GL_MODELVIEW);
+			glLoadIdentity();*/
 
-			dou.bind().setPointerInf();
+			tex.bind();
+			dou2.bind().setPointerInf();
 
 			glEnableClientState(GL_VERTEX_ARRAY);
-			glEnableClientState(GL_COLOR_ARRAY);
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-			glDrawArrays(GL_TRIANGLES, 0, 3);
+			glDrawArrays(GL_QUADS, 0, 4);
 
 			glDisableClientState(GL_VERTEX_ARRAY);
-			glDisableClientState(GL_COLOR_ARRAY);
+			glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
-			dou.release();
+			dou2.release();
+			tex.release();
 
 			win.pollEvents();
 			win.swapBuffers();

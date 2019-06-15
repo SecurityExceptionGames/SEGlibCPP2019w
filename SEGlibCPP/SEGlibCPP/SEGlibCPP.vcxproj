@@ -143,6 +143,9 @@
     <ClInclude Include="Headers\org\segames\library\gl\gl_pointer_inf.h" />
     <ClInclude Include="Headers\org\segames\library\gl\gl_shader.h" />
     <ClInclude Include="Headers\org\segames\library\gl\gl_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\texture\gl_disc_texture.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\texture\gl_physical_texture.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\texture\gl_s3tc_texture.h" />
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_texture.h" />
     <ClInclude Include="Headers\org\segames\library\hashable.h" />
     <ClInclude Include="Headers\org\segames\library\index_out_of_bounds_exception.h" />
@@ -200,7 +203,10 @@
     <ClCompile Include="Sources\org\segames\library\gl\gl_pointer_inf.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\gl_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\gl_shader.cpp" />
-    <ClCompile Include="Sources\org\segames\library\gl\gl_texture.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_disc_texture.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_physical_texture.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_s3tc_texture.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_texture.cpp" />
     <ClCompile Include="Sources\org\segames\library\hashable.cpp" />
     <ClCompile Include="Sources\org\segames\library\index_out_of_bounds_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\invalid_value_exception.cpp" />

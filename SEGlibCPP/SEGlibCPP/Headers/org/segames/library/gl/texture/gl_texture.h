@@ -28,6 +28,13 @@ namespace org
 					public GLBindable,
 					public Object
 				{
+				private:
+
+					/*
+						The OpenGL max texture size.s
+					*/
+					static int m_glMaxTextureSize;
+
 				protected:
 
 					/*
@@ -151,6 +158,12 @@ namespace org
 						* @param[in] data The texture data to upload
 					*/
 					virtual void upload(const GLenum storage, const void* data);
+
+					/*
+						Returns the OpenGL maximum texture size.
+						Loads the size from OpenGL on first call.
+					*/
+					static int glMaxTextureSize();
 
 				};
 

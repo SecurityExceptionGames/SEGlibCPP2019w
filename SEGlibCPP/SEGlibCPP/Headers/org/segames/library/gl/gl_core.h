@@ -2,6 +2,8 @@
 #include <org/segames/library/dllmain.h>
 
 #include <glad/glad.h>
+#include <unordered_set>
+#include <memory>
 
 namespace org
 {
@@ -31,12 +33,29 @@ namespace org
 					*/
 					static float m_version;
 
+					/*
+						The avaliable OpenGL extensions.
+					*/
+					static std::unique_ptr<std::unordered_set<std::string>> m_extensions;
+
 				public:
 
 					/*
 						Returns the OpenGL version.
+						Loads the version from OpenGL on first call.
 					*/
 					static float glVersion();
+
+					/*
+						Returns true if the given OpenGL extension is present.
+					*/
+					static bool hasExtension(const std::string& ext);
+
+					/*
+						Returns the present OpenGL extensions.
+						Loads the extensions from OpenGL on first call.
+					*/
+					static const std::unordered_set<std::string>& glExtensions();
 
 				};
 
