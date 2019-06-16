@@ -14,7 +14,7 @@ namespace org
 			{
 
 				/*
-					A super class for textures that has a file on the hard drive.
+					Abstract super class for textures that has a file on the hard drive.
 
 					* @author	Philip Rosberg
 					* @since	2019-06-15
@@ -41,14 +41,14 @@ namespace org
 						Creates a 2D and RGBA texture object of the given size.
 						* @param[in] size The size of the texture
 					*/
-					GLPhysicalTexture(const math::Dimension3i& size);
+					explicit GLPhysicalTexture(const math::Dimension3i& size);
 
 					/*
 						Creates a 2D texture object with the given attributes.
 						* @param[in] internalFormat The internal OpenGL format
 						* @param[in] size The size of the texture
 					*/
-					GLPhysicalTexture(const GLenum internalFormat, const math::Dimension3i& size);
+					explicit GLPhysicalTexture(const GLenum internalFormat, const math::Dimension3i& size);
 
 					/*
 						Creates a texture object with the given attributes.
@@ -57,7 +57,7 @@ namespace org
 						* @param[in] format The texture format
 						* @param[in] size The size of the texture
 					*/
-					GLPhysicalTexture(const GLenum type, const GLenum internalFormat, const GLenum format, const math::Dimension3i& size);
+					explicit GLPhysicalTexture(const GLenum type, const GLenum internalFormat, const GLenum format, const math::Dimension3i& size);
 
 					/*
 						Returns the path.
@@ -74,6 +74,11 @@ namespace org
 						Uploads the internally stored data.
 					*/
 					virtual void upload() = 0;
+
+					/*
+						Imports the texture from the internally stored path.
+					*/
+					virtual void importTexture() = 0;
 
 				};
 

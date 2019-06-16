@@ -79,14 +79,14 @@ namespace org
 						Creates a 2D and RGBA texture object of the given size.
 						* @param[in] size The size of the texture
 					*/
-					GLTexture(const math::Dimension3i& size);
+					explicit GLTexture(const math::Dimension3i& size);
 
 					/*
 						Creates a 2D texture object with the given attributes.
 						* @param[in] internalFormat The internal OpenGL format
 						* @param[in] size The size of the texture
 					*/
-					GLTexture(const GLenum internalFormat, const math::Dimension3i& size);
+					explicit GLTexture(const GLenum internalFormat, const math::Dimension3i& size);
 
 					/*
 						Creates a texture object with the given attributes.
@@ -95,7 +95,7 @@ namespace org
 						* @param[in] format The texture format
 						* @param[in] size The size of the texture
 					*/
-					GLTexture(const GLenum type, const GLenum internalFormat, const GLenum format, const math::Dimension3i& size);
+					explicit GLTexture(const GLenum type, const GLenum internalFormat, const GLenum format, const math::Dimension3i& size);
 					
 					/*
 						Destructor.
@@ -127,6 +127,13 @@ namespace org
 						Returns the size of the texture.
 					*/
 					virtual const math::Dimension3i& getSize() const;
+
+					/*
+						Sets the internally stored size of the texture.
+						NOTE! This does not change the texture stored on the graphics card and should therefore be used with caution.
+						* @param[in] size The new size of the texture object
+					*/
+					virtual void setSize(const math::Dimension3i& size);
 
 					/*
 						Binds this texture.

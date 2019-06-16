@@ -1,4 +1,5 @@
 #include <org/segames/library/gl/texture/gl_s3tc_texture.h>
+#include <org/segames/library/gl/gl_core.h>
 #include <org/segames/library/io/file_not_found_exception.h>
 #include <org/segames/library/io/file.h>
 #include <org/segames/library/math/math.h>
@@ -40,6 +41,13 @@ namespace org
 					}
 
 				}
+
+				GLS3TCTexture::GLS3TCTexture() :
+					GLPhysicalTexture(),
+					m_mipmapLevels(0),
+					m_mipmapSizes(nullptr),
+					m_mipmapData(nullptr)
+				{}
 
 				GLS3TCTexture::GLS3TCTexture(const std::string& path) :
 					GLPhysicalTexture(),
@@ -120,7 +128,7 @@ namespace org
 					if (!file.exists())
 						throw FileNotFoundException(path, __FILE__, __LINE__);
 
-					std::ifstream input(file.getPath());
+					std::ifstream input(file.getPath(), std::fstream::binary);
 					if (!input.good())
 						throw IOException("Could not open ifstream to \"" + file.getPath() + "\"", __FILE__, __LINE__);
 
@@ -164,6 +172,11 @@ namespace org
 						height = max(height / 2, 1);
 					}
 
+				}
+
+				bool GLS3TCTexture::isSupported()
+				{
+					return GLCore::hasExtension("GL_EXT_texture_compression_s3tc");
 				}
 
 			}

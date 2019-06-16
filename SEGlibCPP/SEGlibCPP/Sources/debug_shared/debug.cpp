@@ -10,8 +10,8 @@
 #include <org/segames/library/gl/gl_pointer_binding.h>
 #include <org/segames/library/gl/gl_core.h>
 #include <org/segames/library/gl/gl_exception.h>
-#include <org/segames/library/gl/texture/gl_disc_texture.h>
-#include <org/segames/library/gl/texture/gl_s3tc_texture.h>
+#include <org/segames/library/gl/texture/gl_physical_texture_wrapper.h>
+#include <org/segames/library/gl/fbo/gl_framebuffer_wrapper.h>
 
 #include <unordered_map>
 #include <thread>
@@ -40,7 +40,7 @@ int main()
 		shader.loadFragmentData("test/test.frag");
 		shader.upload();
 
-		GLS3TCTexture tex("C:/Users/Philip R/Desktop/plan_flat.dds");
+		GLPhysicalTextureWrapper tex("C:/Users/Philip R/Desktop/plan_flat.dds");
 		tex.importTexture();
 		tex.upload();
 
@@ -64,6 +64,13 @@ int main()
 		dou2.push(0).push(1);
 		dou2.upload();
 
+		GLFramebufferWrapper fbo(
+			true,
+			false,
+			Dimension2i(1280, 800)
+		);
+		fbo.build();
+
 		bool lock = false;
 		float count = 1;
 		while (!win.isCloseRequested())
@@ -78,6 +85,7 @@ int main()
 			/*glMatrixMode(GL_MODELVIEW);
 			glLoadIdentity();*/
 
+			fbo.bind();
 			tex.bind();
 			dou2.bind().setPointerInf();
 
@@ -91,6 +99,21 @@ int main()
 
 			dou2.release();
 			tex.release();
+			fbo.release();
+
+			fbo.getColorComp()->bind();
+			dou2.bind().setPointerInf();
+
+			glEnableClientState(GL_VERTEX_ARRAY);
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+			glDrawArrays(GL_QUADS, 0, 4);
+
+			glDisableClientState(GL_VERTEX_ARRAY);
+			glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+			dou2.release();
+			fbo.getColorComp()->release();
 
 			win.pollEvents();
 			win.swapBuffers();

@@ -54,16 +54,21 @@ namespace org
 				public:
 
 					/*
+						Creates an empty S3TC texture.
+					*/
+					GLS3TCTexture();
+
+					/*
 						Creates a new S3TC texture.
 						* @param[in] path The path to the texture file
 					*/
-					GLS3TCTexture(const std::string& path);
+					explicit GLS3TCTexture(const std::string& path);
 
 					/*
 						Copy constructor.
 						* @param[in] obj The texture to copy
 					*/
-					GLS3TCTexture(const GLS3TCTexture& obj);
+					explicit GLS3TCTexture(const GLS3TCTexture& obj);
 
 					/*
 						Returns the number of mipmap/texture levels.
@@ -83,7 +88,7 @@ namespace org
 					/*
 						Imports the data for the texture.
 					*/
-					virtual void importTexture();
+					virtual void importTexture() override;
 
 					/*
 						Imports the data for the texture.
@@ -96,6 +101,11 @@ namespace org
 						* @param[in] input The input stream with texture data
 					*/
 					virtual void importTexture(std::istream& input);
+
+					/*
+						Returns true if S3TC textures are supported.
+					*/
+					static bool isSupported();
 
 				};
 

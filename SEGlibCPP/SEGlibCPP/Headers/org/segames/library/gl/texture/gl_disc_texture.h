@@ -33,16 +33,21 @@ namespace org
 				public:
 
 					/*
+						Creates an empty disc texture.
+					*/
+					GLDiscTexture();
+
+					/*
 						Creates a new disc texture.
 						* @param[in] path The path to the texture file
 					*/
-					GLDiscTexture(const std::string& path);
+					explicit GLDiscTexture(const std::string& path);
 					
 					/*
 						Copy constructor.
 						* @param[in] obj The disc texture to copy
 					*/
-					GLDiscTexture(const GLDiscTexture& obj);
+					explicit GLDiscTexture(const GLDiscTexture& obj);
 
 					/*
 						Destructor.
@@ -57,7 +62,7 @@ namespace org
 					/*
 						Imports the data for the texture.
 					*/
-					virtual void importTexture();
+					virtual void importTexture() override;
 
 					/*
 						Imports the data for the texture.

@@ -195,6 +195,24 @@
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_s3tc_texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\gl\texture\gl_physical_texture_wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer_30.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_abstract_framebuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer_ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer_wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\debug_shared\debug.cpp">
@@ -306,6 +324,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_s3tc_texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_physical_texture_wrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_abstract_framebuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer_30.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer_ext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer_wrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,6 +19,11 @@ namespace org
 
 			namespace gl
 			{
+
+				GLDiscTexture::GLDiscTexture() :
+					GLPhysicalTexture(),
+					m_data(nullptr)
+				{}
 				
 				GLDiscTexture::GLDiscTexture(const std::string& path) :
 					GLPhysicalTexture(),

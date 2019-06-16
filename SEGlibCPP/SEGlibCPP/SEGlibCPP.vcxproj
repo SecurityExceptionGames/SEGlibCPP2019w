@@ -134,6 +134,11 @@
     <ClInclude Include="Headers\org\segames\library\glfw\glfw_mouse_position_listener.h" />
     <ClInclude Include="Headers\org\segames\library\glfw\glfw_window.h" />
     <ClInclude Include="Headers\org\segames\library\glfw\glfw_window_size_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_abstract_framebuffer.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer_30.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer_ext.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer_wrapper.h" />
     <ClInclude Include="Headers\org\segames\library\gl\gl_core.h" />
     <ClInclude Include="Headers\org\segames\library\gl\gl_data_type.h" />
     <ClInclude Include="Headers\org\segames\library\gl\gl_backed_buffer.h" />
@@ -147,6 +152,7 @@
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_physical_texture.h" />
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_s3tc_texture.h" />
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_texture.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\texture\gl_physical_texture_wrapper.h" />
     <ClInclude Include="Headers\org\segames\library\hashable.h" />
     <ClInclude Include="Headers\org\segames\library\index_out_of_bounds_exception.h" />
     <ClInclude Include="Headers\org\segames\library\invalid_value_exception.h" />
@@ -197,6 +203,11 @@
     <ClCompile Include="Sources\org\segames\library\glfw\glfw_mouse_position_listener.cpp" />
     <ClCompile Include="Sources\org\segames\library\glfw\glfw_window.cpp" />
     <ClCompile Include="Sources\org\segames\library\glfw\glfw_window_size_listener.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_abstract_framebuffer.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer_30.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer_ext.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer_wrapper.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\gl_buffer.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\gl_core.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\gl_pointer_binding.cpp" />
@@ -207,6 +218,7 @@
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_physical_texture.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_s3tc_texture.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_texture.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_physical_texture_wrapper.cpp" />
     <ClCompile Include="Sources\org\segames\library\hashable.cpp" />
     <ClCompile Include="Sources\org\segames\library\index_out_of_bounds_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\invalid_value_exception.cpp" />

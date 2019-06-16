@@ -2,7 +2,7 @@
 1514140574 source:e:\github\seglibcpp2019w\seglibcpp\main.cpp
 	<iostream>
 
-1560644686 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\debug_shared\debug.cpp
+1560717215 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\debug_shared\debug.cpp
 	<org/segames/library/core.h>
 	<org/segames/library/system.h>
 	<org/segames/library/math/vecmath.h>
@@ -15,8 +15,8 @@
 	<org/segames/library/gl/gl_pointer_binding.h>
 	<org/segames/library/gl/gl_core.h>
 	<org/segames/library/gl/gl_exception.h>
-	<org/segames/library/gl/texture/gl_disc_texture.h>
-	<org/segames/library/gl/texture/gl_s3tc_texture.h>
+	<org/segames/library/gl/texture/gl_physical_texture_wrapper.h>
+	<org/segames/library/gl/fbo/gl_framebuffer_wrapper.h>
 	<unordered_map>
 	<thread>
 	<iostream>
@@ -550,7 +550,7 @@
 	<org/segames/library/gl/texture/gl_texture.h>
 	<org/segames/library/gl/gl_core.h>
 
-1560622737 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_texture.h
+1560705985 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_texture.h
 	<org/segames/library/gl/gl_bindable.h>
 	<org/segames/library/math/dimension_3.h>
 	<org/segames/library/object.h>
@@ -614,27 +614,27 @@
 	<limits.h>
 	<crtdbg.h>
 
-1560643458 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_texture.cpp
+1560706023 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_texture.cpp
 	<org/segames/library/gl/texture/gl_texture.h>
 	<org/segames/library/gl/gl_exception.h>
 	<org/segames/library/gl/gl_core.h>
 
-1560638383 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_disc_texture.cpp
+1560699813 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_disc_texture.cpp
 	<org/segames/library/gl/texture/gl_disc_texture.h>
 	<org/segames/library/io/file_not_found_exception.h>
 	<org/segames/library/io/file.h>
 	<stb/stb_image.h>
 
-1560643374 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_disc_texture.h
+1560701782 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_disc_texture.h
 	<org/segames/library/gl/texture/gl_physical_texture.h>
 
-1560645244 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_physical_texture.h
+1560701765 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_physical_texture.h
 	<org/segames/library/gl/texture/gl_texture.h>
 
 1560630129 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_physical_texture.cpp
 	<org/segames/library/gl/texture/gl_physical_texture.h>
 
-1560645177 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_s3tc_texture.h
+1560701778 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_s3tc_texture.h
 	<org/segames/library/gl/texture/gl_physical_texture.h>
 	<org/segames/library/math/dimension_2.h>
 	<memory>
@@ -643,11 +643,64 @@
 1560453885 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\math\dimension_2.h
 	<org/segames/library/math/dimension.h>
 
-1560645089 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_s3tc_texture.cpp
+1560702206 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_s3tc_texture.cpp
 	<org/segames/library/gl/texture/gl_s3tc_texture.h>
+	<org/segames/library/gl/gl_core.h>
 	<org/segames/library/io/file_not_found_exception.h>
 	<org/segames/library/io/file.h>
 	<org/segames/library/math/math.h>
 	<org/segames/library/system.h>
 	<fstream>
+
+1560701915 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\texture\gl_physical_texture_wrapper.cpp
+	<org/segames/library/gl/texture/gl_physical_texture_wrapper.h>
+	<org/segames/library/gl/texture/gl_disc_texture.h>
+	<org/segames/library/gl/texture/gl_s3tc_texture.h>
+	<org/segames/library/util/string_util.h>
+
+1560701771 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\texture\gl_physical_texture_wrapper.h
+	<org/segames/library/gl/texture/gl_physical_texture.h>
+	<memory>
+
+1560708598 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\fbo\gl_abstract_framebuffer.cpp
+	<org/segames/library/gl/fbo/gl_abstract_framebuffer.h>
+	<org/segames/library/gl/gl_exception.h>
+
+1560708558 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\fbo\gl_abstract_framebuffer.h
+	<org/segames/library/gl/fbo/gl_framebuffer.h>
+	<org/segames/library/object.h>
+	<memory>
+
+1560708561 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\fbo\gl_framebuffer.h
+	<org/segames/library/gl/texture/gl_texture.h>
+	<org/segames/library/gl/gl_bindable.h>
+	<org/segames/library/math/dimension_2.h>
+
+1560715889 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\fbo\gl_framebuffer_30.h
+	<org/segames/library/gl/fbo/gl_abstract_framebuffer.h>
+
+1560715915 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\fbo\gl_framebuffer_30.cpp
+	<org/segames/library/gl/fbo/gl_framebuffer_30.h>
+	<org/segames/library/gl/gl_exception.h>
+	<org/segames/library/gl/gl_core.h>
+
+1560708360 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\fbo\gl_framebuffer.cpp
+	<org/segames/library/gl/fbo/gl_framebuffer.h>
+
+1560715936 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\fbo\gl_framebuffer_ext.cpp
+	<org/segames/library/gl/fbo/gl_framebuffer_ext.h>
+	<org/segames/library/gl/gl_exception.h>
+	<org/segames/library/gl/gl_core.h>
+
+1560716121 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\fbo\gl_framebuffer_ext.h
+	<org/segames/library/gl/fbo/gl_abstract_framebuffer.h>
+
+1560717186 e:\github\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\fbo\gl_framebuffer_wrapper.h
+	<org/segames/library/gl/fbo/gl_abstract_framebuffer.h>
+
+1560717162 source:e:\github\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\fbo\gl_framebuffer_wrapper.cpp
+	<org/segames/library/gl/fbo/gl_framebuffer_wrapper.h>
+	<org/segames/library/gl/fbo/gl_framebuffer_30.h>
+	<org/segames/library/gl/fbo/gl_framebuffer_ext.h>
+	<org/segames/library/gl/gl_exception.h>
 

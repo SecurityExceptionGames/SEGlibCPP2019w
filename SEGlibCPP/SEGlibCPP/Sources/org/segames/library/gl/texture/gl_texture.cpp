@@ -34,6 +34,11 @@ namespace org
 					case GL_R8:
 					case GL_R16:
 						return GL_RED;
+					case GL_DEPTH_COMPONENT:
+					case GL_DEPTH_COMPONENT16:
+					case GL_DEPTH_COMPONENT24:
+					case GL_DEPTH_COMPONENT32:
+						return GL_DEPTH_COMPONENT;
 					default:
 						return internalFormat;
 					}
@@ -89,6 +94,11 @@ namespace org
 				const Dimension3i& GLTexture::getSize() const
 				{
 					return m_size;
+				}
+
+				void GLTexture::setSize(const Dimension3i& size)
+				{
+					m_size = size;
 				}
 
 				const GLTexture& GLTexture::bind() const
