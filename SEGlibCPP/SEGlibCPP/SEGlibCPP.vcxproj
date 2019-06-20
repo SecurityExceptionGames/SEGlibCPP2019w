@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="C:\Users\Philip R\Desktop\org\segames\library\gl\nuklear\nk_core.h" />
     <ClInclude Include="Headers\org\segames\library\array_index_out_of_bounds_exception.h" />
     <ClInclude Include="Headers\org\segames\library\core.h" />
     <ClInclude Include="Headers\org\segames\library\dllmain.h" />
@@ -153,6 +154,8 @@
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_s3tc_texture.h" />
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_texture.h" />
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_physical_texture_wrapper.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\text\gl_font.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\text\gl_font_glyph.h" />
     <ClInclude Include="Headers\org\segames\library\hashable.h" />
     <ClInclude Include="Headers\org\segames\library\index_out_of_bounds_exception.h" />
     <ClInclude Include="Headers\org\segames\library\invalid_value_exception.h" />
@@ -171,8 +174,9 @@
     <ClInclude Include="Headers\org\segames\library\null_pointer_exception.h" />
     <ClInclude Include="Headers\org\segames\library\object.h" />
     <ClInclude Include="Headers\org\segames\library\system.h" />
-    <ClInclude Include="Headers\org\segames\library\thread\synchronized.h" />
-    <ClInclude Include="Headers\org\segames\library\thread\volatile.h" />
+    <ClInclude Include="Headers\org\segames\library\synchronized.h" />
+    <ClInclude Include="Headers\org\segames\library\util\utf8_iterator.h" />
+    <ClInclude Include="Headers\org\segames\library\volatile.h" />
     <ClInclude Include="Headers\org\segames\library\util\abstract_list.h" />
     <ClInclude Include="Headers\org\segames\library\util\array.h" />
     <ClInclude Include="Headers\org\segames\library\util\array_backed.h" />
@@ -189,9 +193,12 @@
     <ClInclude Include="Headers\org\segames\library\util\stack.h" />
     <ClInclude Include="Headers\org\segames\library\util\string_util.h" />
     <ClInclude Include="Headers\org\segames\library\util\timer.h" />
+    <ClInclude Include="Sources\debug_shared\nk_core.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="C:\Users\Philip R\Desktop\org\segames\library\gl\nuklear\nk_core.cpp" />
     <ClCompile Include="Sources\debug_shared\debug.cpp" />
+    <ClCompile Include="Sources\debug_shared\nk_core.cpp" />
     <ClCompile Include="Sources\glad.c" />
     <ClCompile Include="Sources\org\segames\library\array_index_out_of_bounds_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\core.cpp" />
@@ -219,6 +226,8 @@
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_s3tc_texture.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_texture.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_physical_texture_wrapper.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\text\gl_font.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\text\gl_font_glyph.cpp" />
     <ClCompile Include="Sources\org\segames\library\hashable.cpp" />
     <ClCompile Include="Sources\org\segames\library\index_out_of_bounds_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\invalid_value_exception.cpp" />
@@ -233,6 +242,7 @@
     <ClCompile Include="Sources\org\segames\library\util\simplex_noise.cpp" />
     <ClCompile Include="Sources\org\segames\library\util\string_util.cpp" />
     <ClCompile Include="Sources\org\segames\library\util\timer.cpp" />
+    <ClCompile Include="Sources\org\segames\library\util\utf8_iterator.cpp" />
     <ClCompile Include="Sources\stb_definitions.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

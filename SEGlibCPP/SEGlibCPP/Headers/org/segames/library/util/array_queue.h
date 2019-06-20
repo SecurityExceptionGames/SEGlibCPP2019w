@@ -59,7 +59,7 @@ namespace org
 						Copies the given array backed object's data into this one.
 						* @param[in] obj The array backed object whose data to copy into this queue.
 					*/
-					explicit ArrayQueue(const ArrayBacked<T, typename ArrayList<T>::PosType>& obj) :
+					ArrayQueue(const ArrayBacked<T, typename ArrayList<T>::PosType>& obj) :
 						m_list(obj)
 					{}
 

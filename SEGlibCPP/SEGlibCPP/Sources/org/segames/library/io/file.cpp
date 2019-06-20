@@ -1,4 +1,5 @@
 #include <org/segames/library/io/file.h>
+#include <org/segames/library/io/file_not_found_exception.h>
 #include <org/segames/library/util/string_util.h>
 
 #ifdef _WIN32
@@ -233,6 +234,28 @@ namespace org
 				File File::getParentFile() const
 				{
 					return File(getParent());
+				}
+
+				std::ifstream File::openInput() const
+				{
+					if (!exists())
+						throw FileNotFoundException(getPath(), __FILE__, __LINE__);
+					
+					std::ifstream stream(getPath(), std::fstream::binary);
+					if (!stream.good())
+						throw IOException("Could not open input stream to file \"" + getPath() + "\"", __FILE__, __LINE__);
+					return stream;
+				}
+
+				std::ofstream File::openOutput() const
+				{
+					if (!exists())
+						throw FileNotFoundException(getPath(), __FILE__, __LINE__);
+
+					std::ofstream stream(getPath(), std::fstream::binary);
+					if (!stream.good())
+						throw IOException("Could not open output stream to file \"" + getPath() + "\"", __FILE__, __LINE__);
+					return stream;
 				}
 
 				void File::list(util::ArrayList<std::string>& names) const

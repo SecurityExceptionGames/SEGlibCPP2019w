@@ -51,7 +51,7 @@ namespace org
 						Creates an array queue of the given starting capacity.
 						* @param[in] capacity The starting capacity of the stack
 					*/
-					ArrayStack(const typename ArrayList<T>::PosType capacity) :
+					explicit ArrayStack(const typename ArrayList<T>::PosType capacity) :
 						m_list(capacity)
 					{}
 
@@ -59,7 +59,7 @@ namespace org
 						Copies the given array backed object's data into this one.
 						* @param[in] obj The array backed object whose data to copy into this stack.
 					*/
-					explicit ArrayStack(const ArrayBacked<T, typename ArrayList<T>::PosType>& obj) :
+					ArrayStack(const ArrayBacked<T, typename ArrayList<T>::PosType>& obj) :
 						m_list(obj)
 					{}
 

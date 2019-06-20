@@ -73,12 +73,15 @@
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/fbo/gl_framebuffer.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/fbo/gl_framebuffer_30.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/fbo/gl_framebuffer_ext.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/fbo/gl_framebuffer_wrapper.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/gl_buffer.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/gl_core.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/gl_exception.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/gl_pointer_binding.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/gl_pointer_inf.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/gl_shader.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/text/gl_font.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/text/gl_font_glyph.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/texture/gl_disc_texture.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/texture/gl_physical_texture.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/gl/texture/gl_physical_texture_wrapper.cpp" />
@@ -104,6 +107,7 @@
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/util/simplex_noise.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/util/string_util.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/util/timer.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/util/utf8_iterator.cpp" />
 		<Unit filename="SEGlibCPP/Sources/stb_definitions.cpp" />
 		<Extensions>
 			<code_completion />

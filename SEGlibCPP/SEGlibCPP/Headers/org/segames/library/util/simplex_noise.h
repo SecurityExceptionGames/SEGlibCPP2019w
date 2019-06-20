@@ -108,7 +108,7 @@ namespace org
 						Copies the given simplex noise instance.
 						* @param[in] obj The simplex noise instance to copy
 					*/
-					explicit SimplexNoise(const SimplexNoise& obj);
+					SimplexNoise(const SimplexNoise& obj);
 
 					/*
 						Returns the seed of the noise.

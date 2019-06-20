@@ -1,6 +1,8 @@
 #pragma once
 #include <org/segames/library/io/file_attributes.h>
 
+#include <fstream>
+
 namespace org
 {
 
@@ -166,6 +168,16 @@ namespace org
 						Returns the parent file or directory of this file.
 					*/
 					virtual File getParentFile() const;
+
+					/*
+						Opens an input stream from the file.
+					*/
+					virtual std::ifstream openInput() const;
+
+					/*
+						Opens an output stream to the file.
+					*/
+					virtual std::ofstream openOutput() const;
 
 					/*
 						Lists the names of the sub files and folders of this file.

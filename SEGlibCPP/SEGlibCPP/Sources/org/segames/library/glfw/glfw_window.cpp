@@ -284,6 +284,11 @@ namespace org
 					glfwSwapBuffers(m_window);
 				}
 
+				void GLFWWindow::setSwapInterval(const int interval)
+				{
+					glfwSwapInterval(interval);
+				}
+
 			}
 
 		}

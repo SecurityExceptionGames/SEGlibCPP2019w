@@ -62,7 +62,7 @@ namespace org
 						Creates a default fractal noise generator with the given seed.
 						* @param[in] seed The seed to use
 					*/
-					FractalNoise(const unsigned int seed);
+					explicit FractalNoise(const unsigned int seed);
 
 					/*
 						Creates a default fractal noise generator with a random seed and the given parameters.
@@ -71,7 +71,7 @@ namespace org
 						* @param[in] lacunarity Lacunarity specifies the frequency multiplier between successive octaves (optional)
 						* @param[in] persistence Persistence is the loss of amplitude between successive octaves (optional)
 					*/
-					FractalNoise(double frequency = 1.0, double amplitude = 1.0, double lacunarity = 2.0, double persistence = 0.5);
+					explicit FractalNoise(double frequency = 1.0, double amplitude = 1.0, double lacunarity = 2.0, double persistence = 0.5);
 
 					/*
 						Creates a default fractal noise generator with the given seed and parameters.
@@ -81,7 +81,7 @@ namespace org
 						* @param[in] lacunarity Lacunarity specifies the frequency multiplier between successive octaves (optional)
 						* @param[in] persistence Persistence is the loss of amplitude between successive octaves (optional)
 					*/
-					FractalNoise(const unsigned int seed, double frequency = 1.0, double amplitude = 1.0, double lacunarity = 2.0, double persistence = 0.5);
+					explicit FractalNoise(const unsigned int seed, double frequency = 1.0, double amplitude = 1.0, double lacunarity = 2.0, double persistence = 0.5);
 
 					/*
 						Generates a fractal/fractional Brownian noise value (1D).

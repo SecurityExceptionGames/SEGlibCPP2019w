@@ -263,6 +263,12 @@ namespace org
 					*/
 					virtual void swapBuffers();
 
+					/*
+						Sets the GLFW buffer swap interval, ie. 1 to enable vsync, 0 to turn it off.
+						* @param[in] interval The swap interval, 1 to enable vsync, 0 to turn it off.
+					*/
+					static void setSwapInterval(const int interval);
+
 				};
 
 			}

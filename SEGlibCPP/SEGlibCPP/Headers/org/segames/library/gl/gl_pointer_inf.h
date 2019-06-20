@@ -55,6 +55,11 @@ namespace org
 				public:
 
 					/*
+						Creates an empty/zeroed information.
+					*/
+					GLPointerInf();
+
+					/*
 						Creates a new pointer information object.
 						* @param[in] type The type of data, GL_FLOAT, GL_INTEGER etc.
 						* @param[in] size Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4.

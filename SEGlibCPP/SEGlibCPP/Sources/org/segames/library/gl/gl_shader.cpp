@@ -9,7 +9,7 @@ using org::segames::library::io::File;
 using org::segames::library::io::FileNotFoundException;
 using org::segames::library::io::IOException;
 using org::segames::library::util::Timer;
-#include <iostream>
+
 namespace org
 {
 
@@ -38,7 +38,7 @@ namespace org
 						glGetShaderInfoLog(id, 0x00100000, NULL, buf.get());
 						glDeleteShader(id);
 						
-						throw GLException("Shader \"" + name + "\" did not compile " + std::string(buf.get()));
+						throw GLException("Shader \"" + name + "\" did not compile\n" + std::string(buf.get()));
 					}
 
 					return id;

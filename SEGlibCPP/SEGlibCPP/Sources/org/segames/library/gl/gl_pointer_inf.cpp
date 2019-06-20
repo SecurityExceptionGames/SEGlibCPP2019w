@@ -12,6 +12,10 @@ namespace org
 			namespace gl
 			{
 
+				GLPointerInf::GLPointerInf() :
+					GLPointerInf(GL_FLOAT, 2, 0, 0)
+				{}
+
 				GLPointerInf::GLPointerInf(const GLenum type, const GLint size, const GLint stride, const size_t offset) :
 					GLPointerInf(false, type, size, stride, offset)
 				{}
