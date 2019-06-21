@@ -1,5 +1,13 @@
 #include <org/segames/library/core.h>
 
+#ifdef _WIN32
+#include <Windows.h>
+#undef ERROR //Because why the f*ck should this exist?
+#include <ImageHlp.h>
+#include <Psapi.h>
+#include <memory>
+#endif
+
 namespace org
 {
 
@@ -108,6 +116,123 @@ namespace org
 				}
 
 			}
+
+#ifdef _WIN32
+			int addr2line(char const * const program_name, void const * const addr)
+			{
+				char addr2line_cmd[512] = { 0 };
+
+				/* have addr2line map the address to the relent line in the code */
+#ifdef __APPLE__
+  /* apple does things differently... */
+				sprintf(addr2line_cmd, "atos -o %.256s %p", program_name, addr);
+#else
+				sprintf(addr2line_cmd, "addr2line -f -p -e %.256s %p", program_name, addr);
+#endif
+
+				return system(addr2line_cmd);
+			}
+
+			void Core::getStackTrace(std::ostream& out, const int offset = 1)
+			{
+				/*HANDLE process;
+				HANDLE thread;
+				CONTEXT context;
+				MODULEINFO moduleInfo;
+				IMAGE_NT_HEADERS* imageHeaders;
+				STACKFRAME64 frame;
+				DWORD numModules;
+				std::unique_ptr<HMODULE> modules;
+
+				process = GetCurrentProcess();
+				thread = GetCurrentThread();
+
+				if (!SymInitialize(process, NULL, true))
+					return;
+
+				if (!GetThreadContext(thread, &context))
+				{
+					SymCleanup(process);
+					return;
+				}
+
+				EnumProcessModules(process, NULL, 0, &numModules);
+				modules = std::unique_ptr<HMODULE>(new HMODULE[numModules]);
+				EnumProcessModules(process, modules.get(), sizeof(HMODULE), &numModules);
+
+				GetModuleInformation(process, modules.get()[0], &moduleInfo, sizeof(MODULEINFO));
+				imageHeaders = ImageNtHeader(moduleInfo.lpBaseOfDll);
+
+				out << GetLastError() << std::endl;
+
+#ifdef _M_X64
+				frame.AddrPC.Offset = context.Rip;
+				frame.AddrPC.Mode = AddrModeFlat;
+				frame.AddrStack.Offset = context.Rsp;
+				frame.AddrStack.Mode = AddrModeFlat;
+				frame.AddrFrame.Offset = context.Rbp;
+				frame.AddrFrame.Mode = AddrModeFlat;
+#else
+				frame.AddrPC.Offset = context.Eip;
+				frame.AddrPC.Mode = AddrModeFlat;
+				frame.AddrStack.Offset = context.Esp;
+				frame.AddrStack.Mode = AddrModeFlat;
+				frame.AddrFrame.Offset = context.Ebp;
+				frame.AddrFrame.Mode = AddrModeFlat;
+#endif
+				out << GetLastError() << std::endl;
+
+				out << "MACHINE: " << imageHeaders->FileHeader.Machine << "   " << IMAGE_FILE_MACHINE_AMD64 << std::endl;
+
+				DWORD64 symbolOffset = 0;
+				DWORD lineOffset = 0;
+				while (StackWalk(imageHeaders->FileHeader.Machine,
+					process, thread,
+					&frame, &context,
+					NULL, SymFunctionTableAccess, SymGetModuleBase, NULL))
+				{
+					const int nameLen = 1024;
+					char name[nameLen];
+					char buf[nameLen + sizeof(IMAGEHLP_SYMBOL)];
+					IMAGEHLP_SYMBOL* symbol = (IMAGEHLP_SYMBOL*)buf;
+					IMAGEHLP_LINE line = { 0 };
+
+					out << GetLastError() << std::endl;
+
+					memset(name, 0, sizeof(name));
+					memset(buf, 0, sizeof(buf));
+
+					symbol->SizeOfStruct = sizeof(*symbol);
+					symbol->MaxNameLength = nameLen;
+
+					SymGetSymFromAddr(process, frame.AddrPC.Offset, &symbolOffset, symbol);
+
+					out << GetLastError() << std::endl;
+
+					UnDecorateSymbolName(symbol->Name, name, nameLen, UNDNAME_COMPLETE);
+
+					out << GetLastError() << std::endl;
+
+					SymGetLineFromAddr(process, frame.AddrPC.Offset, &lineOffset, &line);
+
+					out << GetLastError() << std::endl;
+
+					out << "[" << frame.AddrPC.Offset << "]: \"" << std::string(name).c_str() << "\" # \"" << symbol->Name << "\" " << symbolOffset << std::endl;
+					out << "\\ \"" << line.FileName << "\" \"" << line.LineNumber << "\"" << std::endl;
+					//out << GetLastError() << " / " << frame.AddrPC.Offset << std::endl;
+				}
+
+				SymCleanup(process);*/
+
+				void* frames[16];
+				int captured = CaptureStackBackTrace(0, 16, frames, NULL);
+
+				for (int i = 0; i < captured-4; i++)
+					addr2line(__argv[0], frames[i]);
+					//printf("%p\n", frames[i]);
+				
+			}
+#endif
 
 		}
 

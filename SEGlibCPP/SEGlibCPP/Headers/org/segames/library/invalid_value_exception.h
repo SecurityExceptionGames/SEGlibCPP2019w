@@ -31,7 +31,15 @@ namespace org
 					Creates an  invalid value exception with the given message
 					* @param[in] message The message to use for the exception
 				*/
-				InvalidValueException(const std::string& message);
+				explicit InvalidValueException(const std::string& message);
+
+				/*
+					Creates a invalid value exception with the given message
+					* @param[in] message The message to use for the exception
+					* @param[in] file The file in which the exception was thrown
+					* @param[in] line The line at which the exception was thrown
+				*/
+				explicit InvalidValueException(const std::string& message, const char* file, const int line);
 
 			};
 

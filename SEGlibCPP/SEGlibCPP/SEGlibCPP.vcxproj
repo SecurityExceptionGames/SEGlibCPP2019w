@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -77,6 +77,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)\Headers;$(ProjectDir)\..\extlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SEG_API_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -86,6 +87,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)\Headers;$(ProjectDir)\..\extlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SEG_API_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -97,6 +99,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)\Headers;$(ProjectDir)\..\extlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SEG_API_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -112,6 +115,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)\Headers;$(ProjectDir)\..\extlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SEG_API_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -119,35 +123,127 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="C:\Users\Philip R\Desktop\org\segames\library\gl\nuklear\nk_core.h" />
     <ClInclude Include="Headers\org\segames\library\array_index_out_of_bounds_exception.h" />
     <ClInclude Include="Headers\org\segames\library\core.h" />
     <ClInclude Include="Headers\org\segames\library\dllmain.h" />
     <ClInclude Include="Headers\org\segames\library\exception.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_iconification_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_key_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_mouse_button_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_mouse_position_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_window.h" />
+    <ClInclude Include="Headers\org\segames\library\glfw\glfw_window_size_listener.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_abstract_framebuffer.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer_30.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer_ext.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\fbo\gl_framebuffer_wrapper.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\gl_core.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\gl_data_type.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\gl_backed_buffer.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\gl_bindable.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\gl_buffer.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\gl_pointer_binding.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\gl_pointer_inf.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\gl_shader.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\gl_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\texture\gl_disc_texture.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\texture\gl_physical_texture.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\texture\gl_s3tc_texture.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\texture\gl_texture.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\texture\gl_physical_texture_wrapper.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\text\gl_font.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\text\gl_font_glyph.h" />
+    <ClInclude Include="Headers\org\segames\library\hashable.h" />
     <ClInclude Include="Headers\org\segames\library\index_out_of_bounds_exception.h" />
     <ClInclude Include="Headers\org\segames\library\invalid_value_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\io\file.h" />
+    <ClInclude Include="Headers\org\segames\library\io\file_attributes.h" />
+    <ClInclude Include="Headers\org\segames\library\io\file_not_found_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\io\io_exception.h" />
     <ClInclude Include="Headers\org\segames\library\library.h" />
+    <ClInclude Include="Headers\org\segames\library\math\dimension.h" />
+    <ClInclude Include="Headers\org\segames\library\math\dimension_2.h" />
+    <ClInclude Include="Headers\org\segames\library\math\dimension_3.h" />
     <ClInclude Include="Headers\org\segames\library\math\math.h" />
+    <ClInclude Include="Headers\org\segames\library\util\fractal_noise.h" />
+    <ClInclude Include="Headers\org\segames\library\util\simplex_noise.h" />
     <ClInclude Include="Headers\org\segames\library\math\vecmath.h" />
     <ClInclude Include="Headers\org\segames\library\null_pointer_exception.h" />
     <ClInclude Include="Headers\org\segames\library\object.h" />
     <ClInclude Include="Headers\org\segames\library\system.h" />
-    <ClInclude Include="Headers\org\segames\library\util\heap_block.h" />
+    <ClInclude Include="Headers\org\segames\library\synchronized.h" />
+    <ClInclude Include="Headers\org\segames\library\util\utf8_iterator.h" />
+    <ClInclude Include="Headers\org\segames\library\volatile.h" />
+    <ClInclude Include="Headers\org\segames\library\util\abstract_list.h" />
+    <ClInclude Include="Headers\org\segames\library\util\array.h" />
+    <ClInclude Include="Headers\org\segames\library\util\array_backed.h" />
+    <ClInclude Include="Headers\org\segames\library\util\array_list.h" />
+    <ClInclude Include="Headers\org\segames\library\util\array_queue.h" />
+    <ClInclude Include="Headers\org\segames\library\util\array_stack.h" />
+    <ClInclude Include="Headers\org\segames\library\util\iterable.h" />
+    <ClInclude Include="Headers\org\segames\library\util\iterator.h" />
+    <ClInclude Include="Headers\org\segames\library\util\linked_list.h" />
+    <ClInclude Include="Headers\org\segames\library\util\list.h" />
+    <ClInclude Include="Headers\org\segames\library\util\list_iterator.h" />
+    <ClInclude Include="Headers\org\segames\library\util\queue.h" />
     <ClInclude Include="Headers\org\segames\library\util\random.h" />
+    <ClInclude Include="Headers\org\segames\library\util\stack.h" />
+    <ClInclude Include="Headers\org\segames\library\util\string_util.h" />
     <ClInclude Include="Headers\org\segames\library\util\timer.h" />
+    <ClInclude Include="Sources\debug_shared\nk_core.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="C:\Users\Philip R\Desktop\org\segames\library\gl\nuklear\nk_core.cpp" />
     <ClCompile Include="Sources\debug_shared\debug.cpp" />
+    <ClCompile Include="Sources\debug_shared\nk_core.cpp" />
     <ClCompile Include="Sources\glad.c" />
     <ClCompile Include="Sources\org\segames\library\array_index_out_of_bounds_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\core.cpp" />
     <ClCompile Include="Sources\org\segames\library\dllmain.cpp" />
     <ClCompile Include="Sources\org\segames\library\exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_iconification_listener.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_key_listener.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_mouse_button_listener.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_mouse_position_listener.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_window.cpp" />
+    <ClCompile Include="Sources\org\segames\library\glfw\glfw_window_size_listener.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_abstract_framebuffer.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer_30.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer_ext.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\fbo\gl_framebuffer_wrapper.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\gl_buffer.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\gl_core.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\gl_pointer_binding.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\gl_pointer_inf.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\gl_exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\gl_shader.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_disc_texture.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_physical_texture.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_s3tc_texture.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_texture.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\texture\gl_physical_texture_wrapper.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\text\gl_font.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\text\gl_font_glyph.cpp" />
+    <ClCompile Include="Sources\org\segames\library\hashable.cpp" />
     <ClCompile Include="Sources\org\segames\library\index_out_of_bounds_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\invalid_value_exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\io\file.cpp" />
+    <ClCompile Include="Sources\org\segames\library\io\file_attributes.cpp" />
+    <ClCompile Include="Sources\org\segames\library\io\file_not_found_exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\io\io_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\math\math.cpp" />
     <ClCompile Include="Sources\org\segames\library\null_pointer_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\object.cpp" />
+    <ClCompile Include="Sources\org\segames\library\util\fractal_noise.cpp" />
+    <ClCompile Include="Sources\org\segames\library\util\simplex_noise.cpp" />
+    <ClCompile Include="Sources\org\segames\library\util\string_util.cpp" />
     <ClCompile Include="Sources\org\segames\library\util\timer.cpp" />
+    <ClCompile Include="Sources\org\segames\library\util\utf8_iterator.cpp" />
+    <ClCompile Include="Sources\stb_definitions.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

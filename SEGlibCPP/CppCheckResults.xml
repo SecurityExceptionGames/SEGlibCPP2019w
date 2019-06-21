@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<results version="2">
+    <cppcheck version="1.87" />
+    <errors>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayList &lt; std :: string &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayList &lt; std :: string &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_list.h" line="111" />
+            <symbol>ArrayList &lt; std :: string &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayList &lt; File &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayList &lt; File &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\debug_shared\debug.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_list.h" line="111" />
+            <symbol>ArrayList &lt; File &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayList &lt; std :: string &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayList &lt; std :: string &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\io\file.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_list.h" line="111" />
+            <symbol>ArrayList &lt; std :: string &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayList &lt; File &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayList &lt; File &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\io\file.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_list.h" line="111" />
+            <symbol>ArrayList &lt; File &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayList &lt; std :: string &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayList &lt; std :: string &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\io\file_attributes.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_list.h" line="111" />
+            <symbol>ArrayList &lt; std :: string &gt;</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;ArrayList &lt; std :: string &gt;&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;ArrayList &lt; std :: string &gt;&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="SEGlibCPP\Sources\org\segames\library\util\string_util.cpp" file="SEGlibCPP\Headers\org\segames\library\util\array_list.h" line="111" />
+            <symbol>ArrayList &lt; std :: string &gt;</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;createNewFile&apos; is never used." verbose="The function &apos;createNewFile&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file.cpp" line="146" />
+            <symbol>createNewFile</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;createNewFileWindows&apos; is never used." verbose="The function &apos;createNewFileWindows&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file.cpp" line="23" />
+            <symbol>createNewFileWindows</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;deleteFile&apos; is never used." verbose="The function &apos;deleteFile&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file.cpp" line="155" />
+            <symbol>deleteFile</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;deltaTime&apos; is never used." verbose="The function &apos;deltaTime&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="69" />
+            <symbol>deltaTime</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getIn&apos; is never used." verbose="The function &apos;getIn&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\core.cpp" line="40" />
+            <symbol>getIn</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getName&apos; is never used." verbose="The function &apos;getName&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file.cpp" line="208" />
+            <symbol>getName</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getParentFile&apos; is never used." verbose="The function &apos;getParentFile&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file.cpp" line="228" />
+            <symbol>getParentFile</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getUpdateRate&apos; is never used." verbose="The function &apos;getUpdateRate&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="84" />
+            <symbol>getUpdateRate</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getUpdateTime&apos; is never used." verbose="The function &apos;getUpdateTime&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="89" />
+            <symbol>getUpdateTime</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getWindowID&apos; is never used." verbose="The function &apos;getWindowID&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\glfw\glfw_window.cpp" line="173" />
+            <symbol>getWindowID</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;gladLoadGL&apos; is never used." verbose="The function &apos;gladLoadGL&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\glad.c" line="743" />
+            <symbol>gladLoadGL</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;isIconified&apos; is never used." verbose="The function &apos;isIconified&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\glfw\glfw_iconification_listener.cpp" line="33" />
+            <symbol>isIconified</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;isNull&apos; is never used." verbose="The function &apos;isNull&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file.cpp" line="127" />
+            <symbol>isNull</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;listWindows&apos; is never used." verbose="The function &apos;listWindows&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file.cpp" line="71" />
+            <symbol>listWindows</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;loadAttribWindows&apos; is never used." verbose="The function &apos;loadAttribWindows&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file_attributes.cpp" line="25" />
+            <symbol>loadAttribWindows</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;microTime&apos; is never used." verbose="The function &apos;microTime&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="26" />
+            <symbol>microTime</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;mkdirs&apos; is never used." verbose="The function &apos;mkdirs&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file.cpp" line="166" />
+            <symbol>mkdirs</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;mkdirsWindows&apos; is never used." verbose="The function &apos;mkdirsWindows&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file.cpp" line="43" />
+            <symbol>mkdirsWindows</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;randomf&apos; is never used." verbose="The function &apos;randomf&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\math\math.cpp" line="23" />
+            <symbol>randomf</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setAllOut&apos; is never used." verbose="The function &apos;setAllOut&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\core.cpp" line="80" />
+            <symbol>setAllOut</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setDirectory&apos; is never used." verbose="The function &apos;setDirectory&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file_attributes.cpp" line="122" />
+            <symbol>setDirectory</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setFullscreen&apos; is never used." verbose="The function &apos;setFullscreen&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\glfw\glfw_window.cpp" line="191" />
+            <symbol>setFullscreen</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setIn&apos; is never used." verbose="The function &apos;setIn&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\core.cpp" line="60" />
+            <symbol>setIn</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setLength&apos; is never used." verbose="The function &apos;setLength&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file_attributes.cpp" line="127" />
+            <symbol>setLength</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPath&apos; is never used." verbose="The function &apos;setPath&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\io\file_attributes.cpp" line="132" />
+            <symbol>setPath</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPosition&apos; is never used." verbose="The function &apos;setPosition&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\glfw\glfw_window.cpp" line="202" />
+            <symbol>setPosition</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPositionCenter&apos; is never used." verbose="The function &apos;setPositionCenter&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\glfw\glfw_window.cpp" line="207" />
+            <symbol>setPositionCenter</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPrintTime&apos; is never used." verbose="The function &apos;setPrintTime&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\core.cpp" line="87" />
+            <symbol>setPrintTime</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setUpdateRate&apos; is never used." verbose="The function &apos;setUpdateRate&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="94" />
+            <symbol>setUpdateRate</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;sync&apos; is never used." verbose="The function &apos;sync&apos; is never used." cwe="561">
+            <location file="SEGlibCPP\Sources\org\segames\library\util\timer.cpp" line="100" />
+            <symbol>sync</symbol>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Cppcheck cannot find all the include files (use --check-config for details)" verbose="Cppcheck cannot find all the include files. Cppcheck can check the code without the include files found. But the results will probably be more accurate if all the include files are found. Please check your project&apos;s include directories and add all of them as include directories for Cppcheck. To see what files Cppcheck cannot find use --check-config." />
+    </errors>
+</results>

@@ -1,5 +1,6 @@
 #pragma once
 #include <org/segames/library/util/timer.h>
+
 #include <random>
 
 namespace org
@@ -15,13 +16,14 @@ namespace org
 			{
 
 				/*
-					A random number generator wrapper, template should either be "float", "double" or "long double"
+					A random number generator wrapper, template should either be "float", "double" or "long double".
 
 					* @author	Philip Rosberg
 					* @since	2018-09-21
 					* @edited	2018-09-21
 				*/
-				template<typename T> class Random :
+				template<typename T> 
+				class Random :
 					public Object
 				{
 				private:
@@ -39,24 +41,24 @@ namespace org
 				public:
 
 					/*
-						Creates a random number generator using the time as the seed
+						Creates a random number generator using the time as the seed.
 					*/
 					Random() :
 						Random((unsigned int)Timer::milliTime())
 					{}
 
 					/*
-						Creates a random number generator using the given seed
+						Creates a random number generator using the given seed.
 						* @param[in] seed The seed to use
 					*/
-					Random(const unsigned int seed) :
+					explicit Random(const unsigned int seed) :
 						distribution(0, 1)
 					{
 						generator.seed(seed);
 					}
 
 					/*
-						Returns the next random value in the range [0, 1)
+						Returns the next random value in the range [0, 1).
 					*/
 					inline virtual T random()
 					{
@@ -64,7 +66,7 @@ namespace org
 					}
 
 					/*
-						Returns a random int in the given range [min, max]
+						Returns a random int in the given range [min, max].
 						* @param[in] min The minimum value
 						* @param[in] max The maximum value
 					*/

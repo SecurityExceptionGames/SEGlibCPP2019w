@@ -17,23 +17,23 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2018-05-09
-				* @edited	2018-05-09
+				* @edited	2019-03-17
 			*/
 			class SEG_API Exception :
 				public Object,
 				private std::exception
 			{
-			private:
+			protected:
 
 				/*
 					True if the exception has a message to display
 				*/
-				bool hasMessage;
+				bool m_hasMessage;
 
 				/*
 					The message of the exception
 				*/
-				std::string message;
+				std::string m_message;
 
 			public:
 
@@ -46,7 +46,15 @@ namespace org
 					Creates an exception with the given message
 					* @param[in] message The message to use for the exception
 				*/
-				Exception(const std::string& message);
+				explicit Exception(const std::string& message);
+
+				/*
+					Creates an exception with the given message
+					* @param[in] message The message to use for the exception
+					* @param[in] file The file in which the exception was thrown
+					* @param[in] line The line at which the exception was thrown
+				*/
+				explicit Exception(const std::string& message, const char* file, const int line);
 
 				/*
 					Returns the exception message
@@ -67,13 +75,13 @@ namespace org
 				/*
 					Returns a string representation of the exception object
 				*/
-				virtual std::string toString() const;
+				virtual std::string toString() const override;
 
 				/*
 					Returns true if the the given object is equal to this one
 					* @param[in] obj The object to check
 				*/
-				virtual bool equals(const Object& obj) const;
+				virtual bool equals(const Object& obj) const override;
 
 			};
 

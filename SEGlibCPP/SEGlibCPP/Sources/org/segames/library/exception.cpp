@@ -1,5 +1,4 @@
 #include <org/segames/library/exception.h>
-
 #include <org/segames/library/core.h>
 
 #include <iostream>
@@ -17,15 +16,19 @@ namespace org
 				Exception("")
 			{}
 
-			Exception::Exception(const std::string& message_) :
-				hasMessage(message_.length() != 0),
-				message(message_)
+			Exception::Exception(const std::string& message) :
+				m_hasMessage(message.length() != 0),
+				m_message(message)
+			{}
+
+			Exception::Exception(const std::string& message, const char* file, const int line) :
+				Exception(message + "\n\tat " + file + ":" + std::to_string(line))
 			{}
 
 			const char* Exception::what() const noexcept
 			{
-				if (hasMessage)
-					return message.c_str();
+				if (m_hasMessage)
+					return m_message.c_str();
 				return nullptr;
 			}
 
@@ -42,7 +45,7 @@ namespace org
 			std::string Exception::toString() const
 			{
 				//23 is a magical number, or something
-				if (hasMessage)
+				if (m_hasMessage)
 					return std::string(typeid(*this).name() + 23) + ": " + what();
 				return std::string(typeid(*this).name() + 23);
 			}

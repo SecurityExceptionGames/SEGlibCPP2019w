@@ -31,7 +31,15 @@ namespace org
 					Creates an index out of bounds exception with the given message
 					* @param[in] message The message to use for the exception
 				*/
-				IndexOutOfBoundsException(const std::string& message);
+				explicit IndexOutOfBoundsException(const std::string& message);
+
+				/*
+					Creates an index out of bounds exception with the given message
+					* @param[in] message The message to use for the exception
+					* @param[in] file The file in which the exception was thrown
+					* @param[in] line The line at which the exception was thrown
+				*/
+				explicit IndexOutOfBoundsException(const std::string& message, const char* file, const int line);
 
 			};
 

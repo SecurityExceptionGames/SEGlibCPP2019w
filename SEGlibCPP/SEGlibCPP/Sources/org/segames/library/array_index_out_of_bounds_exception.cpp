@@ -17,6 +17,10 @@ namespace org
 				IndexOutOfBoundsException("Array index out of range: " + std::to_string(index))
 			{}
 
+			ArrayIndexOutOfBoundsException::ArrayIndexOutOfBoundsException(const size_t index, const char* file, const int line) :
+				IndexOutOfBoundsException("Array index out of range: " + std::to_string(index), file, line)
+			{}
+
 		}
 
 	}

@@ -17,6 +17,10 @@ namespace org
 				Exception(message.c_str())
 			{}
 
+			IndexOutOfBoundsException::IndexOutOfBoundsException(const std::string& message, const char* file, const int line) :
+				Exception(message, file, line)
+			{}
+
 		}
 
 	}
