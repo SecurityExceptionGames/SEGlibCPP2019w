@@ -40,9 +40,9 @@ namespace org
 
 			Color::Color(unsigned int data) :
 				Color(
-					static_cast<unsigned char>(data & 0xFF000000 >> 24),
-					static_cast<unsigned char>(data & 0x00FF0000 >> 16),
-					static_cast<unsigned char>(data & 0x0000FF00 >> 8),
+					static_cast<unsigned char>((data & 0xFF000000) >> 24),
+					static_cast<unsigned char>((data & 0x00FF0000) >> 16),
+					static_cast<unsigned char>((data & 0x0000FF00) >> 8),
 					static_cast<unsigned char>(data & 0x000000FF)
 				)
 			{}
@@ -90,10 +90,10 @@ namespace org
 			unsigned int Color::asInteger() const
 			{
 				return
-					m_red << 24 &
-					m_green << 16 &
-					m_blue << 8 &
-					m_alpha;
+					(static_cast<unsigned int>(m_red) << 24) |
+					(static_cast<unsigned int>(m_green) << 16) |
+					(static_cast<unsigned int>(m_blue) << 8) |
+					static_cast<unsigned int>(m_alpha);
 			}
 
 			Color& Color::setRed(const unsigned char value)

@@ -100,8 +100,8 @@ int main()
 			glOrtho(0, win.getWidth(), win.getHeight(), 0, -1, 1);
 
 			std::string s = "[L][o]rem ipsum dolor\nsit amet, consectetur adipiscing elit. Mauris eu risus rutrum,\ncommodo tellus vitae,";
-			font.render(win.getWidth() / 2, win.getHeight() / 2 - font.getHeight() * 1.5f, GLFontAlignment::CENTER, s, Color::GREEN);
-
+			font.render(win.getWidth() / 2, win.getHeight() / 2 - font.getHeight() * 1.5f, GLFontAlignment::CENTER, s, Color(0x00ff00ff));
+			
 			win.pollEvents();
 			win.swapBuffers();
 

@@ -249,7 +249,7 @@
 	<org/segames/library/invalid_value_exception.h>
 	<thread>
 
-1561248436 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\debug_shared\debug.cpp
+1561249974 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\debug_shared\debug.cpp
 	<org/segames/library/core.h>
 	<org/segames/library/system.h>
 	<org/segames/library/math/vecmath.h>
@@ -1160,7 +1160,7 @@
 1561245306 e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\util\color.h
 	<org/segames/library/object.h>
 
-1561246950 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\util\color.cpp
+1561249906 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\util\color.cpp
 	<org/segames/library/util/Color.h>
 	<org/segames/library/math/math.h>
 
