@@ -1,11 +1,7 @@
 #pragma once
-#include <org/segames/library/dllmain.h>
+#include <org/segames/library/util/random.h>
 
 #include <cmath>
-
-#ifndef PI
-#define PI 3.141592653589793238L	//PI
-#endif
 
 namespace org
 {
@@ -16,15 +12,43 @@ namespace org
 		namespace library
 		{
 
-			namespace math
+			constexpr long double PI = 3.141592653589793238L;
+
+			/*
+				Namespace/class for math related functions.
+
+				* @author	Philip Rosberg
+				* @since	2019-06-22
+				* @edited	2019-06-22
+			*/
+			class SEG_API Math final
 			{
+			private:
+				
+				/*
+					Random generator information struct.
+				*/
+				struct RngInfo {
+					Random<float> rng32;
+					Random<double> rng64;
+				};
+
+				/*
+					The random generator info for the Math class.
+				*/
+				static thread_local RngInfo m_rngInfo;
+
+				Math();
+				Math(const Math&);
+
+			public:
 
 				/*
 					Returns the absolute of the given value.
 					* @param[in] value The value
 				*/
-				template<typename T> 
-				inline T abs(const T value)
+				template<typename T>
+				static inline T abs(const T value)
 				{
 					if (value < 0)
 						return -value;
@@ -37,8 +61,8 @@ namespace org
 					* @param[in] min The minimum limit
 					* @param[in] max The maximum limit
 				*/
-				template<typename T> 
-				inline T clamp(const T value, const T min, const T max)
+				template<typename T>
+				static inline T clamp(const T value, const T min, const T max)
 				{
 					if (value > max)
 						return max;
@@ -50,8 +74,8 @@ namespace org
 				/*
 					Returns a reference to the given referenced value.
 				*/
-				template<typename T> 
-				inline T& max(T&& val)
+				template<typename T>
+				static inline T& max(T&& val)
 				{
 					return val;
 				}
@@ -61,8 +85,8 @@ namespace org
 					* @param[in] val The former value
 					* @param[in] vals The latter value[s]
 				*/
-				template<typename T, typename... T2> 
-				inline T& max(T&& val, T2&&... vals)
+				template<typename T, typename... T2>
+				static inline T& max(T&& val, T2&&... vals)
 				{
 					auto& maxVal = max(vals...);
 					if (maxVal > val)
@@ -74,8 +98,8 @@ namespace org
 				/*
 					Returns a reference to the given referenced value.
 				*/
-				template<typename T> 
-				inline T& min(T&& val)
+				template<typename T>
+				static inline T& min(T&& val)
 				{
 					return val;
 				}
@@ -85,8 +109,8 @@ namespace org
 					* @param[in] val The former value
 					* @param[in] vals The latter value[s]
 				*/
-				template<typename T, typename... T2> 
-				inline T& min(T&& val, T2&&... vals)
+				template<typename T, typename... T2>
+				static inline T& min(T&& val, T2&&... vals)
 				{
 					auto& maxVal = min(vals...);
 					if (maxVal < val)
@@ -101,8 +125,8 @@ namespace org
 					* @param[in] y The secondary value
 					* @param[in] a The weighting value
 				*/
-				template<typename T> 
-				inline T mix(const T x, const T y, const T a)
+				template<typename T>
+				static inline T mix(const T x, const T y, const T a)
 				{
 					return x * (1 - a) + y * a;
 				}
@@ -113,8 +137,8 @@ namespace org
 					* @param[in] edge1 The upper edge of the Hermite function
 					* @param[in] x The source value for interpolation
 				*/
-				template<typename T> 
-				inline T smoothstep(const T edge0, const T edge1, const T x)
+				template<typename T>
+				static inline T smoothstep(const T edge0, const T edge1, const T x)
 				{
 					T t = clamp((x - edge0) / (edge1 - edge0), (T)0.0, (T)1.0);
 					return t * t * ((T)3.0 - (T)2.0 * t);
@@ -124,8 +148,8 @@ namespace org
 					Converts the given degrees to radians.
 					* @param[in] degrees The degrees to convert to radians
 				*/
-				template<typename T> 
-				inline T radians(const T degrees)
+				template<typename T>
+				static inline T radians(const T degrees)
 				{
 					return (T)(degrees * PI / 180.0l);
 				}
@@ -134,8 +158,8 @@ namespace org
 					Converts the given radians to degrees.
 					* @param[in] radians The radians to convert to degrees
 				*/
-				template<typename T> 
-				inline T degrees(const T radians)
+				template<typename T>
+				static inline T degrees(const T radians)
 				{
 					return (T)(radians * 180.0l / PI);
 				}
@@ -145,7 +169,7 @@ namespace org
 					* @param[in] exp The exponent of the Mersenne prime number, preferably a positive integer
 				*/
 				template<typename T>
-				inline T mersenne(const T exp)
+				static inline T mersenne(const T exp)
 				{
 					T val = 1;
 					for (T i = 0; i < exp; i++)
@@ -156,14 +180,14 @@ namespace org
 				/*
 					Returns a random value between 0 and 1 with standard floating point precision.
 				*/
-				float SEG_API randomf();
+				static float randomf();
 
 				/*
 					Returns a random value between 0 and 1 with double precision.
 				*/
-				double SEG_API random();
+				static double random();
 
-			}
+			};
 
 		}
 

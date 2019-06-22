@@ -11,75 +11,70 @@ namespace org
 		namespace library
 		{
 
-			namespace glfw
+			/*
+				A window size listener for GLFW.
+
+				* @author	Philip Rosberg
+				* @since	2019-05-08
+				* @edited	2019-05-08
+			*/
+			class SEG_API GLFWWindowSizeListener :
+				public Object,
+				public GLFWListener<GLFWWindowSizeListener>
 			{
+			private:
 
 				/*
-					A window size listener for GLFW.
-
-					* @author	Philip Rosberg
-					* @since	2019-05-08
-					* @edited	2019-05-08
+					Callback for GLFW.
 				*/
-				class SEG_API GLFWWindowSizeListener :
-					public Object,
-					public GLFWListener<GLFWWindowSizeListener>
-				{
-				private:
+				static void callback(GLFWwindow* window, int w, int h);
 
-					/*
-						Callback for GLFW.
-					*/
-					static void callback(GLFWwindow* window, int w, int h);
+			public:
 
-				public:
+				/*
+					Unlinks the callback for the given window.
+					* @param[in] window The GLFW window id
+				*/
+				static void detach(GLFWwindow* window);
 
-					/*
-						Unlinks the callback for the given window.
-						* @param[in] window The GLFW window id
-					*/
-					static void detach(GLFWwindow* window);
+			protected:
 
-				protected:
+				/*
+					Window width.
+				*/
+				int m_w;
 
-					/*
-						Window width.
-					*/
-					int m_w;
+				/*
+					Window height.
+				*/
+				int m_h;
 
-					/*
-						Window height.
-					*/
-					int m_h;
+				/*
+					Links this listener to GLFW.
+					* @param[in] window The GLFW window id
+				*/
+				virtual void linkGLFW(GLFWwindow* window) override;
 
-					/*
-						Links this listener to GLFW.
-						* @param[in] window The GLFW window id
-					*/
-					virtual void linkGLFW(GLFWwindow* window) override;
+			public:
 
-				public:
+				/*
+					Returns the window width.
+				*/
+				virtual int getWidth() const;
 
-					/*
-						Returns the window width.
-					*/
-					virtual int getWidth() const;
+				/*
+					Returns the window height.
+				*/
+				virtual int getHeight() const;
 
-					/*
-						Returns the window height.
-					*/
-					virtual int getHeight() const;
+				/*
+					The method that is called when the listener is activated.
+					* @param[in] w The window width
+					* @param[in] h The window height
+				*/
+				virtual void invoke(int w, int h);
 
-					/*
-						The method that is called when the listener is activated.
-						* @param[in] w The window width
-						* @param[in] h The window height
-					*/
-					virtual void invoke(int w, int h);
-
-				};
-
-			}
+			};
 
 		}
 

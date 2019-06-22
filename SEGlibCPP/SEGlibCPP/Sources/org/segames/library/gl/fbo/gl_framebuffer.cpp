@@ -9,13 +9,8 @@ namespace org
 		namespace library
 		{
 
-			namespace gl
-			{
-
-				GLFramebuffer::~GLFramebuffer()
-				{}
-
-			}
+			GLFramebuffer::~GLFramebuffer()
+			{}
 
 		}
 

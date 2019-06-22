@@ -11,67 +11,62 @@ namespace org
 		namespace library
 		{
 
-			namespace glfw
+			/*
+				A listener for detecting when the cursor buttons are pressed.
+
+				* @author	Philip Rosberg
+				* @since	2019-05-11
+				* @edited	2019-05-11
+			*/
+			class SEG_API GLFWMouseButtonListener :
+				public Object,
+				public GLFWListener<GLFWMouseButtonListener>
 			{
+			private:
 
 				/*
-					A listener for detecting when the cursor buttons are pressed.
-
-					* @author	Philip Rosberg
-					* @since	2019-05-11
-					* @edited	2019-05-11
+					Callback for GLFW.
 				*/
-				class SEG_API GLFWMouseButtonListener :
-					public Object,
-					public GLFWListener<GLFWMouseButtonListener>
-				{
-				private:
+				static void callback(GLFWwindow* window, int button, int action, int mods);
 
-					/*
-						Callback for GLFW.
-					*/
-					static void callback(GLFWwindow* window, int button, int action, int mods);
+			public:
 
-				public:
+				/*
+					Unlinks the callback for the given window.
+					* @param[in] window The GLFW window id
+				*/
+				static void detach(GLFWwindow* window);
 
-					/*
-						Unlinks the callback for the given window.
-						* @param[in] window The GLFW window id
-					*/
-					static void detach(GLFWwindow* window);
+			protected:
 
-				protected:
+				/*
+					The mouse buttons toggles.
+				*/
+				bool m_buttons[8];
 
-					/*
-						The mouse buttons toggles.
-					*/
-					bool m_buttons[8];
+				/*
+					Links this listener to GLFW.
+					* @param[in] window The GLFW window id
+				*/
+				virtual void linkGLFW(GLFWwindow* window) override;
 
-					/*
-						Links this listener to GLFW.
-						* @param[in] window The GLFW window id
-					*/
-					virtual void linkGLFW(GLFWwindow* window) override;
+			public:
 
-				public:
+				/*
+					Returns true ifthe given mouse button is pressed.
+					* @param[in] 
+				*/
+				virtual bool isPressed(int button) const;
 
-					/*
-						Returns true ifthe given mouse button is pressed.
-						* @param[in] 
-					*/
-					virtual bool isPressed(int button) const;
+				/*
+					The method that is called when the listener is activated.
+					* @param[in] button The mouse button that was pressed or released
+					* @param[in] action One of GLFW_PRESS of GLFW_RELEASE
+					* @param[in] mods Bitfield describing which modifiers keys were held down
+				*/
+				virtual void invoke(int button, int action, int mods);
 
-					/*
-						The method that is called when the listener is activated.
-						* @param[in] button The mouse button that was pressed or released
-						* @param[in] action One of GLFW_PRESS of GLFW_RELEASE
-						* @param[in] mods Bitfield describing which modifiers keys were held down
-					*/
-					virtual void invoke(int button, int action, int mods);
-
-				};
-
-			}
+			};
 
 		}
 

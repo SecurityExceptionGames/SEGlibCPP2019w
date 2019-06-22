@@ -1,11 +1,11 @@
-#include <org/segames/library/util/string_util.h>
+#pragma once
 
 namespace org
 {
-
+	
 	namespace segames
 	{
-
+		
 		namespace library
 		{
 

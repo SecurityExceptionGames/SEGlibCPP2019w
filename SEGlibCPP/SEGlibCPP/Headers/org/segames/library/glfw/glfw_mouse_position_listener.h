@@ -11,75 +11,70 @@ namespace org
 		namespace library
 		{
 
-			namespace glfw
+			/*
+				A listener for detecting the cursor position relative to a window.
+
+				* @author	Philip Rosberg
+				* @since	2019-05-11
+				* @edited	2019-05-11
+			*/
+			class SEG_API GLFWMousePositionListener :
+				public Object,
+				public GLFWListener<GLFWMousePositionListener>
 			{
+			private:
 
 				/*
-					A listener for detecting the cursor position relative to a window.
-
-					* @author	Philip Rosberg
-					* @since	2019-05-11
-					* @edited	2019-05-11
+					Callback for GLFW.
 				*/
-				class SEG_API GLFWMousePositionListener :
-					public Object,
-					public GLFWListener<GLFWMousePositionListener>
-				{
-				private:
+				static void callback(GLFWwindow* window, double mx, double my);
 
-					/*
-						Callback for GLFW.
-					*/
-					static void callback(GLFWwindow* window, double mx, double my);
+			public:
 
-				public:
+				/*
+					Unlinks the callback for the given window.
+					* @param[in] window The GLFW window id
+				*/
+				static void detach(GLFWwindow* window);
 
-					/*
-						Unlinks the callback for the given window.
-						* @param[in] window The GLFW window id
-					*/
-					static void detach(GLFWwindow* window);
+			protected:
 
-				protected:
+				/*
+					Mouse x position.
+				*/
+				int m_mx;
 
-					/*
-						Mouse x position.
-					*/
-					int m_mx;
+				/*
+					Mouse y position.
+				*/
+				int m_my;
 
-					/*
-						Mouse y position.
-					*/
-					int m_my;
+				/*
+					Links this listener to GLFW.
+					* @param[in] window The GLFW window id
+				*/
+				virtual void linkGLFW(GLFWwindow* window) override;
 
-					/*
-						Links this listener to GLFW.
-						* @param[in] window The GLFW window id
-					*/
-					virtual void linkGLFW(GLFWwindow* window) override;
+			public:
 
-				public:
+				/*
+					Returns the x position of the cursor relative to the window.
+				*/
+				virtual int getMX() const;
 
-					/*
-						Returns the x position of the cursor relative to the window.
-					*/
-					virtual int getMX() const;
+				/*
+					Returns the y position of the cursor relative to the window.
+				*/
+				virtual int getMY() const;
 
-					/*
-						Returns the y position of the cursor relative to the window.
-					*/
-					virtual int getMY() const;
+				/*
+					The method that is called when the listener is activated.
+					* @param[in] mx The mouse x position
+					* @param[in] my The mouse y position
+				*/
+				virtual void invoke(double mx, double my);
 
-					/*
-						The method that is called when the listener is activated.
-						* @param[in] mx The mouse x position
-						* @param[in] my The mouse y position
-					*/
-					virtual void invoke(double mx, double my);
-
-				};
-
-			}
+			};
 
 		}
 

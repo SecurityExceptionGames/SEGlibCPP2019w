@@ -9,37 +9,32 @@ namespace org
 		namespace library
 		{
 
-			namespace glfw
+			void GLFWIconificationListener::callback(GLFWwindow* window, int flag)
 			{
+				auto pair = m_listeners.find(window);
+				if (pair != m_listeners.end())
+					pair->second->invoke(flag != 0);
+			}
 
-				void GLFWIconificationListener::callback(GLFWwindow* window, int flag)
-				{
-					auto pair = m_listeners.find(window);
-					if (pair != m_listeners.end())
-						pair->second->invoke(flag != 0);
-				}
+			void GLFWIconificationListener::detach(GLFWwindow* window)
+			{
+				glfwSetWindowIconifyCallback(window, NULL);
+			}
 
-				void GLFWIconificationListener::detach(GLFWwindow* window)
-				{
-					glfwSetWindowIconifyCallback(window, NULL);
-				}
+			void GLFWIconificationListener::linkGLFW(GLFWwindow* window)
+			{
+				glfwSetWindowIconifyCallback(window, callback);
+				m_iconified = false;
+			}
 
-				void GLFWIconificationListener::linkGLFW(GLFWwindow* window)
-				{
-					glfwSetWindowIconifyCallback(window, callback);
-					m_iconified = false;
-				}
+			bool GLFWIconificationListener::isIconified() const
+			{
+				return m_iconified;
+			}
 
-				bool GLFWIconificationListener::isIconified() const
-				{
-					return m_iconified;
-				}
-
-				void GLFWIconificationListener::invoke(bool flag)
-				{
-					m_iconified = flag;
-				}
-
+			void GLFWIconificationListener::invoke(bool flag)
+			{
+				m_iconified = flag;
 			}
 
 		}

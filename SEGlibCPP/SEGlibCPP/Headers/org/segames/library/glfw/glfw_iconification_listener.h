@@ -11,64 +11,59 @@ namespace org
 		namespace library
 		{
 
-			namespace glfw
+			/*
+				A listener for detecting when a window is iconified (minimized).
+
+				* @author	Philip Rosberg
+				* @since	2019-05-11
+				* @edited	2019-05-11
+			*/
+			class SEG_API GLFWIconificationListener :
+				public Object,
+				public GLFWListener<GLFWIconificationListener>
 			{
+			private:
 
 				/*
-					A listener for detecting when a window is iconified (minimized).
-
-					* @author	Philip Rosberg
-					* @since	2019-05-11
-					* @edited	2019-05-11
+					Callback for GLFW.
 				*/
-				class SEG_API GLFWIconificationListener :
-					public Object,
-					public GLFWListener<GLFWIconificationListener>
-				{
-				private:
+				static void callback(GLFWwindow* window, int flag);
 
-					/*
-						Callback for GLFW.
-					*/
-					static void callback(GLFWwindow* window, int flag);
+			public:
 
-				public:
+				/*
+					Unlinks the callback for the given window.
+					* @param[in] window The GLFW window id
+				*/
+				static void detach(GLFWwindow* window);
 
-					/*
-						Unlinks the callback for the given window.
-						* @param[in] window The GLFW window id
-					*/
-					static void detach(GLFWwindow* window);
+			protected:
 
-				protected:
+				/*
+					True if the window is iconified.
+				*/
+				bool m_iconified;
 
-					/*
-						True if the window is iconified.
-					*/
-					bool m_iconified;
+				/*
+					Links this listener to GLFW.
+					* @param[in] window The GLFW window id
+				*/
+				virtual void linkGLFW(GLFWwindow* window) override;
 
-					/*
-						Links this listener to GLFW.
-						* @param[in] window The GLFW window id
-					*/
-					virtual void linkGLFW(GLFWwindow* window) override;
+			public:
 
-				public:
+				/*
+					Returns true if the window is iconified.
+				*/
+				virtual bool isIconified() const;
 
-					/*
-						Returns true if the window is iconified.
-					*/
-					virtual bool isIconified() const;
+				/*
+					The method that is called when the listener is activated.
+					* @param[in] flag True if the window is iconified
+				*/
+				virtual void invoke(bool flag);
 
-					/*
-						The method that is called when the listener is activated.
-						* @param[in] flag True if the window is iconified
-					*/
-					virtual void invoke(bool flag);
-
-				};
-
-			}
+			};
 
 		}
 

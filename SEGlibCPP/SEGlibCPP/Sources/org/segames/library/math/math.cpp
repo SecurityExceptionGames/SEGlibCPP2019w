@@ -1,7 +1,4 @@
 #include <org/segames/library/math/math.h>
-#include <org/segames/library/util/random.h>
-
-using namespace org::segames::library::util;
 
 namespace org
 {
@@ -11,25 +8,16 @@ namespace org
 
 		namespace library
 		{
+			thread_local Math::RngInfo Math::m_rngInfo = { Random<float>(), Random<double>() };
 
-			namespace math
+			float Math::randomf()
 			{
+				return m_rngInfo.rng32.random();
+			}
 
-				struct {
-					Random<float> rng32;
-					Random<double> rng64;
-				} rngInfo;
-
-				float randomf()
-				{
-					return rngInfo.rng32.random();
-				}
-
-				double random()
-				{
-					return rngInfo.rng64.random();
-				}
-
+			double Math::random()
+			{
+				return m_rngInfo.rng64.random();
 			}
 
 		}

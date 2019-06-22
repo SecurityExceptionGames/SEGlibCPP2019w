@@ -16,294 +16,289 @@ namespace org
 		namespace library
 		{
 
-			namespace util
+			template<typename T>
+			class LinkedList;
+
+			/*
+				Linked list node struct.
+
+				* @author	Philip Rosberg
+				* @since	2019-03-15
+				* @edited	2019-03-15
+			*/
+			template<typename T>
+			struct LinkedListNode
 			{
+				T value;
+				LinkedListNode* previous = nullptr;
+				LinkedListNode* next = nullptr;
+			};
 
-				template<typename T>
-				class LinkedList;
+			/*
+				Implementation of a dual-linked list.
+				It is generally advised to use the list interface to interact with the list and to not edit the returned position nodes.
+				All operations run in constant time, O(1), but with a rather large constant. The only exception to this being the clear()
+				method.
+
+				THREADING INFO: This implementation is not synchronized.
+
+				* @author	Philip Rosberg
+				* @since	2019-03-15
+				* @edited	2019-03-16
+			*/
+			template<typename T>
+			class LinkedList :
+				public AbstractList<T, LinkedListNode<T>*>
+			{
+			public:
+				using typename AbstractList<T, LinkedListNode<T>*>::PosType;
+
+			protected:
 
 				/*
-					Linked list node struct.
-
-					* @author	Philip Rosberg
-					* @since	2019-03-15
-					* @edited	2019-03-15
+					The first node in the list.
 				*/
-				template<typename T>
-				struct LinkedListNode
+				PosType m_first;
+
+				/*
+					The last node in the list.
+				*/
+				PosType m_last;
+
+			public:
+
+				/*
+					Creates a new linked list.
+				*/
+				LinkedList() :
+					m_first(new LinkedListNode<T>()),
+					m_last(m_first)
+				{}
+
+				/*
+					Copies the given list into this one.
+					* @param[in] list The list whose content to copy into this one
+				*/
+				LinkedList(const LinkedList<T>& list) :
+					LinkedList()
 				{
+					PosType pos = list.first();
+					while (!list.isEnd(pos))
+					{
+						this->add(list.get(pos));
+						pos = list.next(pos);
+					}
+
+				}
+
+				/*
+					Destructor.
+				*/
+				virtual ~LinkedList()
+				{
+					this->clear();
+					delete this->first();
+				}
+
+				/*
+					Returns true if the list is empty.
+				*/
+				virtual bool isEmpty() const
+				{
+					return m_first->next == nullptr;
+				}
+
+				/*
+					Returns true if the given position is at the begining of the list.
+					* @param[in] pos The position in the list
+				*/
+				virtual bool isFirst(const PosType pos) const
+				{
+#ifdef SEG_API_DEBUG_THROW
+					if (pos == nullptr)
+						throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
+#endif
+					return pos->previous == nullptr;
+				}
+
+				/*
+					Returns true if the given position is at the end of the list.
+					* @param[in] pos The position in the list
+				*/
+				virtual bool isEnd(const PosType pos) const
+				{
+#ifdef SEG_API_DEBUG_THROW
+					if (pos == nullptr)
+						throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
+#endif
+					return pos->next == nullptr;
+				}
+
+				/*
+					Returns a reference to the value at the given position.
+					* @param[in] pos The position in the list
+				*/
+				virtual T& get(const PosType pos) const
+				{
+#ifdef SEG_API_DEBUG_THROW
+					if (pos == nullptr)
+						throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
+#endif
+					return pos->value;
+				}
+
+				/*
+					Returns the first position for iteration in the list.
+				*/
+				virtual PosType first() const
+				{
+					return m_first;
+				}
+
+				/*
+					Returns the last position for iteration in the list.
+					In this implementation the position is actually after the last element.
+				*/
+				virtual PosType last() const
+				{
+					return m_last;
+				}
+
+				/*
+					Returns the next position in the list.
+					* @param[in] pos The position in the list
+				*/
+				virtual PosType next(const PosType pos) const
+				{
+#ifdef SEG_API_DEBUG_THROW
+					if (pos == nullptr)
+						throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
+#endif
+					return pos->next;
+				}
+
+				/*
+					Returns the previous position in the list.
+					* @param[in] pos The position in the list
+				*/
+				virtual PosType previous(const PosType pos) const
+				{
+#ifdef SEG_API_DEBUG_THROW
+					if (pos == nullptr)
+						throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
+#endif
+					return pos->previous;
+				}
+
+				/*
+					Adds the given value to the end of the list.
+					* @param[in] value The value to add
+				*/
+				virtual PosType add(const T& value)
+				{
+					return insert(last(), value);
+				}
+
+				/*
+					Inserts the given value at the given position.
+					* @param[in] pos The position to insert at
+					* @param[in] value The value to insert
+				*/
+				virtual PosType insert(const PosType pos, const T& value)
+				{
+					PosType newPos = new LinkedListNode<T>();
+					newPos->value = value;
+
+#ifdef SEG_API_DEBUG_THROW
+					if (pos == nullptr)
+						throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
+#endif
+
+					if (!isFirst(pos))
+					{
+						pos->previous->next = newPos;
+						newPos->previous = pos->previous;
+					}
+					else
+						m_first = newPos;
+
+					newPos->next = pos;
+					pos->previous = newPos;
+					return newPos;
+				}
+
+				/*
+					Sets the value of the element at the given position.
+					Returns the value that previously existed at that position.
+					* @param[in] pos The position to set the value at
+					* @param[in] value The value to set
+				*/
+				virtual T set(const PosType pos, const T& value)
+				{
+#ifdef SEG_API_DEBUG_THROW
+					if (pos == nullptr)
+						throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
+#endif
+					T outVal = value;
+					std::swap(outVal, pos->value);
+					return outVal;
+				}
+
+				/*
+					Removes the element at the given position.
+					* @param[in] pos The position in the list
+				*/
+				virtual T remove(const PosType pos)
+				{
+#ifdef SEG_API_DEBUG_THROW
+					if (pos == nullptr)
+						throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
+#endif
 					T value;
-					LinkedListNode* previous = nullptr;
-					LinkedListNode* next = nullptr;
-				};
+					std::swap(value, pos->value);
+
+					if (!isFirst(pos))
+						pos->previous->next = pos->next;
+					else
+						m_first = pos->next;
+
+					if (!isEnd(pos))
+						pos->next->previous = pos->previous;
+					else
+						m_last = pos->previous;
+
+					delete pos;
+					return value;
+				}
 
 				/*
-					Implementation of a dual-linked list.
-					It is generally advised to use the list interface to interact with the list and to not edit the returned position nodes.
-					All operations run in constant time, O(1), but with a rather large constant. The only exception to this being the clear()
-					method.
-
-					THREADING INFO: This implementation is not synchronized.
-
-					* @author	Philip Rosberg
-					* @since	2019-03-15
-					* @edited	2019-03-16
+					Removes all content from the list.
 				*/
-				template<typename T>
-				class LinkedList :
-					public AbstractList<T, LinkedListNode<T>*>
+				virtual void clear()
 				{
-				public:
-					using typename AbstractList<T, LinkedListNode<T>*>::PosType;
+					while (!isEmpty())
+						remove(first());
+				}
 
-				protected:
+				/*
+					Set operator override.
+					* @param[in] list The list to copy from.
+				*/
+				virtual LinkedList<T>& operator=(const LinkedList<T>& list)
+				{
+					clear();
 
-					/*
-						The first node in the list.
-					*/
-					PosType m_first;
-
-					/*
-						The last node in the list.
-					*/
-					PosType m_last;
-
-				public:
-
-					/*
-						Creates a new linked list.
-					*/
-					LinkedList() :
-						m_first(new LinkedListNode<T>()),
-						m_last(m_first)
-					{}
-
-					/*
-						Copies the given list into this one.
-						* @param[in] list The list whose content to copy into this one
-					*/
-					LinkedList(const LinkedList<T>& list) :
-						LinkedList()
+					PosType pos = list.first();
+					while (!list.isEnd(pos))
 					{
-						PosType pos = list.first();
-						while (!list.isEnd(pos))
-						{
-							this->add(list.get(pos));
-							pos = list.next(pos);
-						}
-
+						add(list.get(pos));
+						pos = list.next(pos);
 					}
 
-					/*
-						Destructor.
-					*/
-					virtual ~LinkedList()
-					{
-						this->clear();
-						delete this->first();
-					}
+					return *this;
+				}
 
-					/*
-						Returns true if the list is empty.
-					*/
-					virtual bool isEmpty() const
-					{
-						return m_first->next == nullptr;
-					}
-
-					/*
-						Returns true if the given position is at the begining of the list.
-						* @param[in] pos The position in the list
-					*/
-					virtual bool isFirst(const PosType pos) const
-					{
-#ifdef SEG_API_DEBUG_THROW
-						if (pos == nullptr)
-							throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
-#endif
-						return pos->previous == nullptr;
-					}
-
-					/*
-						Returns true if the given position is at the end of the list.
-						* @param[in] pos The position in the list
-					*/
-					virtual bool isEnd(const PosType pos) const
-					{
-#ifdef SEG_API_DEBUG_THROW
-						if (pos == nullptr)
-							throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
-#endif
-						return pos->next == nullptr;
-					}
-
-					/*
-						Returns a reference to the value at the given position.
-						* @param[in] pos The position in the list
-					*/
-					virtual T& get(const PosType pos) const
-					{
-#ifdef SEG_API_DEBUG_THROW
-						if (pos == nullptr)
-							throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
-#endif
-						return pos->value;
-					}
-
-					/*
-						Returns the first position for iteration in the list.
-					*/
-					virtual PosType first() const
-					{
-						return m_first;
-					}
-
-					/*
-						Returns the last position for iteration in the list.
-						In this implementation the position is actually after the last element.
-					*/
-					virtual PosType last() const
-					{
-						return m_last;
-					}
-
-					/*
-						Returns the next position in the list.
-						* @param[in] pos The position in the list
-					*/
-					virtual PosType next(const PosType pos) const
-					{
-#ifdef SEG_API_DEBUG_THROW
-						if (pos == nullptr)
-							throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
-#endif
-						return pos->next;
-					}
-
-					/*
-						Returns the previous position in the list.
-						* @param[in] pos The position in the list
-					*/
-					virtual PosType previous(const PosType pos) const
-					{
-#ifdef SEG_API_DEBUG_THROW
-						if (pos == nullptr)
-							throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
-#endif
-						return pos->previous;
-					}
-
-					/*
-						Adds the given value to the end of the list.
-						* @param[in] value The value to add
-					*/
-					virtual PosType add(const T& value)
-					{
-						return insert(last(), value);
-					}
-
-					/*
-						Inserts the given value at the given position.
-						* @param[in] pos The position to insert at
-						* @param[in] value The value to insert
-					*/
-					virtual PosType insert(const PosType pos, const T& value)
-					{
-						PosType newPos = new LinkedListNode<T>();
-						newPos->value = value;
-
-#ifdef SEG_API_DEBUG_THROW
-						if (pos == nullptr)
-							throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
-#endif
-
-						if (!isFirst(pos))
-						{
-							pos->previous->next = newPos;
-							newPos->previous = pos->previous;
-						}
-						else
-							m_first = newPos;
-
-						newPos->next = pos;
-						pos->previous = newPos;
-						return newPos;
-					}
-
-					/*
-						Sets the value of the element at the given position.
-						Returns the value that previously existed at that position.
-						* @param[in] pos The position to set the value at
-						* @param[in] value The value to set
-					*/
-					virtual T set(const PosType pos, const T& value)
-					{
-#ifdef SEG_API_DEBUG_THROW
-						if (pos == nullptr)
-							throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
-#endif
-						T outVal = value;
-						std::swap(outVal, pos->value);
-						return outVal;
-					}
-
-					/*
-						Removes the element at the given position.
-						* @param[in] pos The position in the list
-					*/
-					virtual T remove(const PosType pos)
-					{
-#ifdef SEG_API_DEBUG_THROW
-						if (pos == nullptr)
-							throw NullPointerException("Linked list node was null.", __FILE__, __LINE__);
-#endif
-						T value;
-						std::swap(value, pos->value);
-
-						if (!isFirst(pos))
-							pos->previous->next = pos->next;
-						else
-							m_first = pos->next;
-
-						if (!isEnd(pos))
-							pos->next->previous = pos->previous;
-						else
-							m_last = pos->previous;
-
-						delete pos;
-						return value;
-					}
-
-					/*
-						Removes all content from the list.
-					*/
-					virtual void clear()
-					{
-						while (!isEmpty())
-							remove(first());
-					}
-
-					/*
-						Set operator override.
-						* @param[in] list The list to copy from.
-					*/
-					virtual LinkedList<T>& operator=(const LinkedList<T>& list)
-					{
-						clear();
-
-						PosType pos = list.first();
-						while (!list.isEnd(pos))
-						{
-							add(list.get(pos));
-							pos = list.next(pos);
-						}
-
-						return *this;
-					}
-
-				};
-
-			}
+			};
 
 		}
 

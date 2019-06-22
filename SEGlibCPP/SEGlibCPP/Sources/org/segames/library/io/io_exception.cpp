@@ -9,18 +9,13 @@ namespace org
 		namespace library
 		{
 
-			namespace io
-			{
+			IOException::IOException(const std::string& message) :
+				Exception(message)
+			{}
 
-				IOException::IOException(const std::string& message) :
-					Exception(message)
-				{}
-
-				IOException::IOException(const std::string& message, const char* file, const int line) :
-					Exception(message, file, line)
-				{}
-
-			}
+			IOException::IOException(const std::string& message, const char* file, const int line) :
+				Exception(message, file, line)
+			{}
 
 		}
 

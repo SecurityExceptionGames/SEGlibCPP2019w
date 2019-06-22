@@ -216,16 +216,22 @@
     <ClInclude Include="Headers\org\segames\library\gl\text\gl_font.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\org\segames\library\volatile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\org\segames\library\synchronized.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\org\segames\library\gl\text\gl_font_glyph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\org\segames\library\util\utf8_iterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\gl\text\gl_font_alignment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\util\color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\thread\volatile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\thread\synchronized.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
