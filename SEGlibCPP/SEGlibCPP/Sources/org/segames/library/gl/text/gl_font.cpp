@@ -163,15 +163,14 @@ namespace org
 
 				if (m_shader == &DEFAULT_SHADER && DEFAULT_SHADER.getID() == 0)
 				{
-// TODO ADD REAL SHADER SOURCE
-					DEFAULT_SHADER.loadVertexData("test/font.vert");
-					DEFAULT_SHADER.loadFragmentData("test/font.frag");
+					DEFAULT_SHADER.setVertexData("#version 120\nuniform vec2 pos;\nuniform vec4 color;\n\nvoid main() {\nvec4 vertex = gl_Vertex;\nvertex.xy += pos;\ngl_Position = gl_ModelViewProjectionMatrix * vertex;\ngl_TexCoord[0] = gl_MultiTexCoord0;\ngl_FrontColor = color;\n}");
+					DEFAULT_SHADER.setFragmentData("#version 120\nuniform sampler2D atlas;\n\nvoid main() {\ngl_FragColor = vec4(gl_Color.r, gl_Color.g, gl_Color.b, gl_Color.a * texture2D(atlas, gl_TexCoord[0].xy).r);\n}");
 					DEFAULT_SHADER.upload("GLFont::DEFAULT_SHADER");
 				}
 
 			}
 
-			void GLFont::renderSimple(const float x, const float y, const UTF8Iterator& beg, const UTF8Iterator& end)
+			void GLFont::renderSimple(const float x, const float y, const UTF8Iterator& beg, const UTF8Iterator& end, const Color& color)
 			{
 				if (beg != end)
 				{
@@ -184,6 +183,7 @@ namespace org
 					glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 					glUniform1i(glGetUniformLocation(m_shader->getID(), "atlas"), 0);
+					glUniform4f(glGetUniformLocation(m_shader->getID(), "color"), color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
 					const GLint loc = glGetUniformLocation(m_shader->getID(), "pos");
 
 					float xp = x, yp = y;
@@ -220,7 +220,7 @@ namespace org
 
 			}
 
-			void GLFont::renderAdjusted(const float x, const float y, const UTF8Iterator& beg, const UTF8Iterator& end, const float adjustment)
+			void GLFont::renderAdjusted(const float x, const float y, const UTF8Iterator& beg, const UTF8Iterator& end, const Color& color, const float adjustment)
 			{
 				if (beg != end)
 				{
@@ -258,6 +258,7 @@ namespace org
 					glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 					glUniform1i(glGetUniformLocation(m_shader->getID(), "atlas"), 0);
+					glUniform4f(glGetUniformLocation(m_shader->getID(), "color"), color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
 					const GLint loc = glGetUniformLocation(m_shader->getID(), "pos");
 
 					int lineNr = 0;
@@ -292,6 +293,43 @@ namespace org
 					m_geometry->release();
 					m_atlas->release();
 					m_shader->release();
+				}
+
+			}
+
+			void GLFont::render(const float x, const float y, const std::string& str)
+			{
+				render(x, y, str, Color::WHITE);
+			}
+
+			void GLFont::render(const float x, const float y, const std::string& str, const Color& color)
+			{
+				render(x, y, GLFontAlignment::LEFT, str, color);
+			}
+
+			void GLFont::render(const float x, const float y, const GLFontAlignment alignment, const std::string& str)
+			{
+				render(x, y, alignment, str, Color::WHITE);
+			}
+
+			void GLFont::render(const float x, const float y, const GLFontAlignment alignment, const std::string& str, const Color& color)
+			{
+				render(x, y, alignment, UTF8Iterator(str.begin()), UTF8Iterator(str.end()), color);
+			}
+
+			void GLFont::render(const float x, const float y, const GLFontAlignment alignment, const UTF8Iterator& beg, const UTF8Iterator& end, const Color& color)
+			{
+				switch (alignment)
+				{
+				case CENTER:
+					renderAdjusted(x, y, beg, end, color, 0.5f);
+					break;
+				case RIGHT:
+					renderAdjusted(x, y, beg, end, color, 1.f);
+					break;
+				default:
+					renderSimple(x, y, beg, end, color);
+					break;
 				}
 
 			}

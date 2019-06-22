@@ -12,7 +12,9 @@ namespace org
 
 			void GLAbstractFramebuffer::buildTextures(bool* changed)
 			{
+#ifdef SEG_API_DEBUG_THROW
 				GLenum error;
+#endif
 				if (m_depth)
 				{
 					bool newTex = !m_depth->getID();

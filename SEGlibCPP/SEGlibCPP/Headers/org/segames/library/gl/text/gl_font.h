@@ -5,6 +5,7 @@
 #include <org/segames/library/gl/gl_backed_buffer.h>
 #include <org/segames/library/gl/gl_shader.h>
 #include <org/segames/library/util/array_list.h>
+#include <org/segames/library/util/color.h>
 #include <org/segames/library/util/utf8_iterator.h>
 
 #include <fstream>
@@ -46,7 +47,7 @@ namespace org
 					The default font shader.
 				*/
 				static GLShader DEFAULT_SHADER;
-					
+				
 			protected:
 
 				/*
@@ -176,7 +177,7 @@ namespace org
 				*/
 				virtual void upload();
 
-			public:
+			protected:
 
 				/*
 					Renders the text from the given iterators with left alignment.
@@ -184,8 +185,9 @@ namespace org
 					* @param[in] y The y position of the text
 					* @param[in] beg The begining iterator
 					* @param[in] end The ending iterator
+					* @param[in] color The color of the text
 				*/
-				virtual void renderSimple(const float x, const float y, const UTF8Iterator& beg, const UTF8Iterator& end);
+				virtual void renderSimple(const float x, const float y, const UTF8Iterator& beg, const UTF8Iterator& end, const Color& color);
 					
 				/*
 					Renders the text from the given iterators with adjusted (center or right) alignment.
@@ -193,11 +195,59 @@ namespace org
 					* @param[in] y The y position of the text
 					* @param[in] beg The begining iterator
 					* @param[in] end The ending iterator
+					* @param[in] color The color of the text
 					* @param[in] adjustment The adjustment, line pushback factor
 				*/
-				virtual void renderAdjusted(const float x, const float y, const UTF8Iterator& beg, const UTF8Iterator& end, const float adjustment);
+				virtual void renderAdjusted(const float x, const float y, const UTF8Iterator& beg, const UTF8Iterator& end, const Color& color, const float adjustment);
 
 			public:
+
+				/*
+					Renders the text from the given string.
+					* @param[in] x The x position of the text
+					* @param[in] y The y position of the text
+					* @param[in] str The string to render
+				*/
+				virtual void render(const float x, const float y, const std::string& str);
+
+				/*
+					Renders the text from the given string.
+					* @param[in] x The x position of the text
+					* @param[in] y The y position of the text
+					* @param[in] str The string to render
+					* @param[in] color The color of the text
+				*/
+				virtual void render(const float x, const float y, const std::string& str, const Color& color);
+
+				/*
+					Renders the text from the given string.
+					* @param[in] x The x position of the text
+					* @param[in] y The y position of the text
+					* @param[in] alignment The text alignment relative the (x, y) position
+					* @param[in] str The string to render
+				*/
+				virtual void render(const float x, const float y, const GLFontAlignment alignment, const std::string& str);
+
+				/*
+					Renders the text from the given string.
+					* @param[in] x The x position of the text
+					* @param[in] y The y position of the text
+					* @param[in] alignment The text alignment relative the (x, y) position
+					* @param[in] str The string to render
+					* @param[in] color The color of the text
+				*/
+				virtual void render(const float x, const float y, const GLFontAlignment alignment, const std::string& str, const Color& color);
+
+				/*
+					Renders the text from the given iterators.
+					* @param[in] x The x position of the text
+					* @param[in] y The y position of the text
+					* @param[in] alignment The text alignment relative the (x, y) position
+					* @param[in] beg The begining iterator
+					* @param[in] end The ending iterator
+					* @param[in] color The color of the text
+				*/
+				virtual void render(const float x, const float y, const GLFontAlignment alignment, const UTF8Iterator& beg, const UTF8Iterator& end, const Color& color);
 
 			};
 

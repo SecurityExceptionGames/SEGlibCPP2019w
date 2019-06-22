@@ -221,7 +221,7 @@
 1561146384 e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\invalid_value_exception.h
 	<org/segames/library/exception.h>
 
-1561236580 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\math\math.cpp
+1561237131 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\math\math.cpp
 	<org/segames/library/math/math.h>
 
 1561237140 e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\math\math.h
@@ -249,7 +249,7 @@
 	<org/segames/library/invalid_value_exception.h>
 	<thread>
 
-1561234828 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\debug_shared\debug.cpp
+1561248436 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\debug_shared\debug.cpp
 	<org/segames/library/core.h>
 	<org/segames/library/system.h>
 	<org/segames/library/math/vecmath.h>
@@ -907,13 +907,14 @@
 1561233903 e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\math\dimension_2.h
 	<org/segames/library/math/dimension.h>
 
-1561234468 e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\text\gl_font.h
+1561248777 e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\text\gl_font.h
 	<org/segames/library/gl/text/gl_font_alignment.h>
 	<org/segames/library/gl/text/gl_font_glyph.h>
 	<org/segames/library/gl/texture/gl_texture.h>
 	<org/segames/library/gl/gl_backed_buffer.h>
 	<org/segames/library/gl/gl_shader.h>
 	<org/segames/library/util/array_list.h>
+	<org/segames/library/util/color.h>
 	<org/segames/library/util/utf8_iterator.h>
 	<fstream>
 	<memory>
@@ -937,7 +938,7 @@
 	<string.h>
 	<string.h>
 
-1561235926 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\fbo\gl_abstract_framebuffer.cpp
+1561249176 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\fbo\gl_abstract_framebuffer.cpp
 	<org/segames/library/gl/fbo/gl_abstract_framebuffer.h>
 	<org/segames/library/gl/gl_exception.h>
 
@@ -1001,7 +1002,7 @@
 1561233869 e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\io\io_exception.h
 	<org/segames/library/exception.h>
 
-1561236690 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\text\gl_font.cpp
+1561248771 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\gl\text\gl_font.cpp
 	<org/segames/library/gl/text/gl_font.h>
 	<org/segames/library/io/file.h>
 	<org/segames/library/math/math.h>
@@ -1155,4 +1156,11 @@
 	<crtdbg.h>
 
 1561233431 e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\gl\text\gl_font_alignment.h
+
+1561245306 e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\headers\org\segames\library\util\color.h
+	<org/segames/library/object.h>
+
+1561246950 source:e:\visualstudioprojects\seglibcpp2019w\seglibcpp\seglibcpp\sources\org\segames\library\util\color.cpp
+	<org/segames/library/util/Color.h>
+	<org/segames/library/math/math.h>
 
