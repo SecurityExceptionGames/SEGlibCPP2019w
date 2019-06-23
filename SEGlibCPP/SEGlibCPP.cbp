@@ -37,8 +37,12 @@
 				<Option object_output="obj/Release/" />
 				<Option type="3" />
 				<Option compiler="gnu_gcc_compiler_x64" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O3" />
+					<Add option="-DSEG_API_DLL" />
+					<Add option="-DSEG_API_DLL_EXPORT" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -103,6 +107,7 @@
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/math/math.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/null_pointer_exception.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/object.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/util/color.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/util/fractal_noise.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/util/simplex_noise.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/util/string_util.cpp" />

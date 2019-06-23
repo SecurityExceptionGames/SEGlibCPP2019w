@@ -228,6 +228,15 @@
     <ClInclude Include="Headers\org\segames\library\thread\synchronized.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\math\point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\math\point_2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\math\point_3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\debug_shared\debug.cpp">

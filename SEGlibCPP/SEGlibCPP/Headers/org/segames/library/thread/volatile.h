@@ -178,9 +178,10 @@ namespace org
 					Copies the stored variable without changing the lock-state.
 					* @param[in] obj The volatile variable to copy from
 				*/
-				T& operator=(const Volatile<T>& obj)
+				Volatile<T>& operator=(const Volatile<T>& obj)
 				{
 					m_var = obj.m_var;
+					return *this;
 				}
 
 			};

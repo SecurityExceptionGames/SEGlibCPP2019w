@@ -15,6 +15,7 @@
 #include <org/segames/library/gl/texture/gl_physical_texture_wrapper.h>
 #include <org/segames/library/gl/fbo/gl_framebuffer_wrapper.h>
 #include <org/segames/library/gl/text/gl_font.h>
+#include <org/segames/library/math/point_3.h>
 
 #include <unordered_map>
 #include <thread>
@@ -35,6 +36,8 @@ int main()
 		win.setSwapInterval(1);
 
 		GLException::enableDebugCallback();
+
+		Point3i p(1, 2, 3);
 
 		GLShader shader;
 		shader.loadVertexData("test/test.vert");
