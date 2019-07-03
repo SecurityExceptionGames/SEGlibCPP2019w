@@ -17,7 +17,7 @@ namespace org
 					
 				* @author	Philip Rosberg
 				* @since	2019-06-20
-				* @edited	2019-06-20
+				* @edited	2019-07-03
 			*/
 			class SEG_API UTF8Iterator final : 
 				public std::iterator<std::bidirectional_iterator_tag, unsigned int, std::string::difference_type, const unsigned int*, const unsigned int&>
@@ -51,7 +51,7 @@ namespace org
 				std::string::const_iterator m_itr;
 
 			public:
-					
+				
 				/*
 					UTF-8 iterator constructor.
 					* @param[in] src The source string
@@ -136,6 +136,19 @@ namespace org
 					* @param[in] itr The iterator to compare
 				*/
 				bool operator!=(const std::string::const_iterator& itr) const;
+
+				/*
+					Converts the given codepoint to string.
+					* @param[in] codepoint The UTF-8 codepoint
+				*/
+				static std::string codepointToString(const unsigned int codepoint);
+
+				/*
+					Converts the given codepoint to string.
+					* @param[in] codepoint The UTF-8 codepoint
+					* @param[out] str The string to write to
+				*/
+				static void codepointToString(const unsigned int codepoint, std::string& str);
 
 			};
 

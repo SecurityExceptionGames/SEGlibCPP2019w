@@ -13,16 +13,31 @@ namespace org
 
 			void GLFramebufferEXT::buildFBO()
 			{
+				GLint numColors;
+				glGetIntegerv(GL_MAX_COLOR_ATTACHMENTS_EXT, &numColors);
+				numColors -= 1;
+
 				if (!m_id)
 					glGenFramebuffersEXT(1, &m_id);
 
 				glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, m_id);
 
+				// Main color comp
 				if (m_color)
 					glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, m_color->getType(), m_color->getID(), 0);
 				else
 					glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, GL_NONE, 0);
 
+				// Additional color comp
+				for (int i = 0; i < Math::min(m_additional_colors.size(), numColors); i++)
+				{
+					GLTexture* tex = m_additional_colors.get(i);
+					glFramebufferTexture2D(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT1_EXT + i, tex->getType(), tex->getID(), 0);
+				}
+				for (int i = m_additional_colors.size(); i < numColors; i++)
+					glFramebufferTexture2D(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT1_EXT + i, GL_TEXTURE_2D, GL_NONE, 0);
+
+				// Depth comp
 				if (m_depth)
 					glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, m_depth->getType(), m_depth->getID(), 0);
 				else

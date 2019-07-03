@@ -47,6 +47,14 @@ namespace org
 				static size_t hashCode(const std::string& str);
 
 				/*
+					Calculates a hash code representation of the given data.
+					Based on the FNV-1a hash algorithm.
+					* @param[in] ptr The memory
+					* @param[in] len The length of the memory
+				*/
+				static size_t hashCode(const void* ptr, const size_t len);
+
+				/*
 					Calculates a hash code representation of the given variable.
 					This is just a pass-through function to allow most standard types
 					such as int, short etc. to just use their regular value as a hash.

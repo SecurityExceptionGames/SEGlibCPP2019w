@@ -13,6 +13,16 @@ namespace org
 		namespace library
 		{
 
+			ArrayList<unsigned int> GLFont::ASCII_CHARACTERS = GLFont::getASCIICharacters();
+
+			ArrayList<unsigned int> GLFont::getASCIICharacters()
+			{
+				ArrayList<unsigned int> chars;
+				for (unsigned int i = 32; i < 128; i++)
+					chars.add(i);
+				return chars;
+			}
+
 			GLPointerInf GLFont::VERTEX_POINTER_INF = GLPointerInf(GL_FLOAT, 2, sizeof(GLfloat) * 4, 0);
 			GLPointerInf GLFont::TEX_COORD_POINTER_INF = GLPointerInf(GL_FLOAT, 2, sizeof(GLfloat) * 4, sizeof(GLfloat) * 2);
 			GLShader GLFont::DEFAULT_SHADER = GLShader();
@@ -96,6 +106,17 @@ namespace org
 
 			}
 
+			GLFont::GLFont()
+			{}
+
+			GLFont::GLFont(const float size, const unsigned int oversampling, const std::string& path, const ArrayList<unsigned int>& chars) :
+				GLFont(size, oversampling, path, nullptr, chars)
+			{}
+
+			GLFont::GLFont(const float size, const unsigned int oversampling, const std::string& path, const GLShader* shader, const ArrayList<unsigned int>& chars) :
+				GLFont(size, oversampling, path, shader, chars.pointer(), chars.size())
+			{}
+
 			GLFont::GLFont(const float size, const unsigned int oversampling, const std::string& path, const GLShader* shader, const unsigned int* chars, const int numChars) :
 				m_height(size),
 				m_shader(shader ? shader : &DEFAULT_SHADER)
@@ -123,6 +144,9 @@ namespace org
 				computeInfo(scale, &info, chars, numChars, packedChars.get());
 				createGeometry(chars, numChars);
 			}
+
+			GLFont::~GLFont()
+			{}
 
 			float GLFont::getHeight() const
 			{

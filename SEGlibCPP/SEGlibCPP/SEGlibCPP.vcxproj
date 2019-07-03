@@ -148,6 +148,7 @@
     <ClInclude Include="Headers\org\segames\library\gl\gl_pointer_inf.h" />
     <ClInclude Include="Headers\org\segames\library\gl\gl_shader.h" />
     <ClInclude Include="Headers\org\segames\library\gl\gl_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\gl\nk\nk_layout.h" />
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_disc_texture.h" />
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_physical_texture.h" />
     <ClInclude Include="Headers\org\segames\library\gl\texture\gl_s3tc_texture.h" />
@@ -163,6 +164,12 @@
     <ClInclude Include="Headers\org\segames\library\io\file_attributes.h" />
     <ClInclude Include="Headers\org\segames\library\io\file_not_found_exception.h" />
     <ClInclude Include="Headers\org\segames\library\io\io_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\io\json\json_boolean.h" />
+    <ClInclude Include="Headers\org\segames\library\io\json\json_element.h" />
+    <ClInclude Include="Headers\org\segames\library\io\json\json_element_type.h" />
+    <ClInclude Include="Headers\org\segames\library\io\json\json_number.h" />
+    <ClInclude Include="Headers\org\segames\library\io\json\json_object.h" />
+    <ClInclude Include="Headers\org\segames\library\io\json\json_string.h" />
     <ClInclude Include="Headers\org\segames\library\library.h" />
     <ClInclude Include="Headers\org\segames\library\math\dimension.h" />
     <ClInclude Include="Headers\org\segames\library\math\dimension_2.h" />
@@ -197,6 +204,7 @@
     <ClInclude Include="Headers\org\segames\library\util\stack.h" />
     <ClInclude Include="Headers\org\segames\library\util\string_util.h" />
     <ClInclude Include="Headers\org\segames\library\util\timer.h" />
+    <ClInclude Include="Sources\org\segames\library\io\json\json_boolean.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\debug_shared\debug.cpp" />
@@ -222,6 +230,7 @@
     <ClCompile Include="Sources\org\segames\library\gl\gl_pointer_inf.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\gl_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\gl_shader.cpp" />
+    <ClCompile Include="Sources\org\segames\library\gl\nk\nk_layout.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_disc_texture.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_physical_texture.cpp" />
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_s3tc_texture.cpp" />
@@ -236,6 +245,9 @@
     <ClCompile Include="Sources\org\segames\library\io\file_attributes.cpp" />
     <ClCompile Include="Sources\org\segames\library\io\file_not_found_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\io\io_exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\io\json\json_number.cpp" />
+    <ClCompile Include="Sources\org\segames\library\io\json\json_object.cpp" />
+    <ClCompile Include="Sources\org\segames\library\io\json\json_string.cpp" />
     <ClCompile Include="Sources\org\segames\library\math\math.cpp" />
     <ClCompile Include="Sources\org\segames\library\null_pointer_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\object.cpp" />
@@ -245,7 +257,7 @@
     <ClCompile Include="Sources\org\segames\library\util\string_util.cpp" />
     <ClCompile Include="Sources\org\segames\library\util\timer.cpp" />
     <ClCompile Include="Sources\org\segames\library\util\utf8_iterator.cpp" />
-    <ClCompile Include="Sources\stb_definitions.cpp" />
+    <ClCompile Include="Sources\single_header_definitions.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

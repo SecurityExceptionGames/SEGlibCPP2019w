@@ -17,7 +17,7 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2019-06-23
-				* @edited	2019-06-23
+				* @edited	2019-07-02
 			*/
 			template<typename T, int dim>
 			class Point :
@@ -84,6 +84,14 @@ namespace org
 						throw IndexOutOfBoundsException("The given point element is not in the point: " + std::to_string(n));
 #endif
 					return m_data[n];
+				}
+
+				/*
+					Returns a hash-code for the object.
+				*/
+				virtual size_t hashCode() const override
+				{
+					return Hashable::hashCode(this, sizeof(this));
 				}
 
 				/*

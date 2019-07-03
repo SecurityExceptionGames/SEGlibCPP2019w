@@ -26,11 +26,23 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2019-06-18
-				* @edited	2019-06-18
+				* @edited	2019-06-30
 			*/
 			class SEG_API GLFont :
 				public Object
 			{
+			public:
+
+				/*
+					Standard ASCII characters, codes 32 - 127.
+				*/
+				static ArrayList<unsigned int> ASCII_CHARACTERS;
+
+				/*
+					Returns standard ASCII characters, codes 32 - 127.
+				*/
+				static ArrayList<unsigned int> getASCIICharacters();
+
 			private:
 
 				/*
@@ -136,6 +148,30 @@ namespace org
 			public:
 
 				/*
+					Creates an empty font and does not import anything.
+				*/
+				GLFont();
+
+				/*
+					Creates and imports a new font.
+					* @param[in] size The size/height of a standard character
+					* @param[in] oversampling How many times larger the characters should be rendered in the atlas for better quality, 1 (no extra) or 2 usually works fine
+					* @param[in] path The path to the TTF file of the font
+					* @param[in] chars The UTF8 character codes to render to the atlas
+				*/
+				explicit GLFont(const float size, const unsigned int oversampling, const std::string& path, const ArrayList<unsigned int>& chars);
+
+				/*
+					Creates and imports a new font.
+					* @param[in] size The size/height of a standard character
+					* @param[in] oversampling How many times larger the characters should be rendered in the atlas for better quality, 1 (no extra) or 2 usually works fine
+					* @param[in] path The path to the TTF file of the font
+					* @param[in] shader A reference pointer to a shader that should be used for text rendering, this pointer is NOT deallocated by this instance
+					* @param[in] chars The UTF8 character codes to render to the atlas
+				*/
+				explicit GLFont(const float size, const unsigned int oversampling, const std::string& path, const GLShader* shader, const ArrayList<unsigned int>& chars);
+
+				/*
 					Creates and imports a new font.
 					* @param[in] size The size/height of a standard character
 					* @param[in] oversampling How many times larger the characters should be rendered in the atlas for better quality, 1 (no extra) or 2 usually works fine
@@ -145,6 +181,11 @@ namespace org
 					* @param[in] numChars The amount of characters in the "chars" array
 				*/
 				explicit GLFont(const float size, const unsigned int oversampling, const std::string& path, const GLShader* shader, const unsigned int* chars, const int numChars);
+
+				/*
+					Destructor.
+				*/
+				virtual ~GLFont();
 
 				/*
 					Returns the size/height of the font.

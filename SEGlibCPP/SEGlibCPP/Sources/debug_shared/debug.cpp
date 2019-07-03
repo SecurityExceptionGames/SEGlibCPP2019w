@@ -15,11 +15,13 @@
 #include <org/segames/library/gl/texture/gl_physical_texture_wrapper.h>
 #include <org/segames/library/gl/fbo/gl_framebuffer_wrapper.h>
 #include <org/segames/library/gl/text/gl_font.h>
+#include <org/segames/library/math/point_2.h>
 #include <org/segames/library/math/point_3.h>
 
 #include <unordered_map>
 #include <thread>
 #include <iostream>
+#include <bitset>
 
 using namespace org::segames::library;
 
@@ -36,8 +38,6 @@ int main()
 		win.setSwapInterval(1);
 
 		GLException::enableDebugCallback();
-
-		Point3i p(1, 2, 3);
 
 		GLShader shader;
 		shader.loadVertexData("test/test.vert");
@@ -66,6 +66,15 @@ int main()
 		GLFont font(20, 2, "test/times.ttf", nullptr, chars.pointer(), chars.size());
 		font.upload();
 		
+		for (int i = 0; i < 3; i++)
+		{
+			Point2i p(i / 5, i % 5);
+			std::cout << sizeof(Point2i) << std::endl;
+			std::cout << "Point2i ptr: " << (size_t)&p << std::endl;
+			std::cout << "Point2i val: " << (size_t)(*((size_t*)&p)) << std::endl;
+			std::cout << p << " " << p.hashCode() << std::endl;
+		}
+
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 

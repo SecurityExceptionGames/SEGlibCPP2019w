@@ -38,6 +38,30 @@ namespace org
 				return hash;
 			}
 
+			size_t Hashable::hashCode(const void* ptr, const size_t len)
+			{
+				size_t hash = 0;
+				const unsigned char* mem = reinterpret_cast<const unsigned char*>(ptr);
+				if (len <= sizeof(size_t))
+				{
+					for (size_t i = 0; i < len; i++, mem++)
+						hash |= (((size_t)*mem) << (i * 8));
+				}
+				else
+				{
+					// FNV-1a algorithm
+					hash = 14695981039346656037ull;
+					for (size_t i = 0; i < len; i++, mem++)
+					{
+						hash ^= (size_t)*mem;
+						hash *= 1099511628211;
+					}
+
+				}
+
+				return hash;
+			}
+
 		}
 
 	}

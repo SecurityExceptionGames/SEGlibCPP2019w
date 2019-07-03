@@ -19,7 +19,7 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2018-05-08
-				* @edited	2018-05-09
+				* @edited	2018-07-02
 			*/
 			class SEG_API Object :
 				public Hashable
@@ -28,7 +28,7 @@ namespace org
 
 				/*
 					Returns a hash-code for the object.
-					If not overridden, default is determined from the object memory
+					If not overridden, default is determined from object type
 				*/
 				virtual size_t hashCode() const override;
 

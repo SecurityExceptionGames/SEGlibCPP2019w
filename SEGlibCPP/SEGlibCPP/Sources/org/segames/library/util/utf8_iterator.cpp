@@ -174,6 +174,42 @@ namespace org
 				return m_itr != itr;
 			}
 
+			std::string UTF8Iterator::codepointToString(const unsigned int codepoint)
+			{
+				std::string str;
+				str.reserve(4);
+				codepointToString(codepoint, str);
+				return str;
+			}
+
+			void UTF8Iterator::codepointToString(const unsigned int codepoint, std::string& str)
+			{
+				if (codepoint <= 0x7F) 
+				{
+					str += static_cast<unsigned char>(codepoint);
+				}
+				else if (codepoint <= 0x7FF)
+				{
+					str += static_cast<unsigned char>((codepoint >> 6) + 192);
+					str += static_cast<unsigned char>((codepoint & 63) + 128);
+				}
+				else if (0xd800 <= codepoint && codepoint <= 0xdfff) {} //invalid block of utf8
+				else if (codepoint <= 0xFFFF)
+				{
+					str += static_cast<unsigned char>((codepoint >> 12) + 224);
+					str += static_cast<unsigned char>(((codepoint >> 6) & 63) + 128);
+					str += static_cast<unsigned char>((codepoint & 63) + 128);
+				}
+				else if (codepoint <= 0x10FFFF)
+				{
+					str += static_cast<unsigned char>((codepoint >> 18) + 240);
+					str += static_cast<unsigned char>(((codepoint >> 12) & 63) + 128);
+					str += static_cast<unsigned char>(((codepoint >> 6) & 63) + 128);
+					str += static_cast<unsigned char>((codepoint & 63) + 128);
+				}
+
+			}
+
 		}
 
 	}

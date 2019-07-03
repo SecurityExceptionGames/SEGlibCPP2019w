@@ -67,6 +67,11 @@ namespace org
 				return m_buffer->getDepthComp();
 			}
 
+			const ArrayList<GLTexture*>& GLFramebufferWrapper::getAdditionalColorComp() const
+			{
+				return m_buffer->getAdditionalColorComp();
+			}
+
 			GLAbstractFramebuffer* GLFramebufferWrapper::getBuffer() const
 			{
 				return m_buffer.get();
@@ -85,6 +90,16 @@ namespace org
 			void GLFramebufferWrapper::setDepthComp(GLTexture* tex)
 			{
 				m_buffer->setDepthComp(tex);
+			}
+			
+			void GLFramebufferWrapper::addAdditionalColorComp(GLTexture* tex)
+			{
+				m_buffer->addAdditionalColorComp(tex);
+			}
+
+			GLTexture* GLFramebufferWrapper::removeAdditionalColorComp(const int index)
+			{
+				return m_buffer->removeAdditionalColorComp(index);
 			}
 
 			const GLFramebufferWrapper& GLFramebufferWrapper::bind() const

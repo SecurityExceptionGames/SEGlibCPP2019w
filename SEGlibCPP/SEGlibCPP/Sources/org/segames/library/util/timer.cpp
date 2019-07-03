@@ -50,9 +50,8 @@ namespace org
 					return true;
 				else
 				{
-					const size_t time = nanoTime() - lastTime;
-
-					if (time > 1000000000.0 * updateTime)
+					const size_t time = nanoTime();
+					if ((time - lastTime) > 1000000000.0 * updateTime)
 					{
 						lastTime = time;
 						return true;

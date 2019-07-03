@@ -17,7 +17,7 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2019-06-13
-				* @edited	2019-06-13
+				* @edited	2019-07-02
 			*/
 			template<typename T, int dim>
 			class Dimension :
@@ -84,6 +84,14 @@ namespace org
 						throw IndexOutOfBoundsException("The given dimension element is not in the dimension: " + std::to_string(n));
 #endif
 					return m_data[n];
+				}
+
+				/*
+					Returns a hash code of the object.
+				*/
+				virtual size_t hashCode() const override
+				{
+					return Hashable::hashCode(this, sizeof(*this));
 				}
 
 				/*

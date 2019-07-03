@@ -237,6 +237,30 @@
     <ClInclude Include="Headers\org\segames\library\math\point_3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\gl\nk\nk_layout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\io\json\json_element.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\io\json\json_element_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\io\json\json_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\io\json\json_string.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\io\json\json_number.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\org\segames\library\io\json\json_boolean.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\org\segames\library\io\json\json_boolean.cpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\debug_shared\debug.cpp">
@@ -335,9 +359,6 @@
     <ClCompile Include="Sources\org\segames\library\gl\gl_core.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\stb_definitions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\org\segames\library\gl\texture\gl_texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -378,6 +399,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sources\org\segames\library\util\color.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\single_header_definitions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\gl\nk\nk_layout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\io\json\json_object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\io\json\json_string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\org\segames\library\io\json\json_number.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

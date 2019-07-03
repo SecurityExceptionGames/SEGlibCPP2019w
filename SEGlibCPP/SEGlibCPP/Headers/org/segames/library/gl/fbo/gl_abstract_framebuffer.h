@@ -18,7 +18,7 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2019-06-16
-				* @edited	2019-06-16
+				* @edited	2019-06-30
 			*/
 			class SEG_API GLAbstractFramebuffer :
 				public GLFramebuffer,
@@ -52,6 +52,11 @@ namespace org
 				std::unique_ptr<GLTexture> m_depth;
 
 				/*
+					The additional color components.
+				*/
+				ArrayList<GLTexture*> m_additional_colors;
+
+				/*
 					Links the frame buffer.
 				*/
 				virtual void buildFBO() = 0;
@@ -81,7 +86,7 @@ namespace org
 				/*
 					Destructor.
 				*/
-				virtual ~GLAbstractFramebuffer() override = 0;
+				virtual ~GLAbstractFramebuffer() override;
 
 				/*
 					Returns the id of the frame buffer.
@@ -104,6 +109,11 @@ namespace org
 				virtual GLTexture* getDepthComp() const override;
 
 				/*
+					Returns the list of additional color components.
+				*/
+				virtual const ArrayList<GLTexture*>& getAdditionalColorComp() const override;
+
+				/*
 					Sets the size of the framebuffer.
 					NOTE! FBO must be rebuilt for effects to take place.
 					* @param[in] size The new size of the frame buffer
@@ -124,6 +134,21 @@ namespace org
 					* @param[in] tex The texture to use
 				*/
 				virtual void setDepthComp(GLTexture* tex) override;
+
+				/*
+					Adds an additional color component. Dellocated by this instance on destruction.
+					NOTE! FBO must be rebuilt for effects to take place.
+					NOTE! This operation does not replace the setColorComp()
+					NOTE! The texture parameters should be set before the component is added
+					* @param[in] tex The texture to use
+				*/
+				virtual void addAdditionalColorComp(GLTexture* tex) override;
+
+				/*
+					Removes and returns the additional color component of the given index.
+					* @param[in] index The index of the additional color component
+				*/
+				virtual GLTexture* removeAdditionalColorComp(const int index) override;
 
 				/*
 					Binds this framebuffer to the OpenGL context.

@@ -20,11 +20,11 @@ namespace org
 		{
 
 			/*
-				Base class for a n-dimensional euclidean vector with templates for different data type and dimensions
+				Base class for a n-dimensional euclidean vector with templates for different data type and dimensions.
 
 				* @author	Philip Rosberg
 				* @since	2018-06-21
-				* @edited	2018-06-22
+				* @edited	2019-07-02
 			*/
 			template<typename T, int dim>
 			class BasicVector :
@@ -61,7 +61,7 @@ namespace org
 					* @param[in] items The vector data to place in the vector
 				*/
 				template<typename... T2>
-				explicit BasicVector(const T2... items)
+				BasicVector(const T2... items)
 				{
 #ifdef SEG_API_DEBUG_THROW
 					if (sizeof...(items) != dim)
@@ -77,7 +77,7 @@ namespace org
 					* @param[in] obj The vector to cast from
 				*/
 				template<typename T2>
-				explicit BasicVector(const BasicVector<T2, dim>& obj)
+				BasicVector(const BasicVector<T2, dim>& obj)
 				{
 					for (int i = 0; i < this->dimensions(); i++)
 						data[i] = (T)obj.peek(i);
@@ -119,6 +119,14 @@ namespace org
 						throw IndexOutOfBoundsException("The given vector element is not in the dimension of the vector." + std::to_string(n));
 #endif
 					return data[n];
+				}
+
+				/*
+					Returns a hash-code for the object.
+				*/
+				virtual size_t hashCode() const override
+				{
+					return Hashable::hashCode(data, dim);
 				}
 
 				/*
@@ -223,6 +231,18 @@ namespace org
 				}
 
 				/*
+					Sets the data of this vector to the data in the given one.
+					* @param[in] obj The vector to read data from
+				*/
+				template<typename T2>
+				inline BasicVector<T, dim>& operator=(const BasicVector<T2, dim>& obj)
+				{
+					for (int i = 0; i < dimensions(); i++)
+						data[i] = (T)obj.peek(i);
+					return *this;
+				}
+
+				/*
 					Creates a vector filled with random values in the range [0, 1)
 				*/
 				inline static BasicVector<T, dim> rand()
@@ -247,11 +267,11 @@ namespace org
 			};
 
 			/*
-				Base class for a m x n euclidean matrix with template parameters for data type and size
+				Base class for a m x n euclidean matrix with template parameters for data type and size.
 
 				* @author	Philip Rosberg
 				* @since	2018-06-21
-				* @edited	2018-06-22
+				* @edited	2019-07-02
 			*/
 			template<typename T, int rows, int cols>
 			class BasicMatrix :
@@ -276,7 +296,7 @@ namespace org
 					Matrix initializer list constructor. Constructs a matrix form the contents of the given initializer list
 					* @param[in] list The initializer list with data
 				*/
-				explicit BasicMatrix(const std::initializer_list<std::initializer_list<T>>& list)
+				BasicMatrix(const std::initializer_list<std::initializer_list<T>>& list)
 				{
 #ifdef SEG_API_DEBUG_THROW
 					if (list.size() != (size_t)this->m())
@@ -293,7 +313,7 @@ namespace org
 					* @param[in] obj The matrix to cast from
 				*/
 				template<typename T2>
-				explicit BasicMatrix(const BasicMatrix<T2, rows, cols>& obj)
+				BasicMatrix(const BasicMatrix<T2, rows, cols>& obj)
 				{
 					for (int i = 0; i < this->m(); i++)
 						for (int j = 0; j < this->n(); j++)
@@ -386,6 +406,14 @@ namespace org
 						throw IndexOutOfBoundsException("The index of the requested row is outside of the matrix: " + std::to_string(i));
 #endif
 					return data[i];
+				}
+
+				/*
+					Returns a hash-code for the object.
+				*/
+				virtual size_t hashCode() const override
+				{
+					return Hashable::hashCode(this, sizeof(*this));
 				}
 
 				/*
@@ -499,6 +527,19 @@ namespace org
 					for (int i = 0; i < m(); i++)
 						for (int j = 0; j < n(); j++)
 							data[i][j] = (T)(peek(i, j) - obj.peek(i, j));
+					return *this;
+				}
+
+				/*
+					Sets the data of this matrix to the data of the given one.
+					* @param[in] obj The matrix to read data from
+				*/
+				template<typename T2>
+				inline BasicMatrix<T, rows, cols>& operator=(const BasicMatrix<T2, rows, cols>& obj)
+				{
+					for (int i = 0; i < m(); i++)
+						for (int j = 0; j < n(); j++)
+							data[i][j] = (T)obj.peek(i, j);
 					return *this;
 				}
 
@@ -630,7 +671,7 @@ namespace org
 				*/
 				inline static BasicMatrix<T, 4, 4> projection(const T fov, const T aspect, const T zNear, const T zFar)
 				{
-					const T top = zNear * tan(radians(fov * 0.5));
+					const T top = zNear * tan(Math::radians(fov * 0.5));
 					const T bottom = -top;
 					const T right = top * aspect;
 					const T left = -right;
@@ -1130,6 +1171,34 @@ namespace org
 				for (int i = 0; i < rows; i++)
 					for (int j = 0; j < colsB; j++)
 						out[i][j] = dot(a.row(i), b.column(j));
+				return out;
+			}
+
+			/*
+				Multiplies the given (row) vector by the given matrix.
+				* @param[in] a The (row) vector
+				* @param[in] b The matrix
+			*/
+			template<typename T, typename T2, int rows, int cols>
+			inline BasicVector<T, cols> operator*(const BasicVector<T, rows>& a, const BasicMatrix<T2, rows, cols>& b)
+			{
+				BasicVector<T, cols> out;
+				for (int i = 0; i < cols; i++)
+					out[i] = dot(a, b.column(i));
+				return out;
+			}
+
+			/*
+				Multiplies the given matrix by the given (column) vector.
+				* @param[in] a The matrix
+				* @param[in] b The (column) vector
+			*/
+			template<typename T, typename T2, int rows, int cols>
+			inline BasicVector<T2, rows> operator*(const BasicMatrix<T, rows, cols>& a, const BasicVector<T2, cols>& b)
+			{
+				BasicVector<T, rows> out;
+				for (int i = 0; i < rows; i++)
+					out[i] = dot(b, a.row(i));
 				return out;
 			}
 

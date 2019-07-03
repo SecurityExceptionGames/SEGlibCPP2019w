@@ -2,6 +2,7 @@
 #include <org/segames/library/gl/texture/gl_texture.h>
 #include <org/segames/library/gl/gl_bindable.h>
 #include <org/segames/library/math/dimension_2.h>
+#include <org/segames/library/util/array_list.h>
 
 namespace org
 {
@@ -17,7 +18,7 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2019-06-16
-				* @edited	2019-06-16
+				* @edited	2019-06-30
 			*/
 			class GLFramebuffer :
 				public GLBindable
@@ -50,6 +51,11 @@ namespace org
 				virtual GLTexture* getDepthComp() const = 0;
 
 				/*
+					Returns the list of additional color components.
+				*/
+				virtual const ArrayList<GLTexture*>& getAdditionalColorComp() const = 0;
+
+				/*
 					Sets the size of the framebuffer.
 					NOTE! FBO must be rebuilt for effects to take place.
 					* @param[in] size The new size of the frame buffer
@@ -57,19 +63,34 @@ namespace org
 				virtual void setSize(const Dimension2i& size) = 0;
 
 				/*
-					Sets the color component of the framebuffer.
+					Sets the color component of the framebuffer. Dellocated by this instance on destruction.
 					NOTE! FBO must be rebuilt for effects to take place.
 					* @param[in] tex The texture to use
 				*/
 				virtual void setColorComp(GLTexture* tex) = 0;
 
 				/*
-					Sets the depth component of the framebuffer.
+					Sets the depth component of the framebuffer. Dellocated by this instance on destruction.
 					NOTE! FBO must be rebuilt for effects to take place.
 					NOTE! Should have internal format GL_DEPTH_COMPONENT
 					* @param[in] tex The texture to use
 				*/
 				virtual void setDepthComp(GLTexture* tex) = 0;
+
+				/*
+					Adds an additional color component. Dellocated by this instance on destruction.
+					NOTE! FBO must be rebuilt for effects to take place.
+					NOTE! This operation does not replace the setColorComp()
+					NOTE! The texture parameters should be set before the component is added
+					* @param[in] tex The texture to use
+				*/
+				virtual void addAdditionalColorComp(GLTexture* tex) = 0;
+
+				/*
+					Removes and returns the additional color component of the given index.
+					* @param[in] index The index of the additional color component
+				*/
+				virtual GLTexture* removeAdditionalColorComp(const int index) = 0;
 
 				/*
 					Binds this framebuffer to the OpenGL context.

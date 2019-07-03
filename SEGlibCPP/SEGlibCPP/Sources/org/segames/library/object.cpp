@@ -1,5 +1,8 @@
 #include <org/segames/library/object.h>
 
+#include <iostream>
+#include <bitset>
+
 namespace org
 {
 
@@ -11,18 +14,7 @@ namespace org
 
 			size_t Object::hashCode() const
 			{
-				size_t code = 0;
-				char* ptr = (char*)this;
-				for (size_t i = 0; i < (size_t)sizeof(*this); i++)
-				{
-					size_t addend = *ptr;
-					for (size_t e = 0; e < i; e++)
-						addend *= *ptr;
-					code += addend;
-
-					ptr++;
-				}
-				return code;
+				return typeid(*this).hash_code();
 			}
 
 			std::string Object::toString() const

@@ -15,7 +15,7 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2019-06-16
-				* @edited	2019-06-16
+				* @edited	2019-06-30
 			*/
 			class SEG_API GLFramebufferWrapper :
 				public GLFramebuffer
@@ -90,6 +90,11 @@ namespace org
 				virtual GLTexture* getDepthComp() const override;
 
 				/*
+					Returns the list of additional color components.
+				*/
+				virtual const ArrayList<GLTexture*>& getAdditionalColorComp() const override;
+
+				/*
 					Returns the backing framebuffer.
 				*/
 				virtual GLAbstractFramebuffer* getBuffer() const;
@@ -115,6 +120,21 @@ namespace org
 					* @param[in] tex The texture to use
 				*/
 				virtual void setDepthComp(GLTexture* tex) override;
+
+				/*
+					Adds an additional color component. Dellocated by this instance on destruction.
+					NOTE! FBO must be rebuilt for effects to take place.
+					NOTE! This operation does not replace the setColorComp()
+					NOTE! The texture parameters should be set before the component is added
+					* @param[in] tex The texture to use
+				*/
+				virtual void addAdditionalColorComp(GLTexture* tex) override;
+
+				/*
+					Removes and returns the additional color component of the given index.
+					* @param[in] index The index of the additional color component
+				*/
+				virtual GLTexture* removeAdditionalColorComp(const int index) override;
 
 				/*
 					Binds this framebuffer to the OpenGL context.
