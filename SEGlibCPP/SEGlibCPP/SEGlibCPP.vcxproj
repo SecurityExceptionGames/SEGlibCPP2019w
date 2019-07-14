@@ -164,11 +164,13 @@
     <ClInclude Include="Headers\org\segames\library\io\file_attributes.h" />
     <ClInclude Include="Headers\org\segames\library\io\file_not_found_exception.h" />
     <ClInclude Include="Headers\org\segames\library\io\io_exception.h" />
+    <ClInclude Include="Headers\org\segames\library\io\json\json_array.h" />
     <ClInclude Include="Headers\org\segames\library\io\json\json_boolean.h" />
     <ClInclude Include="Headers\org\segames\library\io\json\json_element.h" />
     <ClInclude Include="Headers\org\segames\library\io\json\json_element_type.h" />
     <ClInclude Include="Headers\org\segames\library\io\json\json_number.h" />
     <ClInclude Include="Headers\org\segames\library\io\json\json_object.h" />
+    <ClInclude Include="Headers\org\segames\library\io\json\json_util.h" />
     <ClInclude Include="Headers\org\segames\library\io\json\json_string.h" />
     <ClInclude Include="Headers\org\segames\library\library.h" />
     <ClInclude Include="Headers\org\segames\library\math\dimension.h" />
@@ -245,9 +247,12 @@
     <ClCompile Include="Sources\org\segames\library\io\file_attributes.cpp" />
     <ClCompile Include="Sources\org\segames\library\io\file_not_found_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\io\io_exception.cpp" />
+    <ClCompile Include="Sources\org\segames\library\io\json\json_array.cpp" />
+    <ClCompile Include="Sources\org\segames\library\io\json\json_element.cpp" />
     <ClCompile Include="Sources\org\segames\library\io\json\json_number.cpp" />
     <ClCompile Include="Sources\org\segames\library\io\json\json_object.cpp" />
     <ClCompile Include="Sources\org\segames\library\io\json\json_string.cpp" />
+    <ClCompile Include="Sources\org\segames\library\io\json\json_util.cpp" />
     <ClCompile Include="Sources\org\segames\library\math\math.cpp" />
     <ClCompile Include="Sources\org\segames\library\null_pointer_exception.cpp" />
     <ClCompile Include="Sources\org\segames\library\object.cpp" />

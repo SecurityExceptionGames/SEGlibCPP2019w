@@ -21,7 +21,7 @@ namespace org
 				* @since	2019-01-25
 				* @since	2019-01-25
 			*/
-			class System
+			class System final
 			{
 			public:
 

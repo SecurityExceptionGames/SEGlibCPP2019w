@@ -4,25 +4,30 @@
 	<Project>
 		<Option title="SEGlibCPP" />
 		<Option pch_mode="2" />
-		<Option compiler="gnu_gcc_compiler_x64" />
+		<Option compiler="gnu_gcc_compilerx64" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/SEGlibCPP_Debug" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
-				<Option compiler="gnu_gcc_compiler_x64" />
+				<Option compiler="gnu_gcc_compilerx64" />
 				<Compiler>
-					<Add option="-g" />
-					<Add option="-Og" />
-					<Add option="-export-dynamic -fpic" />
 					<Add option="-DSEG_API_DEBUG" />
 				</Compiler>
+				<MakeCommands>
+					<Build command="" />
+					<CompileFile command="" />
+					<Clean command="" />
+					<DistClean command="" />
+					<AskRebuildNeeded command="" />
+					<SilentBuild command=" &gt; $(CMD_NULL)" />
+				</MakeCommands>
 			</Target>
 			<Target title="DebugOptimized">
 				<Option output="bin/SEGlibCPP_DebugOptimized" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/DebugOptimized/" />
 				<Option type="1" />
-				<Option compiler="gnu_gcc_compiler_x64" />
+				<Option compiler="gnu_gcc_compilerx64" />
 				<Compiler>
 					<Add option="-O3" />
 					<Add option="-DSEG_API_DEBUG" />
@@ -36,7 +41,7 @@
 				<Option output="bin/Release/SEGlibCPP" imp_lib="$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).a" def_file="$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).def" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="3" />
-				<Option compiler="gnu_gcc_compiler_x64" />
+				<Option compiler="gnu_gcc_compilerx64" />
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
 				<Compiler>
@@ -66,6 +71,7 @@
 			<Add library="../../../Windows Kits/10/Lib/10.0.17763.0/um/x64/Psapi.Lib" />
 		</Linker>
 		<Unit filename="SEGlibCPP/Sources/debug_shared/debug.cpp" />
+		<Unit filename="SEGlibCPP/Sources/debug_shared/json_checker.cpp" />
 		<Unit filename="SEGlibCPP/Sources/glad.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -105,6 +111,13 @@
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/io/file_attributes.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/io/file_not_found_exception.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/io/io_exception.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/io/json/json_array.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/io/json/json_boolean.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/io/json/json_element.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/io/json/json_number.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/io/json/json_object.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/io/json/json_string.cpp" />
+		<Unit filename="SEGlibCPP/Sources/org/segames/library/io/json/json_util.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/math/math.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/null_pointer_exception.cpp" />
 		<Unit filename="SEGlibCPP/Sources/org/segames/library/object.cpp" />

@@ -231,7 +231,7 @@ namespace org
 				return File(getParent());
 			}
 
-			std::ifstream File::openInput() const
+			std::ifstream File::openInputBin() const
 			{
 				if (!exists())
 					throw FileNotFoundException(getPath(), __FILE__, __LINE__);
@@ -242,12 +242,34 @@ namespace org
 				return stream;
 			}
 
-			std::ofstream File::openOutput() const
+			std::ifstream File::openInputChar() const
+			{
+				if (!exists())
+					throw FileNotFoundException(getPath(), __FILE__, __LINE__);
+
+				std::ifstream stream(getPath());
+				if (!stream.good())
+					throw IOException("Could not open input stream to file \"" + getPath() + "\"", __FILE__, __LINE__);
+				return stream;
+			}
+
+			std::ofstream File::openOutputBin() const
 			{
 				if (!exists())
 					throw FileNotFoundException(getPath(), __FILE__, __LINE__);
 
 				std::ofstream stream(getPath(), std::fstream::binary);
+				if (!stream.good())
+					throw IOException("Could not open output stream to file \"" + getPath() + "\"", __FILE__, __LINE__);
+				return stream;
+			}
+
+			std::ofstream File::openOutputChar() const
+			{
+				if (!exists())
+					throw FileNotFoundException(getPath(), __FILE__, __LINE__);
+
+				std::ofstream stream(getPath());
 				if (!stream.good())
 					throw IOException("Could not open output stream to file \"" + getPath() + "\"", __FILE__, __LINE__);
 				return stream;

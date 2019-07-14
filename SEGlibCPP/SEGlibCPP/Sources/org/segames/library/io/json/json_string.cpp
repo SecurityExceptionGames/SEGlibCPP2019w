@@ -1,6 +1,5 @@
 #include <org/segames/library/io/json/json_string.h>
 #include <org/segames/library/io/io_exception.h>
-#include <org/segames/library/util/utf8_iterator.h>
 
 namespace org
 {
@@ -14,7 +13,6 @@ namespace org
 			void JSONString::evalEscapeSequence(std::istream& input, std::string& str)
 			{
 				int c = input.get();
-				unsigned int unicode = 0;
 				if (c == EOF)
 					throw IOException("EOF reached while evaluating an escape sequence in a JSON string/name.", __FILE__, __LINE__);
 
@@ -43,20 +41,6 @@ namespace org
 					break;
 				case 't':
 					str += '\t';
-					break;
-				case 'u':
-					for (int i = 0; i < 4; i++)
-					{
-						c = input.get();
-						if (c == EOF)
-							throw IOException("EOF reached while evaluating an escape sequence in a JSON string/name.", __FILE__, __LINE__);
-						
-						if (c >= '0' && c <= '9')
-							unicode |= ((c - '0') << i * 16);
-						else if (c >= 'A' && c <= 'F')
-							unicode |= ((c - 'A' + 10) << i * 16);
-					}
-					UTF8Iterator::codepointToString(unicode, str);
 					break;
 				default:
 					break;
@@ -90,19 +74,47 @@ namespace org
 				m_string = str;
 			}
 
-			void JSONString::write(std::ostream& output)
+			void JSONString::write(const int tabs, std::ostream& output) const
 			{
-				output << "\"" << m_string << "\"";
+				output << '\"';
+				for (auto itr = m_string.begin(); itr != m_string.end(); itr++)
+				{
+					char c = *itr;
+					switch (c)
+					{
+					case '\"':
+						output << "\\\"";
+						break;
+					case '\\':
+						output << "\\\\";
+						break;
+					case '\b':
+						output << "\\b";
+						break;
+					case '\f':
+						output << "\\f";
+						break;
+					case '\n':
+						output << "\\n";
+						break;
+					case '\r':
+						output << "\\r";
+						break;
+					case '\t':
+						output << "\\t";
+						break;
+					default:
+						output << c;
+						break;
+					}
+
+				}
+				output << '\"';
 			}
 
 			size_t JSONString::hashCode() const
 			{
 				return Hashable::hashCode(m_string);
-			}
-
-			std::string JSONString::toString() const
-			{
-				return "\"" + m_string + "\"";
 			}
 
 			bool JSONString::equals(const Object& obj) const
@@ -137,10 +149,10 @@ namespace org
 						line++;
 						break;
 					default:
-						str += static_cast<unsigned char>(c);
+						str += static_cast<char>(static_cast<unsigned char>(c));
 						break;
 					}
-
+					
 				}
 
 				return str;

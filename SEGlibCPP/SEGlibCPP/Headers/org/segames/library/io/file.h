@@ -20,7 +20,7 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2018-11-05
-				* @edited	2019-05-12
+				* @edited	2019-07-12
 			*/
 			class SEG_API File :
 				public Object
@@ -167,14 +167,24 @@ namespace org
 				virtual File getParentFile() const;
 
 				/*
-					Opens an input stream from the file.
+					Opens a binary input stream from the file.
 				*/
-				virtual std::ifstream openInput() const;
+				virtual std::ifstream openInputBin() const;
 
 				/*
-					Opens an output stream to the file.
+					Opens a character input stream from the file.
 				*/
-				virtual std::ofstream openOutput() const;
+				virtual std::ifstream openInputChar() const;
+
+				/*
+					Opens a binary output stream to the file.
+				*/
+				virtual std::ofstream openOutputBin() const;
+
+				/*
+					Opens a character output stream to the file.
+				*/
+				virtual std::ofstream openOutputChar() const;
 
 				/*
 					Lists the names of the sub files and folders of this file.

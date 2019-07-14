@@ -122,7 +122,7 @@ namespace org
 				m_shader(shader ? shader : &DEFAULT_SHADER)
 			{
 				File file(path);
-				std::ifstream input(file.openInput());
+				std::ifstream input(file.openInputBin());
 				std::unique_ptr<unsigned char[]> ttfData(new unsigned char[file.length()]);
 
 				input.read(reinterpret_cast<char*>(ttfData.get()), file.length());

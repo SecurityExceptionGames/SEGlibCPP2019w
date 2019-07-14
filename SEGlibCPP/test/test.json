@@ -1,0 +1,2067 @@
+{
+	"length": 300,
+	"gc": 20,
+	"time": 20,
+	"ach": "Green",
+	"end_warp": false,
+	
+	"end_movie": "assets/cutscenes/classic_ending.mp4",
+	
+	"ships": [],
+	
+	"end_strings": {
+		"lose": [
+			"今日A couple of hours after your death\nthe big asteroids collided with your\nhome planet. You have failed.",
+			"You have died but at least you saved\nyour home planet.",
+			"You have died but at least you saved\nyour home planet."
+		],
+		"win": [
+			"After a long and valiant journey, your\nlife has finally met its end. However,\nyour home planet was saved in the process,\nleaving your name to fade into legend."
+		],
+		"quit": [
+			"You managed to convince the entire\npopulation of your home planet that you\nare the most fitting pilot of them all.\nWith a spirit of self-sacrifice and\nunmatched bravery, you were supposed to\nfight up until the very end. You sure as\nhell fooled everyone, and now they are\ngone along with you."
+		
+		
+	},
+	
+	"ship_templates": {
+		"TUR Glory ship": {
+			"hull": "TUR Sniper ship hull",
+			"reactor": "Ship reactor Mk4",
+			"ai": {
+				"forward_dist": 150,
+				"wep_count": 1,
+				"wep_keep_time": 5
+			},
+			"engine": "Standard engine M1",
+			"batteries": ["Linked SL F-core cell T10", "Linked SL F-core cell T10"],
+			"weapons": ["Old glory gun Mk0"]
+		},
+		"TUR Flagship alt": {
+			"info": "Being the posterboy of \"The Unknown Resistance\", the Flagship carries their banner with pride, boosting the army's morale! Through unknown technology, the flag even waves to the non-existing wind. The Flagship is usually accompanied by the Flagship guards.",
+			"hull": "TUR Flagship hull",
+			"ai": {
+				"forward_dist": 80,
+				"wep_count": 2,
+				"wep_keep_time": 5
+			},
+			"reactor": "Large reactor Ausf.B",
+			"engine": "X-engine M3",
+			"batteries": ["Linked D-core cell T7", "Linked D-core cell T7"],
+			"weapons": ["Missile launcher Mk5", "Basic gun Mk2", "Punch-gun Mk2", "Energy wave Mk0"],
+			"modifiers": [
+				{"ship_movement_speed": 0.5},
+				{"reactor_output": 1.3},
+				{"battery_recharge": 1.3}
+			],
+			"bonuses": [
+
+			{
+				"type": "score",
+				"target": "source",
+				"value": 2000,
+				"message": "TUR Flagship: +% Score",
+				"message_color": [0, 0.6, 1, 1],
+				"message_icon": "gui_icons.5"
+			},
+			{
+				"type": "gc",
+				"target": "source",
+				"value": 25,
+				"message": "TUR Flagship: +% GC",
+				"message_color": [0.8, 0.8, 0, 1],
+				"message_icon": "gui_icons.3"
+			}
+
+		]
+		},
+		"TUR Mothership alt": {
+			"info": "The Mothership is the largest battlecruiser in \"The Unknown Resistance\", acting as their final trump card and boasting a powerful arsenal. This ship was once chased down by the legendary hero when he realized that there was more than giant asteroids threatening your home planet.",
+			"hull": "TUR Mothership hull alt",
+			"ai_wep_count": 2,
+			"ai": {
+				"forward_dist": 60,
+				"wep_count": 2,
+				"wep_keep_time": 4
+			},
+			"reactor": "Large reactor Ausf.B",
+			"engine": "Standard engine M3",
+			"batteries": ["Linked SL F-core cell T10", "Linked SL F-core cell T10", "Linked SL F-core cell T10", "Linked SL F-core cell T10"],
+			"weapons": [
+				"Laser-gun Ausf.B",
+				"M2 50-cal Mk2",
+				"Punch-gun Mk2"
+			],
+			"modifiers": [
+				{"reactor_output": 5},
+				{"battery_recharge": 5},
+				{"ship_movement_speed": 0.5}
+			],
+			"bonuses": [
+				{
+					"type": "score",
+					"target": "source",
+					"value": 5000,
+					"message": "TUR Mothership: +% Score",
+					"message_color": [0, 0.6, 1, 1],
+					"message_icon": "gui_icons.5"
+				},
+				{
+					"type": "gc",
+					"target": "source",
+					"value": 50,
+					"message": "TUR Mothership: +% GC",
+					"message_color": [0.8, 0.8, 0, 1],
+					"message_icon": "gui_icons.3"
+				}
+				
+			]
+			
+		}
+		
+	},
+	
+	"default_lvl": {
+		"shop": 0.25,
+		"score": 0,
+		"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+		"gc": 1,
+		"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+		"background": {
+			"spawn_rate": [1, 1, 1],
+			"objects": ["FUCK", "rock", "explosive_rock"]
+		},
+		"asteroids": [
+			"Medium asteroid",
+			"Explosive asteroid",
+			"Small asteroid",
+			"Troll asteroid",
+			"Large asteroid",
+			"Cookie asteroid",
+			"Meteor"
+		]
+		
+	},
+	
+	"levels": {
+		"0": {
+			"shop": 1,
+			"movie": "assets/cutscenes/classic_intro.mp4",
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"score": 0,
+			"gc": 1,
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+			
+		},
+		
+		"5": {
+			"name": "The first appearance",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"dead_lock": true,
+			"ships": [
+				"TUR Scout"
+			],
+			"gc": 10
+		},
+
+		"6": {
+			"shop": 1,
+			"score": 0,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"gc": 1,
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "What was that just now!?"
+				},
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "It seems as if though some unknown force is trying to stop you from completing your mission!"
+				},
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "Whatever happens out there, do not let them succeed!"
+				}
+			]
+			
+		},
+		
+		"10": {
+			"name": "Attack",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"transition": true,
+			"ships": ["TUR Scout", "TUR Slow ship", "TUR Scout"]
+		},
+		"11": {
+			"name": "Attack",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"shop": 0
+		},
+		
+		
+		
+		"15": {
+			"name": "The storm",
+			"warp": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 1.4 + 0.05",
+			"asteroid_speed_func": "1.3 * (10 * sqrt(x) + random() * 50 + 150)",
+			"asteroids": ["Storm"],
+			"background": {
+				"spawn_rate": 0,
+				"objects": ["storm"]
+			},
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "You are about to enter a comet field. Be careful!"
+				}
+			]
+		},
+		"16": {
+			"name": "The storm",
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 1.4 + 0.05",
+			"asteroid_speed_func": "1.4 * (10 * sqrt(x) + random() * 50 + 150)",
+			"asteroids": ["Storm"]
+		},
+		
+		
+		
+		"20": {
+			"name": "The ambush",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"transition": true,
+			"ships": ["TUR Scout", "TUR Gun ship", "TUR Slow ship", "TUR Scout"]
+		},
+		"21": {
+			"name": "The ambush",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"shop": 0
+		},
+		"22": {
+			"name": "The ambush",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"shop": 0
+		},
+
+		"24": {
+			"shop": 0.25,
+			"score": 0,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"gc": 1,
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+
+			"dialogs": [
+				{
+					"title": "SEG HQ:",
+					"message": "We have detected large structures ahead. They seem to have been deployed by the enemy!"
+				}
+			]
+			
+		},
+		
+		
+		"25": {
+			"name": "Fallback",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.08 + 0.05",
+			"background": {
+				"spawn_rate": 0.3,
+				"objects": ["fallback"]
+			},
+			"asteroids": ["Fallback"]
+		},
+		"26": {
+			"name": "Fallback",
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.08 + 0.05",
+			"asteroids": ["Fallback"]
+		},
+		
+		
+		
+		"30": {
+			"name": "The FLEET",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"transition": true,
+			"asteroids": [],
+			"ships": ["TUR Scout", "TUR Slow ship", "TUR Scout", "TUR Burat ship", "TUR Scout"]
+		},
+		"31": {
+			"name": "The FLEET",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"shop": 0
+		},
+		"32": {
+			"name": "The FLEET",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"shop": 0
+		},
+		"33": {
+			"name": "The FLEET",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"shop": 0
+		},
+		
+		
+		
+		"40": {
+			"name": "Armageddon",
+			"warp": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 2 + 0.05",
+			"asteroid_speed_func": "0.8 * (10 * sqrt(x) + random() * 50 + 150)",
+			"background": {
+				"spawn_rate": 0,
+				"objects": ["meteor"]
+			},
+			"asteroids": ["Meteor"],
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "You are entering a meteor field!"
+				}
+			]
+		},
+		"41": {
+			"name": "Armageddon",
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 2.2 + 0.05",
+			"asteroid_speed_func": "0.9 * (10 * sqrt(x) + random() * 50 + 150)",
+			"asteroids": ["Meteor"]
+		},
+		"42": {
+			"name": "Armageddon",
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 2.5 + 0.05",
+			"asteroids": ["Meteor"]
+		},
+		"45": {
+			"name": "The field",
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"transition": true,
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.9 + 0.05",
+			"asteroid_speed_func": "1.5 * (10 * sqrt(x) + random() * 50 + 150)",
+			"background": {
+				"spawn_rate": 0,
+				"objects": ["meteor"]
+			},
+			"asteroids": ["Meteor"]
+		},
+		
+		
+		
+		"50": {
+			"name": "The Cruiser",
+			"music": "assets/audio/music/8bit_bossboi.ogg",
+			"warp": true,
+			"movie": "assets/cutscenes/cruiser.mp4",
+			"ships": ["TUR Cruiser"]
+		},
+		"51": {
+			"name": "The Cruiser",
+			"music": "assets/audio/music/8bit_bossboi.ogg",
+			"shop": 0,
+			"ships": ["TUR Scout", "TUR Scout"]
+		},
+		"52": {
+			"name": "The Cruiser",
+			"music": "assets/audio/music/8bit_bossboi.ogg",
+			"shop": 0,
+			"ships": ["TUR Scout", "TUR Scout"],
+			"dead_lock": true
+		},
+		
+		
+		
+		"55": {
+			"name": "Fallback RECALCULATED",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.3 + 0.05",
+			"background": {
+				"spawn_rate": 0.7,
+				"objects": ["fallback"]
+			},
+			"asteroids": ["Fallback recalculated"]
+		},
+		"56": {
+			"name": "Fallback RECALCULATED",
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.3 + 0.05",
+			"asteroids": ["Fallback recalculated"]
+		},
+		"57": {
+			"name": "Fallback RECALCULATED",
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.3 + 0.05",
+			"asteroids": ["Fallback recalculated"]
+		},
+		
+		
+		
+		"69": {
+			"name": "Calm before the storm",
+			"shop": 1,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"dialogs": [
+				{
+					"title": "SEG HQ:",
+					"message": "How are you holding up so far? It shouldn't be too long until you reach the giant asteroids. Just be sure to stack up on heavy weapons before you reach them."
+				}
+			]
+		},
+		"70": {
+			"name": "The last stand",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"warp": true,
+			"ships": ["TUR Scout", "TUR Slow ship", "TUR Spread ship", "TUR Scout", "TUR Slow ship", "TUR Scout"]
+		},
+		"71": {
+			"name": "The last stand",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Burat ship", "TUR Gun ship"]
+		},
+		"72": {
+			"name": "The last stand",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Burat ship", "TUR Gun ship"]
+		},
+		"73": {
+			"name": "The last stand",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Slow ship", "TUR Slow ship"]
+		},
+		"74": {
+			"name": "The last stand",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Spread ship", "TUR Spread ship"]
+		},
+		"75": {
+			"name": "The last stand",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Sniper ship", "TUR Sniper ship"],
+			"dead_lock": true
+		},
+		
+		
+		
+		"80": {
+			"name": "The Flagship",
+			"music": "assets/audio/music/8bit_bossboi.ogg",
+			"warp": true,
+			"movie": "assets/cutscenes/flagship.mp4",
+			"ships": ["TUR Flagship alt"],
+			"dead_lock": true,
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "That banner... Could this be their leader?"
+				},
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "Hopefully this means that their forces are growing thin."
+				}
+			]
+		},
+		
+		
+		
+		"90": {
+			"name": "Enraged flagship guards",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"transition": true,
+			"ships": ["TUR Flagship guard", "TUR Flagship guard", "TUR Flagship guard", "TUR Flagship guard", "TUR Flagship guard"],
+			"dead_lock": true
+		},
+
+		"91": {
+			"shop": 0.25,
+			"score": 0,
+			"gc": 1,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+
+			"dialogs": [
+				{
+					"title": "SEG HQ:",
+					"message": "It seems odd that the flagship guards do not travel alongside their leader..."
+				}
+			]
+			
+		},
+		
+		
+		
+		"96": {
+			"name": "The Minion",
+			"warp": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Minion"],
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "Be careful pilot! We are detecting high sources of energy within this enemy! This might be their final trump card!"
+				}
+			]
+		},
+		
+		
+		
+		"97": {
+			"name": "The end",
+			"warp": true,
+			"music": "assets/audio/music/16bit_finale.ogg",
+			"asteroid_speed_func": "0.7 * (10 * sqrt(x) + random() * 50 + 150)",
+			"beg": ["End asteroid"],
+			"background": {
+				"spawn_rate": 0,
+				"objects": ["rock"]
+			},
+			"dead_lock": true,
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "This is it. It all depends on whether or not you have the offensive capabilities to tear them down. Good luck."
+				}
+			]
+		},
+		"98": {
+			"name": "The end",
+			"music": "assets/audio/music/16bit_finale.ogg",
+			"asteroid_speed_func": "0.8 * (10 * sqrt(x) + random() * 50 + 150)",
+			"beg": ["End asteroid"],
+			"dead_lock": true
+		},
+		"99": {
+			"name": "The end",
+			"music": "assets/audio/music/16bit_finale.ogg",
+			"asteroid_speed_func": "0.9 * (10 * sqrt(x) + random() * 50 + 150)",
+			"beg": ["End asteroid"],
+			"dead_lock": true
+		},
+		"100": {
+			"name": "The end",
+			"music": "assets/audio/music/16bit_finale.ogg",
+			"beg": ["End asteroid"],
+			"dead_lock": true
+		},
+		"101": {
+			"name": "The end?",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"background": {
+				"spawn_rate": 1,
+				"objects": ["FUCK", "rock", "explosive_rock"]
+			},
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid"
+			],
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "All four asteroids have been annihilated! You did it!"
+				},
+				{
+					"locking": true,
+					"message": "While you heard your comrades celebrate through the radio, you had a feeling deep down that told you the mission was far from over."
+				},
+				{
+					"title": "SEG HQ:",
+					"locking": true,
+					"message": "What? You're not returning yet? Are you saying that there might be more of \"The Unknown Resistance\" out there?"
+				},
+				{
+					"title": "SEG HQ",
+					"locking": true,
+					"message": "I suppose that cutting the snake's head off would be the optimal solution... Very well, if you take on the burden of eliminating this threat, then you can count on our support!"
+				}
+			]
+			
+		},
+
+		"109": {
+			"shop": 0.25,
+			"score": 0,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"gc": 1,
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+
+			"dialogs": [
+				{
+					"title": "SEG HQ:",
+					"message": "We are detecting several enemies carrying heavy explosive weapons ahead. You were right after all."
+				}
+			]
+			
+		},
+		
+			
+		"110": {
+			"name": "Heaven or hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"transition": true,
+			"ships": ["TUR Sniper ship", "TUR Devastator ship", "TUR Sniper ship"]
+		},
+		"111": {
+			"name": "Heaven or hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Devastator ship"]
+		},
+		"112": {
+			"name": "Heaven or hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Devastator ship"]
+		},
+		"113": {
+			"name": "Heaven or hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Devastator ship"]
+		},
+		"114": {
+			"name": "Heaven or hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Devastator ship"]
+		},
+		"115": {
+			"name": "Heaven or hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Devastator ship"]
+		},
+		
+		
+		
+		"120": {
+			"name": "Clearly hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"transition": true,
+			"ships": ["TUR Burat ship", "TUR Spread ship", "TUR Burat ship", "TUR Spread ship", "TUR Burat ship"]
+		},
+		"121": {
+			"name": "Clearly hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Spread ship", "TUR Burat ship"]
+		},
+		"122": {
+			"name": "Clearly hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Spread ship", "TUR Burat ship"]
+		},
+		"123": {
+			"name": "Clearly hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Spread ship", "TUR Burat ship"]
+		},
+		"124": {
+			"name": "Clearly hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Spread ship", "TUR Burat ship"]
+		},
+		"125": {
+			"name": "Clearly hell",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"ships": ["TUR Spread ship", "TUR Burat ship"]
+		},
+		
+		
+		
+		"150": {
+			"name": "Still alive?",
+			"music": "assets/audio/music/8bit_battle.ogg",
+			"transition": true,
+			"ships": [
+				"TUR Spread ship", "TUR Spread ship", "TUR Spread ship",
+				"TUR Sniper ship", "TUR Sniper ship", "TUR Sniper ship"
+			]
+			
+		},
+		"151": {
+			"name": "Still alive?",
+			"music": "assets/audio/music/8bit_battle.ogg"
+		},
+		"152": {
+			"name": "Still alive?",
+			"music": "assets/audio/music/8bit_battle.ogg"
+		},
+		"153": {
+			"name": "Still alive?",
+			"music": "assets/audio/music/8bit_battle.ogg"
+		},
+		"154": {
+			"name": "Still alive?",
+			"music": "assets/audio/music/8bit_battle.ogg"
+		},
+		"155": {
+			"name": "Still alive?",
+			"music": "assets/audio/music/8bit_battle.ogg"
+		},
+
+		"195": {
+			"shop": 0.25,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"score": 0,
+			"gc": 1,
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+
+			"dialogs": [
+				{
+					"title": "SEG HQ:",
+					"message": "High amounts of enemy ships are coming your way."
+				}
+			]
+			
+		},
+
+		"198": {
+			"shop": 0.25,
+			"score": 0,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"gc": 1,
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+
+			"dialogs": [
+				{
+					"title": "SEG HQ:",
+					"message": "It's worse than we thought... They might be rallying their entire fleet against you!"
+				},
+				{	
+					"title": "SEG HQ:",
+					"message": "Try to take them out as fast as you can to stop them from overtaking you."
+				}
+			]
+			
+		},
+		
+		
+		
+		"200": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"warp": true,
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"201": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"202": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"203": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"204": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"205": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"dead_lock": true,
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"206": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"207": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"208": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"209": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"210": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"dead_lock": true,
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"211": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"212": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"213": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"214": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"215": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"dead_lock": true,
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"216": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"217": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"218": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"219": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"220": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"dead_lock": true,
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"221": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"222": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"223": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"224": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"225": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"dead_lock": true,
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"226": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"227": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"228": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"229": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"230": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"dead_lock": true,
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"231": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"232": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"233": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"234": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"235": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"dead_lock": true,
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"236": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"237": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"238": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			]
+			
+		},
+		"239": {
+			"name": "Still alive.",
+			"music": "assets/audio/music/still_alive.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			],
+			"dead_lock": true
+		},
+		"240": {
+			"shop": 1,
+			"score": 2000,
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid"
+			],
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "That seems to have been the last of them..."
+				},
+				{
+					"title": "SEG HQ:",
+					"locking": true,
+					"message": "Are you alright? That battle must have taken its toll on you..."
+				},
+				{
+					"title": "SEG HQ",
+					"locking": true,
+					"message": "There's a station up ahead so be sure to make use of your GC."
+				}
+				
+			]
+			
+		},
+		
+		
+		
+		"250": {
+			"name": "The Mothership",
+			"music": "assets/audio/music/8bit_finale.ogg",
+			"warp": true,
+			"movie": "assets/cutscenes/mothership.mp4",
+			"ships": ["TUR Mothership alt"],
+			"dead_lock": true,
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "Hiding behind their massive army, this ship in particular seems to be of great importance."
+				}
+				
+			]
+
+		},
+
+
+		"251": {
+			"shop": 1,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid"
+			],
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "SEG HQ:",
+					"message": "There can't possibly be more after that... You should return home."
+				},
+				{
+					"locking": true,
+					"message": "You told your comrades that you would continue to scout ahead for a while before turning back."
+				},
+				{
+					"title": "SEG HQ",
+					"locking": true,
+					"message": "You're pretty far away right now, just make sure that we won't lose contact with you."
+				}
+				
+			]
+			
+		},
+		
+		
+		
+		"270": {
+			"shop": 0.25,
+			"name": "The final end. /dev",
+			"music": "assets/audio/music/space_finale.ogg",
+			"gc": 1,
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"bonuses": [
+				{
+					"type": "shop_item",
+					"target": "player",
+					"value": "Space machine-gun Mk0",
+					"message": "You have received: %",
+					"message_color": [1, 1, 1, 1],
+					"message_icon": "gui_icons.8"
+				}
+			],
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+			"dialogs": [
+				{
+					"title": "SEG HQ",
+					"locking": true,
+					"message": "H-*buzzing noises*, I think yo-*buzzing noises*"
+				},
+				{
+					"locking": true,
+					"message": "Despite venturing far enough to lose communication with your comrades, you continued on."
+				}
+			]
+		},
+		"271": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"272": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"273": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"274": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"275": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+			"dialogs": [
+				{
+					"message": "What was driving you at this point?"
+				}	
+			]
+		},
+		"276": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"277": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"278": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"279": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"280": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+
+			"dialogs": [
+				{
+					"message": "You had already fulfilled your mission and more."
+				}
+			]
+
+		},
+		"281": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"282": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"283": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"284": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"285": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+
+			"dialogs": [
+				{
+					"message": "Yet despite that..."
+				},
+				{
+					"message": "You did not waver."
+				}
+			]
+
+		},
+		"286": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"287": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"288": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"289": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"290": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+			"dialogs": [
+				{
+					"message": "Almost as if you could tell what was to come... You decided that this was the right choice."
+				}
+			]
+		},
+		"291": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"292": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"293": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"294": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"295": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+			"dialogs": [
+				{
+					"message": "It was then that you noticed it. At the time, you felt only a dull sense of pain throughout your body."
+				}
+			]
+		},
+		"296": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"297": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"298": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"299": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			]
+		},
+		"300": {
+			"shop": 0.25,
+			"gc": 1,
+			"music": "assets/audio/music/space_finale.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.6 + 0.05",
+			"asteroids": [
+				"Medium asteroid",
+				"Explosive asteroid",
+				"Small asteroid",
+				"Troll asteroid",
+				"Large asteroid",
+				"Cookie asteroid",
+				"Meteor"
+			],
+			"dialogs": [
+				{
+					"message": "The pain continued to increase. It was at this moment that your vision began to fade."
+				}
+				
+			]
+			
+		}
+		
+	},
+	
+	"random_enc": [
+		{
+			"name": "Random encounter - I",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Gun ship", "TUR Gun ship"],
+			"lvls": [5, 33],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - I",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Slow ship", "TUR Burat ship", "TUR Slow ship"],
+			"lvls": [5, 33],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - I",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Scout", "TUR Scout", "TUR Scout", "TUR Scout"],
+			"lvls": [5, 33],
+			"spawn_factor": 0.01
+		},
+
+
+
+		{
+			"name": "Random encounter - II",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Scout",
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Scout"
+				
+			],
+			"lvls": [34, 66],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - II",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Sniper ship", "TUR Sniper ship", "TUR Sniper ship"],
+			"lvls": [34, 66],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - II",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Gun ship", "TUR Burat ship", "TUR Gun ship", "TUR Burat ship"],
+			"lvls": [34, 66],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "SUDDEN FIELD!",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"asteroid_spawn_func": "sqrt(x + 1) * 0.9 + 0.05",
+			"asteroid_speed_func": "1.5 * (10 * sqrt(x) + random() * 50 + 150)",
+			"asteroids": ["Meteor"],
+			"background": {
+				"spawn_rate": 0,
+				"objects": ["meteor"]
+			},
+			"lvls": [34, 66],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - II",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Spread ship"],
+			"lvls": [34, 66],
+			"spawn_factor": 0.01
+		},
+		
+		
+		
+		{
+			"name": "Random encounter - III",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Gun ship", "TUR Gun ship", "TUR Gun ship", "TUR Gun ship", "TUR Gun ship"],
+			"lvls": [67, 100],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - III",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Scout",
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Scout",
+				"TUR Scout", "TUR Scout", "TUR Scout", "TUR Scout"
+			],
+			"lvls": [67, 100],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - III",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Burat ship", "TUR Slow ship",
+				"TUR Burat ship", "TUR Slow ship",
+				"TUR Burat ship", "TUR Slow ship"
+			],
+			"lvls": [67, 100],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - III",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Sniper ship", "TUR Spread ship",
+				"TUR Sniper ship"
+			],
+			"lvls": [67, 100],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - III",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Scout",
+				"TUR Gun ship", "TUR Gun ship", "TUR Spread ship"
+			],
+			"lvls": [67, 100],
+			"spawn_factor": 0.01
+		},
+		
+		
+		
+		{
+			"name": "Random encounter - IV",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Spread ship", "TUR Spread ship", "TUR Spread ship"],
+			"lvls": [101, 200],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - IV",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Gun ship", "TUR Sniper ship",
+				"TUR Gun ship", "TUR Sniper ship",
+				"TUR Gun ship", "TUR Sniper ship"
+			],
+			"lvls": [101, 200],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - IV",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Burat ship", "TUR Burat ship", "TUR Scout", "TUR Scout",
+				"TUR Gun ship", "TUR Scout", "TUR Burat ship", "TUR Burat ship"
+			],
+			"lvls": [101, 200],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - IV",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Slow ship", "TUR Devastator ship", "TUR Slow ship", "TUR Devastator ship", "TUR Slow ship"],
+			"lvls": [101, 200],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - IV",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Burat ship", "TUR Sniper ship", "TUR Sniper ship", "TUR Burat ship",
+				"TUR Sniper ship", "TUR Sniper ship", "TUR Burat ship"
+			],
+			"lvls": [101, 200],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - IV",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Scout", "TUR Scout", "TUR Spread ship", "TUR Scout",
+				"TUR Spread ship", "TUR Scout", "TUR Scout"
+			],
+			"lvls": [101, 200],
+			"spawn_factor": 0.01
+		},
+		
+		
+		
+		{
+			"name": "Random encounter - V",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Devastator ship", "TUR Devastator ship", "TUR Devastator ship", "TUR Devastator ship"],
+			"lvls": [201, 250],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - V",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Burat ship", "TUR Burat ship", "TUR Burat ship", "TUR Burat ship",
+				"TUR Burat ship", "TUR Burat ship", "TUR Burat ship"
+			],
+			"lvls": [201, 250],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - V",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Gun ship", "TUR Scout", "TUR Scout", "TUR Sniper ship",
+				"TUR Scout", "TUR Gun ship", "TUR Sniper ship", 
+				"TUR Scout", "TUR Scout", "TUR Gun ship"
+			],
+			"lvls": [201, 250],
+			"spawn_factor": 0.01
+		},
+		{
+			"name": "Random encounter - V",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": [
+				"TUR Slow ship", "TUR Slow ship", "TUR Slow ship",
+				"TUR Slow ship", "TUR Slow ship", "TUR Slow ship",
+				"TUR Slow ship", "TUR Slow ship"
+			],
+			"lvls": [201, 250],
+			"spawn_factor": 0.01
+		},
+		
+		
+		
+		{
+			"name": "Random encounter - VI",
+			"transition": true,
+			"music": "assets/audio/music/hymn_of_the_legendary_hero.ogg",
+			"ships": ["TUR Glory ship"],
+			"lvls": [251, 270],
+			"spawn_factor": 0.02
+		}
+		
+	],
+	
+	"space_aina": [
+		{
+			"name": "A dire consequence",
+			"warp": true,
+			"music": "assets/audio/music/space_aina.ogg",
+			"ships": ["L.S.P.A. fighter ship", "L.S.P.A. fighter ship", "L.S.P.A. fighter ship"],
+			"dead_lock": true,
+			"ships_in_place": true,
+			"end_strings": {
+				"lose": [
+					"Despite posing as a legendary hero, you stooped low and tried to save your\nhome planet at the expense of innocent lives residing within humble stations.\nAfter committing these severe crimes, you were rightfully brought to justice.\nHowever, your home planet was left without protection and met its end shortly after."
+				]
+			},
+		
+			"dialogs": [
+				{
+					"locking": true,
+					"title": "L.S.P.A.:",
+					"message": "Stop right there, criminal scum!"
+				},
+				{
+					"locking": true,
+					"title": "L.S.P.A.:",
+					"message": "By attacking and destroying neutral stations, you have mercilessly killed innocent civilians inhabiting said stations. All for your own petty self-interests!"
+				},
+				{
+					"locking": true,
+					"title": "L.S.P.A.:",
+					"message": "These actions violate against one of the fundamental intergalactic treaties of war! Therefore, the L.S.P.A. has sentenced you to death!"
+				}
+			]
+		}	
+	],
+	
+	"selection": {
+		"hidden": false,
+		"pos": [-125, -250],
+		
+		"linked": {
+			"down": "Tutorial",
+			"up": "The Northen frontier",
+			"right": "Infinite mode"
+		}
+		
+	}
+	
+}

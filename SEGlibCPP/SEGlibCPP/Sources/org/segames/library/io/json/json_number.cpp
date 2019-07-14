@@ -12,7 +12,7 @@ namespace org
 		namespace library
 		{
 
-			bool JSONNumber::checkChar(const int c)
+			bool JSONNumber::checkChar(const bool hex, const int c)
 			{
 				switch (c)
 				{
@@ -20,10 +20,23 @@ namespace org
 					throw IOException("EOF reached while evaluating json number.", __FILE__, __LINE__);
 				case '+':
 				case '-':
+				case 'x':
+				case 'X':
 				case 'e':
 				case 'E':
 				case '.':
 					return true;
+				case 'a':
+				case 'A':
+				case 'b':
+				case 'B':
+				case 'c':
+				case 'C':
+				case 'd':
+				case 'D':
+				case 'f':
+				case 'F':
+					return hex;
 				default:
 					if (c >= '0' && c <= '9')
 						return true;
@@ -50,13 +63,13 @@ namespace org
 			JSONNumber::JSONNumber(std::istream& input, int& line, int& lineChar)
 			{
 				int c;
-				bool isFloat = false, ended = false;
+				bool isFloat = false, ended = false, hex = false;
 				std::string num = "";
-				while ((c = input.peek()) != ',' || c != '}' || c != ']')
+				while ((c = input.peek()) != ',' && c != '}' && c != ']')
 				{
 					bool space;
 					lineChar++;
-					if (!checkChar(c))
+					if (!checkChar(hex, c))
 						throw IOException("Unexpected token while evaluating json number at line " + std::to_string(line) + ":" + std::to_string(lineChar) + ".", __FILE__, __LINE__);
 					
 					space = std::isspace(c);
@@ -77,12 +90,18 @@ namespace org
 					case '.':
 						isFloat = true;
 						break;
+					case 'x':
+					case 'X':
+						hex = true;
+						break;
 					default:
 						break;
 					}
 
-					if(!space)
+					if (!space)
 						num += static_cast<unsigned char>(input.get());
+					else
+						input.get();
 				}
 
 				if (isFloat)
@@ -125,7 +144,7 @@ namespace org
 				m_float = static_cast<double>(m_int);
 			}
 
-			void JSONNumber::write(std::ostream& output)
+			void JSONNumber::write(const int tabs, std::ostream& output) const
 			{
 				if (m_float - static_cast<double>(m_int) != 0.0)
 					output << std::to_string(m_float);
@@ -136,14 +155,6 @@ namespace org
 			size_t JSONNumber::hashCode() const
 			{
 				return *reinterpret_cast<const size_t*>(&m_float);
-			}
-
-			std::string JSONNumber::toString() const
-			{
-				if (m_float - static_cast<double>(m_int) != 0.0)
-					return std::to_string(m_float);
-				else
-					return std::to_string(m_int);
 			}
 
 			bool JSONNumber::equals(const Object& obj) const

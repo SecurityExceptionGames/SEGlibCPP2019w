@@ -55,7 +55,7 @@ namespace org
 				int c;
 				bool ended = false;
 				std::string str = "";
-				while ((c = input.peek()) != ',' || c != '}' || c != ']')
+				while ((c = input.peek()) != ',' && c != '}' && c != ']')
 				{
 					bool space;
 					lineChar++;
@@ -81,12 +81,47 @@ namespace org
 
 					if (!space)
 						str += static_cast<unsigned char>(std::tolower(input.get()));
+					else
+						input.get();
 				}
 				
 				if (str == "true")
 					m_flag = true;
 				else
 					m_flag = false;
+			}
+
+			JSONElementType JSONBoolean::getType() const
+			{
+				return BOOLEAN;
+			}
+
+			bool JSONBoolean::getBoolean() const
+			{
+				return m_flag;
+			}
+
+			void JSONBoolean::setBoolean(const bool flag)
+			{
+				m_flag = flag;
+			}
+
+			void JSONBoolean::write(const int tabs, std::ostream& output) const
+			{
+				output << (m_flag ? "true" : "false");
+			}
+
+			size_t JSONBoolean::hashCode() const
+			{
+				return (size_t)m_flag;
+			}
+
+			bool JSONBoolean::equals(const Object& obj) const
+			{
+				if (typeid(obj) != typeid(*this))
+					return false;
+				else
+					return dynamic_cast<const JSONBoolean&>(obj).m_flag == m_flag;
 			}
 
 		}

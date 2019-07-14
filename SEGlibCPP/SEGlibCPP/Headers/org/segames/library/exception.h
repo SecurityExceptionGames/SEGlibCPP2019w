@@ -21,7 +21,7 @@ namespace org
 			*/
 			class SEG_API Exception :
 				public Object,
-				private std::exception
+				public std::exception
 			{
 			protected:
 

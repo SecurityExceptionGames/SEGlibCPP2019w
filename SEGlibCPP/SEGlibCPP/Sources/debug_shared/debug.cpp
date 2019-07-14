@@ -1,5 +1,4 @@
 #ifndef SEG_API_DLL
-
 #include <org/segames/library/core.h>
 #include <org/segames/library/system.h>
 #include <org/segames/library/math/vecmath.h>
@@ -17,6 +16,8 @@
 #include <org/segames/library/gl/text/gl_font.h>
 #include <org/segames/library/math/point_2.h>
 #include <org/segames/library/math/point_3.h>
+#include <org/segames/library/io/json/json_util.h>
+#include <org/segames/library/io/io_exception.h>
 
 #include <unordered_map>
 #include <thread>
@@ -29,6 +30,20 @@ int main()
 {
 	try
 	{
+		for (int i = 0; i < 1000000; i++)
+		{
+			try
+			{
+				std::unique_ptr<JSONElement> ele(JSONUtil::read(File("test/test.json")));
+			}
+			catch (Exception& e)
+			{
+				e.print();
+			}
+
+		}
+
+		std::cout << "===========================================" << std::endl;
 		GLFWWindow win;
 		win.setSize(1280, 800);
 		win.setPositionCenter();
@@ -44,7 +59,7 @@ int main()
 		shader.loadFragmentData("test/test.frag");
 		shader.upload();
 
-		GLPhysicalTextureWrapper tex("C:/Users/Philip R/Desktop/plan_flat.dds");
+		GLPhysicalTextureWrapper tex("C:/Users/MasterIII/Desktop/plan_flat.dds");
 		tex.importTexture();
 		tex.upload();
 

@@ -1,8 +1,9 @@
 #pragma once
 #include <org/segames/library/io/json/json_element.h>
+#include <org/segames/library/util/array_list.h>
 
-#include <unordered_map>
 #include <iostream>
+
 
 namespace org
 {
@@ -12,22 +13,22 @@ namespace org
 
 		namespace library
 		{
-			
+
 			/*
-				Class for a JSON object element.
+				Class for a JSON array/list element.
 
 				* @author	Philip Rosberg
 				* @since	2019-07-12
 				* @edited	2019-07-13
 			*/
-			class SEG_API JSONObject :
+			class SEG_API JSONArray :
 				public JSONElement
 			{
 			protected:
 
 				/*
-					A class used to ensure no memory leaks during a
-					failed construction of a json object.
+					A class used to ensure no memory leaks during a 
+					failed construction of a json array.
 
 					* @author	Philip Rosberg
 					* @since	2019-07-14
@@ -38,9 +39,9 @@ namespace org
 				protected:
 
 					/*
-						Reference to the map of elements.
+						Reference to the array/list of elements.
 					*/
-					std::unordered_map<std::string, JSONElement*>* m_ptr;
+					ArrayList<JSONElement*>* m_ptr;
 
 				public:
 
@@ -48,7 +49,7 @@ namespace org
 						Creates a new construction saftey.
 						* @param[in] ptr A reference pointer to the elements
 					*/
-					ConstructionSaftey(std::unordered_map<std::string, JSONElement*>* ptr);
+					ConstructionSaftey(ArrayList<JSONElement*>* ptr);
 
 					/*
 						Destructor, also frees data in the referenced pointer.
@@ -62,36 +63,38 @@ namespace org
 
 				};
 
+			protected:
+
 				/*
-					The elements in the object.
+					The backing array.
 				*/
-				std::unordered_map<std::string, JSONElement*> m_elements;
+				ArrayList<JSONElement*> m_elements;
 
 			public:
 
 				/*
-					Creates an empty json object.
+					Creates an empty json array.
 				*/
-				JSONObject();
+				JSONArray();
 
 				/*
-					Creates a json object from the input stream.
+					Creates a json array from the input stream.
 					* @param[in] input The input stream to read from
 					* @param[in/out] line The line number
 					* @param[in/out] lineChar The character number on a line
 				*/
-				explicit JSONObject(std::istream& input, int& line, int& lineChar);
+				explicit JSONArray(std::istream& input, int& line, int& lineChar);
 
 				/*
-					Copies the given object (deep copy).
-					* @param[in] obj The json object to copy
+					Copies the given json array (deep copy).
+					* @param[in] obj The json array to copy
 				*/
-				JSONObject(const JSONObject& obj);
+				JSONArray(const JSONArray& obj);
 
 				/*
 					Destructor.
 				*/
-				virtual ~JSONObject();
+				virtual ~JSONArray();
 
 				/*
 					Returns the element type.
@@ -99,23 +102,28 @@ namespace org
 				virtual JSONElementType getType() const override;
 
 				/*
-					Returns the json element with the given name, or null if no such element exists.
-					* @param[in] name The identifier name of the element
+					Returns the size of the json array.
 				*/
-				virtual JSONElement* get(const std::string& name) const;
+				virtual int size() const;
 
 				/*
-					Returns the json element of the given type with the given name, or null if no 
-					such element exists or if the element with that name is not of the given type.
-					* @param[in] name The identifier name of the json element
+					Returns the json element with the given index.
+					* @param[in] index The index in the array of the element
+				*/
+				virtual JSONElement* get(const int index) const;
+
+				/*
+					Returns the json element of the given type with the given index, or null if 
+					the element with that name is not of the given type.
+					* @param[in] index The index in the array of the element
 				*/
 				template<typename T>
-				T* get(const std::string& name) const;
-
+				T* get(const int index) const;
+				
 				/*
-					Returns a reference to the mapped elements in the json object.
+					Returns the backing arraylist of elements.
 				*/
-				virtual std::unordered_map<std::string, JSONElement*>& getElements();
+				virtual ArrayList<JSONElement*>& getElements();
 
 				/*
 					Wrties the json object using the proper decoration.

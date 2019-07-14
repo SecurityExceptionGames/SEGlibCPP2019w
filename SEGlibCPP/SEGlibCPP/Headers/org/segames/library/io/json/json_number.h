@@ -17,7 +17,7 @@ namespace org
 
 				* @author	Philip Rosberg
 				* @since	2019-07-03
-				* @edited	2019-07-03
+				* @edited	2019-07-13
 			*/
 			class SEG_API JSONNumber :
 				public JSONElement
@@ -34,11 +34,14 @@ namespace org
 				*/
 				long long m_int;
 
+			public:
+
 				/*
 					Checks if the given character is allowed in a number.
+					* @param[in] hex True if a hex code is expected, ie. the char has been preceeded by "0x"
 					* @param[in] c The character to check
 				*/
-				static bool checkChar(const int c);
+				static bool checkChar(const bool hex, const int c);
 
 			public:
 
@@ -96,9 +99,10 @@ namespace org
 
 				/*
 					Wrties the json number using the proper decoration.
+					* @param[in] tabs The number of tabs to insert at the front
 					* @param[in] output The output stream to write to
 				*/
-				virtual void write(std::ostream& output);
+				virtual void write(const int tabs, std::ostream& output) const override;
 
 				/*
 					Returns a hash-code for the object.
@@ -106,15 +110,10 @@ namespace org
 				virtual size_t hashCode() const override;
 
 				/*
-					Returns a string representation of the object.
-				*/
-				virtual std::string toString() const;
-
-				/*
 					Returns true if the the given object is equal to this one.
 					* @param[in] obj The object to check
 				*/
-				virtual bool equals(const Object& obj) const;
+				virtual bool equals(const Object& obj) const override;
 
 			};
 
